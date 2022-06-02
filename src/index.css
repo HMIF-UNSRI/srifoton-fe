@@ -1,3 +1,16 @@
+@font-face {
+  font-family: "Japanese";
+  src: url("../public/fonts/japanese-3017/japanese3017.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Red Rose";
+  src: url("../public/fonts/red-rose/redrose.ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
