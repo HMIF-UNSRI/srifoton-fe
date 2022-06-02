@@ -14,3 +14,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  * {
+    @apply font-red-rose;
+  }
+}

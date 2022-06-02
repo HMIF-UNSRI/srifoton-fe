@@ -12,7 +12,7 @@ const Register = () => {
         <h1 className="text-3xl font-japanese">Yahoo</h1>
       </div>
       <div>
-        <h2 className="text-xl font-red-rose">Register</h2>
+        <h2 className="text-xl">Register</h2>
       </div>
     </div>
   );
