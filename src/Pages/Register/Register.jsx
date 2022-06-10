@@ -11,17 +11,23 @@ const Register = () => {
     document.getElementById("kpm").click();
   };
 
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <div className="bg-[rgb(34,34,34)] bg-ampera bg-center bg-cover bg-repeat-y md:bg-no-repeat w-screen h-full">
+    <div className="bg-[rgb(34,34,34)] bg-ampera bg-center pb-6 bg-cover bg-repeat-y md:bg-no-repeat w-screen h-full">
       <div className="text-white w-full h-full pt-8 bg-ampera bg-center bg-cover bg-repeat-y md:bg-no-repeat">
         <div className="bg-[url('../public/background/blur.png')] bg-contain w-full h-full bg-repeat-y md:bg-no-repeat md:bg-center">
           <div className="mb-6">
-            <p className="text-2xl md:text-4xl text-center">HMIF UNSRI 2022</p>
-            <h1 className="text-6xl font-japanese text-center md:text-8xl">
+            <p className="text-2xl md:text-4xl lg:text-6xl text-center">
+              HMIF UNSRI 2022
+            </p>
+            <h1 className="text-6xl font-japanese text-center md:text-8xl lg:text-9xl">
               SRIFOTON
             </h1>
           </div>
-          <section className="bg-white text-black p-[40px] w-3/4 mx-auto  ">
+          <section className="bg-white text-black p-[40px] w-3/4 mx-auto mb-20">
             <div className="relative w-3/4 md:w-1/2 lg:w-[30%] mx-auto flex flex-col">
               <img
                 src={dashTop}
@@ -40,8 +46,11 @@ const Register = () => {
             <p className="text-sm md:text-base text-center mt-4">
               Please Fill In Your Data Completely
             </p>
-            <form className="flex flex-col gap-4">
-              <div className="flex flex-col w-full gap-4">
+            <form
+              onSubmit={onSubmitHandler}
+              className="flex flex-col  gap-4 lg:flex-row pt-8"
+            >
+              <div className="flex flex-col lg:w-1/2 gap-4 lg:pr-2 lg:border-r-[3px] lg:border-r-red-secondary">
                 <div className="flex flex-col gap-2 md:gap-4">
                   <label
                     htmlFor="name"
@@ -103,7 +112,7 @@ const Register = () => {
                   />
                 </div>
               </div>
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-4 lg:w-1/2 ">
                 <div className="flex flex-col gap-2 md:gap-4">
                   <label
                     htmlFor="kpm"
@@ -115,10 +124,10 @@ const Register = () => {
                     <div>
                       <div
                         onClick={clickUploadPhotoButton}
-                        className="cursor-pointer flex justify-center items-center border border-slate-400 p-2 rounded-xl hover:bg-slate-100 active:bg-slate-200"
+                        className="cursor-pointer gap-2 flex justify-center items-center border border-slate-400 p-2 lg:py-14 rounded-xl hover:bg-slate-100 active:bg-slate-200"
                       >
-                        <img src={uploadIcon} alt="" />
-                        <p className="">Upload Photo</p>
+                        <img className="w-12" src={uploadIcon} alt="" />
+                        <p className="lg:text-xl">Upload Photo</p>
                         <input
                           id="kpm"
                           name="kpm"
@@ -147,15 +156,15 @@ const Register = () => {
                     />
                   </div>
                 </div>
-                <div className="mx-auto flex flex-col gap-2 md:gap-4">
-                  <button className="text-lg text-center bg-red-primary text-white rounded-lg py-3">
+                <div className="mx-auto flex flex-col gap-2 md:gap-4 lg:gap-8 justify-center ">
+                  <button className="text-lg text-center border-[3px]  border-red-secondary bg-red-primary hover:bg-red-primary-semibold active:bg-red-primary-bold text-white rounded lg:rounded-3xl py-3 lg:button-shadow-primary transition">
                     Sign Up
                   </button>
                   <p>
                     Already have an account?{" "}
                     <Link
                       to={"/login"}
-                      className="text-red-primary font-bold text-base"
+                      className="text-red-primary hover:text-red-primary-semibold active:text-red-primary-bold hover:underline font-bold text-base"
                     >
                       Please Login here!
                     </Link>
