@@ -16,7 +16,7 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-[rgb(34,34,34)] bg-ampera bg-center pb-6 bg-cover bg-repeat-y md:bg-no-repeat w-screen h-full">
+    <div className="bg-[rgb(34,34,34)] bg-ampera bg-center pb-6 bg-cover bg-repeat-y md:bg-no-repeat">
       <div className="text-white w-full h-full pt-8 bg-ampera bg-center bg-cover bg-repeat-y md:bg-no-repeat">
         <div className="bg-[url('../public/background/blur.png')] bg-contain w-full h-full bg-repeat-y md:bg-no-repeat md:bg-center">
           <div className="mb-6">
@@ -28,13 +28,13 @@ const Register = () => {
             </h1>
           </div>
           <section className="bg-white text-black p-[40px] w-3/4 mx-auto mb-20">
-            <div className="relative w-3/4 md:w-1/2 lg:w-[30%] mx-auto flex flex-col">
+            <div className="relative w-3/4 md:w-1/2 lg:w-[40%] mx-auto flex flex-col">
               <img
                 src={dashTop}
                 alt="dash-top"
                 className="absolute top-0 left-0"
               />
-              <h2 className="text-3xl md:text-3xl lg:text-5xl font-japanese text-center bg-gradient-to-r my-3  from-red-primary to-red-secondary bg-clip-text text-transparent">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-japanese text-center bg-gradient-to-r my-3  from-red-primary to-red-secondary bg-clip-text text-transparent">
                 Register
               </h2>
               <img
