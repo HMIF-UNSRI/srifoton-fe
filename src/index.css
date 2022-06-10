@@ -1,14 +1,32 @@
 @font-face {
   font-family: "Japanese";
-  src: url("../public/fonts/japanese-3017/japanese3017.ttf");
+  src: url("../public/fonts/japanese-3017/Japanese3017.ttf");
   font-style: normal;
-  font-weight: normal;
 }
 @font-face {
   font-family: "Red Rose";
-  src: url("../public/fonts/red-rose/redrose.ttf");
-  font-style: normal;
-  font-weight: normal;
+  src: url("../public/fonts/red-rose/RedRose-Light.ttf");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Red Rose";
+  src: url("../public/fonts/red-rose/RedRose-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Red Rose";
+  src: url("../public/fonts/red-rose/RedRose-Medium.ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Red Rose";
+  src: url("../public/fonts/red-rose/RedRose-SemiBold.ttf");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Red Rose";
+  src: url("../public/fonts/red-rose/RedRose-Bold.ttf");
+  font-weight: 700;
 }
 
 @tailwind base;

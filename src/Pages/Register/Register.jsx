@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import dashTop from "../../Assets/Objects/dash-top.svg";
 import dashBot from "../../Assets/Objects/dash-bot.svg";
@@ -11,16 +12,16 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-[rgb(34,34,34)] w-full h-full bg-ampera bg-center bg-cover bg-repeat-y md:bg-no-repeat">
+    <div className="bg-[rgb(34,34,34)] bg-ampera bg-center bg-cover bg-repeat-y md:bg-no-repeat w-screen h-full">
       <div className="text-white w-full h-full pt-8 bg-ampera bg-center bg-cover bg-repeat-y md:bg-no-repeat">
         <div className="bg-[url('../public/background/blur.png')] bg-contain w-full h-full bg-repeat-y md:bg-no-repeat md:bg-center">
           <div className="mb-6">
-            <p className="text-3xl md:text-4xl text-center">HMIF UNSRI 2022</p>
-            <h1 className="text-7xl font-japanese text-center md:text-8xl">
+            <p className="text-2xl md:text-4xl text-center">HMIF UNSRI 2022</p>
+            <h1 className="text-6xl font-japanese text-center md:text-8xl">
               SRIFOTON
             </h1>
           </div>
-          <section className="bg-white text-black p-[40px] w-3/4 mx-auto pb-2 ">
+          <section className="bg-white text-black p-[40px] w-3/4 mx-auto  ">
             <div className="relative w-3/4 md:w-1/2 lg:w-[30%] mx-auto flex flex-col">
               <img
                 src={dashTop}
@@ -52,7 +53,7 @@ const Register = () => {
                     type="text"
                     id="name"
                     name="name"
-                    className="border border-slate-400 w-full  px-3 md:px-5 py-3 text-sm md:text-lg lg:text-xl"
+                    className="border border-slate-400 w-full  px-3 md:px-5 py-3 text-sm md:text-lg lg:text-xl rounded-lg"
                     placeholder="Enter Your Name Here"
                   />
                 </div>
@@ -67,7 +68,7 @@ const Register = () => {
                     type="text"
                     id="nim"
                     name="nim"
-                    className="border border-slate-400 w-full  px-3 md:px-5 py-3 text-sm md:text-lg lg:text-xl"
+                    className="border border-slate-400 w-full  px-3 md:px-5 py-3 text-sm md:text-lg lg:text-xl rounded-lg"
                     placeholder="Enter Your Nim Here"
                   />
                 </div>
@@ -82,7 +83,7 @@ const Register = () => {
                     type="text"
                     id="email"
                     name="email"
-                    className="border border-slate-400 w-full  px-3 md:px-5 py-3 text-sm md:text-lg lg:text-xl"
+                    className="border border-slate-400 w-full  px-3 md:px-5 py-3 text-sm md:text-lg lg:text-xl rounded-lg"
                     placeholder="Enter Your Email Here"
                   />
                 </div>
@@ -97,12 +98,12 @@ const Register = () => {
                     type="password"
                     id="password"
                     name="password"
-                    className="border border-slate-400 w-full px-3 md:px-5 py-3 text-sm md:text-lg lg:text-xl"
+                    className="border border-slate-400 w-full px-3 md:px-5 py-3 text-sm md:text-lg lg:text-xl rounded-lg"
                     placeholder="Enter Your Password Here"
                   />
                 </div>
               </div>
-              <div>
+              <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-2 md:gap-4">
                   <label
                     htmlFor="kpm"
@@ -130,6 +131,35 @@ const Register = () => {
                     </div>
                     <span className="text-sm text-slate-500">maks 2 mb*</span>
                   </div>
+                  <div className="flex flex-col gap-2 md:gap-4">
+                    <label
+                      htmlFor="whatsapp"
+                      className="text-lg md:text-xl lg:text-2xl"
+                    >
+                      Whatsapp Number* :
+                    </label>
+                    <input
+                      type="text"
+                      id="whatsapp"
+                      name="whatsapp"
+                      className="border border-slate-400 w-full px-3 md:px-5 py-3 text-sm md:text-lg lg:text-xl rounded-lg"
+                      placeholder="Enter Your Whatsapp Here"
+                    />
+                  </div>
+                </div>
+                <div className="mx-auto flex flex-col gap-2 md:gap-4">
+                  <button className="text-lg text-center bg-red-primary text-white rounded-lg py-3">
+                    Sign Up
+                  </button>
+                  <p>
+                    Already have an account?{" "}
+                    <Link
+                      to={"/login"}
+                      className="text-red-primary font-bold text-base"
+                    >
+                      Please Login here!
+                    </Link>
+                  </p>
                 </div>
               </div>
             </form>
