@@ -31,7 +31,7 @@ const Register = () => {
       <section className="bg-white text-black p-[40px] w-3/4 mx-auto mb-20">
         <div className="relative w-3/4 md:w-1/2 lg:w-[40%] mx-auto flex flex-col">
           <img src={dashTop} alt="dash-top" className="absolute top-0 left-0" />
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-japanese text-center bg-gradient-to-r my-3  from-red-primary to-red-secondary bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-japanese text-center my-3 bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent">
             Register
           </h2>
           <img
@@ -107,20 +107,26 @@ const Register = () => {
               </label>
               <div className="flex flex-col gap-2">
                 <div>
-                  <div
-                    onClick={clickUploadPhotoButton}
-                    className="cursor-pointer gap-2 flex justify-center items-center border border-slate-400 p-2 lg:py-14 rounded-xl hover:bg-slate-100 active:bg-slate-200"
-                  >
-                    <img className="w-12" src={uploadIcon} alt="" />
-                    <p className="lg:text-xl">Upload File</p>
-                    <input
-                      id="kpm"
-                      name="kpm"
-                      hidden
-                      type="file"
-                      accept="image/*,.pdf"
-                    />
-                    <p></p>
+                  <div className="gap-2 lg:w-1/2 flex flex-col justify-center items-center border border-slate-400 p-2 lg:py-14 rounded-xl ">
+                    <div
+                      onClick={clickUploadPhotoButton}
+                      className="flex gap-2 justify-center items-center border-2 border-slate-300 px-4 py-2 cursor-pointer hover:bg-slate-100 active:bg-slate-200 rounded-lg"
+                    >
+                      <img className="w-8" src={uploadIcon} alt="" />
+                      <p className="lg:text-sm font-bold bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent">
+                        Upload File
+                      </p>
+                      <input
+                        id="kpm"
+                        name="kpm"
+                        hidden
+                        type="file"
+                        accept="image/*,.pdf"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-sm text-slate-500">Or drop a file</p>
+                    </div>
                   </div>
                 </div>
                 <span className="text-sm text-slate-500">maks 2 mb*</span>
