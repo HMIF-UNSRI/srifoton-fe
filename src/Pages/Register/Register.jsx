@@ -45,9 +45,9 @@ const Register = () => {
         </p>
         <form
           onSubmit={onSubmitHandler}
-          className="flex flex-col  gap-4 lg:flex-row pt-8"
+          className="flex flex-col gap-4 lg:flex-row pt-8"
         >
-          <div className="flex flex-col lg:w-1/2 gap-4 lg:pr-2 lg:border-r-[3px] lg:border-r-red-secondary">
+          <div className="flex flex-col gap-4 lg:w-1/2 lg:pr-2 lg:border-r-[3px] lg:border-r-red-secondary">
             <div className="flex flex-col gap-2 md:gap-4">
               <label htmlFor="name" className="text-lg md:text-xl lg:text-2xl">
                 Name* :
