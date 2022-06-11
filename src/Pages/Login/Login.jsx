@@ -72,7 +72,9 @@ const Login = () => {
             </Link>
           </div>
           <div className="px-2 w-full lg:w-1/2 mx-auto mt-2 md:mt-6">
-            <button className="button-primary">Log In</button>
+            <button className="button-primary md:text-lg w-full ">
+              Log In
+            </button>
           </div>
         </form>
         <div className="mt-2 md:mt-8">

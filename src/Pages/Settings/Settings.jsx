@@ -1,7 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
-import Button from "../../Components/Button/Button";
 
 import Background from "../../Components/Background/Background";
 
@@ -30,6 +27,9 @@ const Settings = () => {
           className="flex flex-col gap-4 lg:flex-row pt-8"
         >
           <div className="flex flex-col gap-4 lg:w-1/2 lg:pr-2 lg:border-r-[3px] lg:border-r-red-secondary">
+            <h2 className="text-center text-lg md:text-2xl lg:text-3xl mb-4">
+              Personal Data
+            </h2>
             <div className="flex flex-col gap-2 md:gap-4">
               <label htmlFor="name" className="text-lg md:text-xl ">
                 Name* :
@@ -67,44 +67,75 @@ const Settings = () => {
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4">
-              <label htmlFor="password" className="text-lg md:text-xl ">
-                Password* :
+              <label htmlFor="university" className="text-lg md:text-xl ">
+                University* :
               </label>
               <input
-                type="password"
-                id="password"
-                name="password"
+                type="text"
+                id="university"
+                name="university"
                 className="border border-slate-400 w-full px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
                 placeholder="Enter Your Password Here"
               />
             </div>
+            <div className="flex flex-col gap-2 md:gap-4">
+              <label htmlFor="phone" className="text-lg md:text-xl ">
+                Phone Number
+              </label>
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                className="border border-slate-400 w-full px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
+                placeholder="Enter Your Password Here"
+              />
+            </div>
+            <div className="flex gap-7 justify-center items-center">
+              <button type="reset" className="button-secondary w-1/3">
+                Reset
+              </button>
+              <button type="submit" className="button-primary w-1/3">
+                Submit
+              </button>
+            </div>
           </div>
           <div className="flex flex-col gap-4 lg:w-1/2 ">
             <div className="flex flex-col gap-2 md:gap-4">
+              <h2 className="text-center text-lg md:text-2xl lg:text-3xl mb-4">
+                Change Password
+              </h2>
               <div className="flex flex-col gap-2 md:gap-4">
-                <label htmlFor="whatsapp" className="text-lg md:text-xl ">
-                  Whatsapp Number* :
+                <label htmlFor="oldPassword" className="text-lg md:text-xl ">
+                  Old Password* :
                 </label>
                 <input
-                  type="text"
-                  id="whatsapp"
-                  name="whatsapp"
+                  type="password"
+                  id="oldPassword"
+                  name="oldPassword"
+                  className="border border-slate-400 w-full px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
+                  placeholder="Enter Your Old Password Here"
+                />
+              </div>
+              <div className="flex flex-col gap-2 md:gap-4">
+                <label htmlFor="newPassword" className="text-lg md:text-xl ">
+                  New Password* :
+                </label>
+                <input
+                  type="password"
+                  id="newPassword"
+                  name="newPassword"
                   className="border border-slate-400 w-full px-3 md:px-5 py-3 text-sm md:text-lg rounded-lg"
-                  placeholder="Enter Your Whatsapp Here"
+                  placeholder="Enter Your New Password Here"
                 />
               </div>
             </div>
-            <div className="mx-auto flex flex-col gap-2 md:gap-4 lg:gap-8 justify-center ">
-              <Button>Sign Up</Button>
-              <p>
-                Already have an account?{" "}
-                <Link
-                  to={"/login"}
-                  className="text-red-primary hover:text-red-primary-semibold active:text-red-primary-bold hover:underline font-bold text-base"
-                >
-                  Please Login here!
-                </Link>
-              </p>
+            <div className="flex gap-7 justify-center items-center">
+              <button type="reset" className="button-secondary w-1/3">
+                Reset
+              </button>
+              <button type="submit" className="button-primary w-1/3">
+                Submit
+              </button>
             </div>
           </div>
         </form>

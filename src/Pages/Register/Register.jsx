@@ -145,7 +145,9 @@ const Register = () => {
               />
             </div>
             <div className="mx-auto flex flex-col md:mt-[4.5rem] gap-2 md:gap-4 lg:gap-8 justify-center ">
-              <button className="button-primary">Sign Up</button>
+              <button className="button-primary md:text-lg w-full">
+                Sign Up
+              </button>
               <p className="text-xs md:text-base">
                 Already have an account?{" "}
                 <Link

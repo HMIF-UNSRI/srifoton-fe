@@ -50,7 +50,10 @@
     box-shadow: 0px 10px 10px 5px rgba(196, 0, 24, 0.5);
   }
   .button-primary {
-    @apply md:text-lg text-center w-full border-[3px]  border-red-secondary bg-red-primary hover:bg-red-primary-semibold active:bg-red-primary-bold text-white rounded-xl lg:rounded-3xl py-1 md:py-3 lg:button-shadow-primary transition;
+    @apply text-center border-[3px]  border-red-secondary bg-red-primary hover:bg-red-primary-semibold active:bg-red-primary-bold text-white rounded-xl lg:rounded-3xl py-1 md:py-3 lg:button-shadow-primary transition;
+  }
+  .button-secondary {
+    @apply text-center border-[3px]  border-red-primary bg-slate-50 hover:bg-slate-100 active:bg-slate-200 text-red-primary rounded-xl lg:rounded-3xl py-1 md:py-3 lg:button-shadow-primary transition;
   }
 }
 @layer utilities {
