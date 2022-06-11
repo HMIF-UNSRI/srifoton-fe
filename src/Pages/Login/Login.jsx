@@ -34,36 +34,33 @@ const Login = () => {
           />
         </div>
         <p className="text-sm md:text-base text-center mt-4">
-          To participate for the competition, please login.
+          To participate in the competition, please login.
         </p>
         <form
           onSubmit={onSubmitHandler}
           className="flex flex-col gap-2 md:gap-4 pt-8 justify-center items-center"
         >
           <div className="flex flex-col gap-2 md:gap-4 w-full px-2 lg:w-3/4 lg:px-0">
-            <label htmlFor="name" className="text-lg md:text-xl lg:text-2xl">
+            <label htmlFor="name" className="text-lg md:text-xl ">
               Email* :
             </label>
             <input
               type="email"
               id="email"
               name="email"
-              className="border border-slate-400 w-full px-3 md:px-5 py-3 text-sm md:text-lg lg:text-xl rounded-lg"
+              className="border border-slate-400 w-full px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
               placeholder="Enter Your Email Here"
             />
           </div>
           <div className="flex flex-col gap-2 md:gap-4 w-full px-2 lg:w-3/4 lg:px-0">
-            <label
-              htmlFor="password"
-              className="text-lg md:text-xl lg:text-2xl"
-            >
+            <label htmlFor="password" className="text-lg md:text-xl ">
               Password* :
             </label>
             <input
               type="password"
               id="password"
               name="password"
-              className="border border-slate-400 w-full px-3 md:px-5 py-3 text-sm md:text-lg lg:text-xl rounded-lg"
+              className="border border-slate-400 w-full px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
               placeholder="Enter Your Password Here"
             />
           </div>
