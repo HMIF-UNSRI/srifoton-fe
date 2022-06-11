@@ -7,7 +7,6 @@ import dashBot from "../../Assets/Objects/dash-bot.svg";
 import uploadIcon from "../../Assets/Icons/upload.svg";
 
 import AmperaBackground from "../../Components/AmperaBackground/AmperaBackground";
-import Button from "../../Components/Button/Button";
 
 const Register = () => {
   const clickUploadPhotoButton = () => {
@@ -29,7 +28,7 @@ const Register = () => {
         </h1>
       </div>
       <section className="bg-white text-black p-[40px] w-3/4 mx-auto mb-20">
-        <div className="relative w-3/4 md:w-1/2 lg:w-[40%] mx-auto flex flex-col">
+        <div className="relative w-full md:w-1/2 lg:w-[40%] mx-auto flex flex-col">
           <img src={dashTop} alt="dash-top" className="absolute top-0 left-0" />
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-japanese text-center my-3 bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent">
             Register
@@ -56,7 +55,7 @@ const Register = () => {
                 type="text"
                 id="name"
                 name="name"
-                className="border border-slate-400 w-full  px-3 md:px-5 py-3 text-xs md:text-lg  rounded-lg"
+                className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your Name"
               />
             </div>
@@ -68,7 +67,7 @@ const Register = () => {
                 type="text"
                 id="nim"
                 name="nim"
-                className="border border-slate-400 w-full  px-3 md:px-5 py-3 text-xs md:text-lg  rounded-lg"
+                className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your Nim"
               />
             </div>
@@ -80,7 +79,7 @@ const Register = () => {
                 type="text"
                 id="email"
                 name="email"
-                className="border border-slate-400 w-full  px-3 md:px-5 py-3 text-xs md:text-lg  rounded-lg"
+                className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your Email"
               />
             </div>
@@ -92,7 +91,7 @@ const Register = () => {
                 type="password"
                 id="password"
                 name="password"
-                className="border border-slate-400 w-full px-3 md:px-5 py-3 text-xs md:text-lg  rounded-lg"
+                className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your Password"
               />
             </div>
@@ -141,17 +140,17 @@ const Register = () => {
                 type="text"
                 id="whatsapp"
                 name="whatsapp"
-                className="border border-slate-400 w-full px-3 md:px-5 py-3 text-xs md:text-lg rounded-lg"
+                className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your Whatsapp Here"
               />
             </div>
-            <div className="mx-auto flex flex-col mt-[4.5rem] gap-2 md:gap-4 lg:gap-8 justify-center ">
-              <Button>Sign Up</Button>
-              <p className="text-sm md:text-base">
+            <div className="mx-auto flex flex-col md:mt-[4.5rem] gap-2 md:gap-4 lg:gap-8 justify-center ">
+              <button className="button-primary">Sign Up</button>
+              <p className="text-xs md:text-base">
                 Already have an account?{" "}
                 <Link
                   to={"/login"}
-                  className="text-red-primary hover:text-red-primary-semibold active:text-red-primary-bold hover:underline font-bold text-sm md:text-base"
+                  className="text-red-primary hover:text-red-primary-semibold active:text-red-primary-bold hover:underline font-bold text-xs md:text-base"
                 >
                   Please Login here!
                 </Link>
