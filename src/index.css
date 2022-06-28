@@ -47,7 +47,7 @@
     background: linear-gradient(360deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
   }
   .button-shadow-primary {
-    box-shadow: 0px 10px 10px 5px rgba(196, 0, 24, 0.5);
+    box-shadow: 0px 2px 5px 5px rgba(196, 0, 24, 0.2);
   }
   .button-primary {
     @apply text-center border-[3px]  border-red-secondary bg-red-primary hover:bg-red-primary-semibold active:bg-red-primary-bold text-white rounded-xl lg:rounded-3xl py-1 md:py-3 lg:button-shadow-primary transition;
