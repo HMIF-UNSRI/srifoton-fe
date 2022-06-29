@@ -6,6 +6,7 @@ import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import Settings from "../Pages/Settings/Settings";
 import Competition from "../Pages/Competition/Competition";
+import ForgotPass from "../Pages/ForgotPass/ForgotPass";
 
 const Router = () => {
   return (
@@ -15,6 +16,7 @@ const Router = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/competition" element={<Competition />} />
+      <Route path="/forgot-pass" element={<ForgotPass />} />
     </Routes>
   );
 };
