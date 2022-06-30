@@ -30,7 +30,7 @@ const FormRegister = () => {
           <p className="text-xs md:text-sm bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent mb-5">
             Team Data*
           </p>
-          <section className="bg-gray-100 text-black p-[20px] mb-20">
+          <section className="bg-gray-100 text-black p-[20px] mb-20 rounded-xl">
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
               <label htmlFor="name" className="text-base md:text-xl ">
                 Team Name :
@@ -98,7 +98,7 @@ const FormRegister = () => {
           <p className="text-xs md:text-sm bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent mb-5">
             First Member Data*
           </p>
-          <section className="bg-gray-100 text-black p-[20px] mb-20">
+          <section className="bg-gray-100 text-black p-[20px] mb-20 rounded-xl">
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
               <label htmlFor="name" className="text-base md:text-xl ">
                 Name :
@@ -201,7 +201,7 @@ const FormRegister = () => {
           <p className="text-xs md:text-sm bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent mb-5">
             Second Member Data*
           </p>
-          <section className="bg-gray-100 text-black p-[20px] mb-20">
+          <section className="bg-gray-100 text-black p-[20px] mb-20 rounded-xl">
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
               <label htmlFor="name" className="text-base md:text-xl ">
                 Name :
@@ -301,6 +301,9 @@ const FormRegister = () => {
               />
             </div>
           </section>
+          <div>
+            <button className="button-primary mx-auto w-full">Save</button>
+          </div>
         </form>
       </section>
     </Background>
