@@ -21,7 +21,7 @@ const Settings = () => {
           className="absolute bottom-0 right-0"
         />
       </div>
-      <section className="bg-white text-black p-[40px] w-3/4 mx-auto mb-20">
+      <section className="bg-white text-black p-[40px] w-3/4 mx-auto mb-20 rounded-xl">
         <form
           onSubmit={onSubmitHandler}
           className="flex flex-col gap-4 lg:flex-row pt-8"
