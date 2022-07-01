@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+
+import axios from "axios";
 
 import dashTop from "../../Assets/Objects/dash-top.svg";
 import dashBot from "../../Assets/Objects/dash-bot.svg";
@@ -8,13 +10,42 @@ import uploadIcon from "../../Assets/Icons/upload.svg";
 
 import AmperaBackground from "../../Components/AmperaBackground/AmperaBackground";
 
+import { useForm } from "react-hook-form";
+
+import AuthContext from "../../Contexts/AuthContext";
+
 const Register = () => {
+  const { register, handleSubmit, setValue, getValues } = useForm();
+  const authCtx = useContext(AuthContext);
+
+  const baseUrl =
+    (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api/users`) ||
+    "http://localhost:8000/api/users";
+
+  const onChangeUploadHandler = (e) => {
+    const formData = new FormData();
+
+    formData.append("kpm", e.target.files[0]);
+
+    axios.post(`${baseUrl}/uploads/kpm`, formData, {}).then((res) => {
+      setValue("kpm", res.data.kpm);
+    });
+  };
+
   const clickUploadPhotoButton = () => {
     document.getElementById("kpm").click();
   };
 
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
+  const onSubmitHandler = (data) => {
+    authCtx.register(
+      getValues("kpm"),
+      data.name,
+      data.nim,
+      data.email,
+      data.password,
+      data.whatsappNumber,
+      data.university
+    );
   };
 
   return (
@@ -43,7 +74,7 @@ const Register = () => {
           Please Fill In Your Data Completely
         </p>
         <form
-          onSubmit={onSubmitHandler}
+          onSubmit={handleSubmit(onSubmitHandler)}
           className="flex flex-col gap-4 lg:flex-row pt-8"
         >
           <div className="flex flex-col gap-4 lg:w-1/2 lg:pr-2 lg:border-r-[3px] lg:border-r-red-secondary">
@@ -57,6 +88,7 @@ const Register = () => {
                 name="name"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your Name"
+                {...register("name")}
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4">
@@ -69,6 +101,7 @@ const Register = () => {
                 name="nim"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your Nim"
+                {...register("nim")}
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4">
@@ -81,6 +114,7 @@ const Register = () => {
                 name="email"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your Email"
+                {...register("email")}
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4">
@@ -93,6 +127,20 @@ const Register = () => {
                 name="password"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your Password"
+                {...register("password")}
+              />
+            </div>
+            <div className="flex flex-col gap-2 md:gap-4">
+              <label htmlFor="password" className="text-base md:text-xl ">
+                Universitas* :
+              </label>
+              <input
+                type="text"
+                id="university"
+                name="university"
+                className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
+                placeholder="Enter Your Password"
+                {...register("university")}
               />
             </div>
           </div>
@@ -118,6 +166,7 @@ const Register = () => {
                         hidden
                         type="file"
                         accept="image/*,.pdf"
+                        onChange={onChangeUploadHandler}
                       />
                     </div>
                     <div>
@@ -142,6 +191,7 @@ const Register = () => {
                 name="whatsapp"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your Whatsapp Here"
+                {...register("whatsappNumber")}
               />
             </div>
             <div className="mx-auto flex flex-col md:mt-[4.5rem] gap-2 md:gap-4 lg:gap-8 justify-center ">

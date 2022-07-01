@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+
+import { useForm } from "react-hook-form";
+
+import AuthContext from "../../Contexts/AuthContext";
 
 import dashTop from "../../Assets/Objects/dash-top.svg";
 import dashBot from "../../Assets/Objects/dash-top.svg";
@@ -7,8 +11,11 @@ import dashBot from "../../Assets/Objects/dash-top.svg";
 import AmperaBackground from "../../Components/AmperaBackground/AmperaBackground";
 
 const Login = () => {
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
+  const authCtx = useContext(AuthContext);
+  const { register, handleSubmit } = useForm();
+
+  const onSubmitHandler = (data) => {
+    authCtx.login(data.email, data.password);
   };
   return (
     <AmperaBackground>
@@ -36,7 +43,7 @@ const Login = () => {
           To participate in the competition, please login.
         </p>
         <form
-          onSubmit={onSubmitHandler}
+          onSubmit={handleSubmit(onSubmitHandler)}
           className="flex flex-col gap-2 w-full md:gap-4 pt-8 justify-center items-center"
         >
           <div className="flex flex-col gap-2 md:gap-4 w-full lg:w-3/4 lg:px-0">
@@ -49,6 +56,7 @@ const Login = () => {
               name="email"
               className="border border-slate-400 w-full px-3 md:px-5 py-3 text-xs md:text-lg  rounded-lg"
               placeholder="Enter Your Email Here"
+              {...register("email")}
             />
           </div>
           <div className="flex flex-col gap-2 md:gap-4 w-full lg:w-3/4 lg:px-0">
@@ -61,6 +69,7 @@ const Login = () => {
               name="password"
               className="border border-slate-400 w-full px-3 md:px-5 py-3 text-xs md:text-lg  rounded-lg"
               placeholder="Enter Your Password Here"
+              {...register("password")}
             />
           </div>
           <div className="flex flex-col gap-2 md:gap-4 w-full px-2 lg:w-3/4 lg:px-0">
