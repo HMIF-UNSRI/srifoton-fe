@@ -7,6 +7,7 @@ import Login from "../Pages/Login/Login";
 import Settings from "../Pages/Settings/Settings";
 import Competition from "../Pages/Competition/Competition";
 import ForgotPass from "../Pages/ForgotPass/ForgotPass";
+import ResetPass from "../Pages/ResetPass/ResetPass";
 import FormRegister from "../Pages/FormRegister/FormRegister";
 import Team from "../Pages/Team/Team";
 
@@ -19,6 +20,7 @@ const Router = () => {
       <Route path="/settings" element={<Settings />} />
       <Route path="/competition" element={<Competition />} />
       <Route path="/forgot-pass" element={<ForgotPass />} />
+      <Route path="/reset-pass" element={<ResetPass />} />
       <Route path="/form-register" element={<FormRegister />} />
       <Route path="/team" element={<Team />} />
     </Routes>
