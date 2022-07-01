@@ -3,10 +3,14 @@ import React from "react";
 import Background from "../../Components/Background/Background";
 import dashWhite from "../../Assets/Objects/dash-white.svg";
 import uploadIcon from "../../Assets/Icons/upload.svg";
+
+import { useForm } from "react-hook-form";
+
 const FormRegister = () => {
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-  };
+  const { register, handleSubmit, setValue, getValues } = useForm();
+
+  const onSubmitHandler = (data) => {};
+
   const clickUploadPhotoButton = () => {
     document.getElementById("kpm").click();
   };
@@ -26,7 +30,7 @@ const FormRegister = () => {
       </div>
 
       <section className="bg-white text-black p-[40px] w-3/4 mx-auto mb-20 rounded-xl">
-        <form onSubmit={onSubmitHandler} className="pt-3">
+        <form onSubmit={handleSubmit(onSubmitHandler)} className="pt-3">
           <p className="text-xs md:text-sm bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent mb-5">
             Team Data*
           </p>
@@ -41,6 +45,7 @@ const FormRegister = () => {
                 name="name"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your Tim Name Here"
+                {...register("team_name")}
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -91,6 +96,7 @@ const FormRegister = () => {
                 name="name"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your Tim Name Here"
+                {...register("competition")}
               />
             </div>
           </section>

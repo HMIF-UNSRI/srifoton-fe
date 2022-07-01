@@ -19,7 +19,7 @@ const ForgotPass = () => {
         />
       </div>
       <section className="bg-white text-black p-[40px] w-3/4 md:1/2 mx-auto mb-20 gap-4 flex flex-col rounded-xl">
-        <h2 className="font-bold text-center">Reset Your Password</h2>
+        <h2 className="font-bold text-center text-xl">Reset Your Password</h2>
         <form className="flex flex-col w-full md:w-1/2 mx-auto">
           <div className="flex flex-col gap-2 md:gap-4 mb-10">
             <label htmlFor="email" className="text-base md:text-xl ">
