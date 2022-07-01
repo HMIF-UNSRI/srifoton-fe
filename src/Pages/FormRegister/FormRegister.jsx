@@ -5,15 +5,16 @@ import dashWhite from "../../Assets/Objects/dash-white.svg";
 import uploadIcon from "../../Assets/Icons/upload.svg";
 
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 const FormRegister = () => {
-  const { register, handleSubmit, setValue, getValues } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
+
+  const baseUrl =
+    (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api/users`) ||
+    "http://localhost:8000/api/users";
 
   const onSubmitHandler = (data) => {};
-
-  const clickUploadPhotoButton = () => {
-    document.getElementById("kpm").click();
-  };
 
   return (
     <Background>
@@ -55,7 +56,7 @@ const FormRegister = () => {
               <div className="flex flex-col gap-2">
                 <div className="gap-2 lg:w-1/2 flex flex-col justify-center items-center border-0 md:border border-slate-400 md:p-2 lg:py-4 rounded-xl ">
                   <div
-                    onClick={clickUploadPhotoButton}
+                    onClick={() => document.getElementById("payment").click()}
                     className="flex w-full gap-2 justify-center items-center border-2 border-slate-300 px-4 py-2 cursor-pointer hover:bg-slate-100 active:bg-slate-200 rounded-lg"
                   >
                     <img className="w-4 md:w-6" src={uploadIcon} alt="" />
@@ -63,11 +64,23 @@ const FormRegister = () => {
                       Upload File
                     </p>
                     <input
-                      id="kpm"
-                      name="kpm"
+                      id="payment"
                       hidden
                       type="file"
                       accept="image/*,.pdf"
+                      onChange={(e) => {
+                        const formData = new FormData();
+                        formData.append("bp", e.target.files[0]);
+                        axios
+                          .post(`${baseUrl}/uploads/bp`, formData)
+                          .then((res) => {
+                            console.log(res.data);
+                            setValue("id_payment", res.data);
+                          })
+                          .catch((err) => {
+                            console.log(err);
+                          });
+                      }}
                     />
                   </div>
                   <div>
@@ -115,6 +128,7 @@ const FormRegister = () => {
                 name="name"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your Name Here"
+                {...register("name-1")}
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -127,6 +141,7 @@ const FormRegister = () => {
                 name="nim"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your NIM Here"
+                {...register("nim-1")}
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -139,6 +154,7 @@ const FormRegister = () => {
                 name="email"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your Email Here"
+                {...register("email-1")}
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -151,6 +167,7 @@ const FormRegister = () => {
                 name="university"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your University Name Here"
+                {...register("university-1")}
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -160,7 +177,7 @@ const FormRegister = () => {
               <div className="flex flex-col gap-2">
                 <div className="gap-2 lg:w-1/2 flex flex-col justify-center items-center border-0 md:border border-slate-400 md:p-2 lg:py-4 rounded-xl ">
                   <div
-                    onClick={clickUploadPhotoButton}
+                    onClick={() => document.getElementById("kpm-1").click()}
                     className="flex w-full gap-2 justify-center items-center border-2 border-slate-300 px-4 py-2 cursor-pointer hover:bg-slate-100 active:bg-slate-200 rounded-lg"
                   >
                     <img className="w-4 md:w-6" src={uploadIcon} alt="" />
@@ -168,11 +185,26 @@ const FormRegister = () => {
                       Upload File
                     </p>
                     <input
-                      id="kpm"
-                      name="kpm"
+                      id="kpm-1"
+                      name="kpm-1"
                       hidden
                       type="file"
                       accept="image/*,.pdf"
+                      onChange={(e) => {
+                        const formData = new FormData();
+                        formData.append("kpm", e.target.files[0]);
+
+                        axios
+                          .post(`${baseUrl}/uploads/kpm`, formData)
+                          .then((res) => {
+                            console.log(res.data);
+
+                            setValue("id_kpm-1", res.data);
+                          })
+                          .catch((err) => {
+                            console.log(err);
+                          });
+                      }}
                     />
                   </div>
                   <div>
@@ -201,6 +233,7 @@ const FormRegister = () => {
                 name="wa"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your WhatsApp Number Here"
+                {...register("wa-1")}
               />
             </div>
           </section>
@@ -218,6 +251,7 @@ const FormRegister = () => {
                 name="name"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your Name Here"
+                {...register("name-2")}
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -230,6 +264,7 @@ const FormRegister = () => {
                 name="nim"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your NIM Here"
+                {...register("nim-2")}
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -242,6 +277,7 @@ const FormRegister = () => {
                 name="email"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your Email Here"
+                {...register("email-2")}
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -254,6 +290,7 @@ const FormRegister = () => {
                 name="university"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your University Name Here"
+                {...register("university-2")}
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -261,21 +298,37 @@ const FormRegister = () => {
                 KPM :
               </label>
               <div className="flex flex-col gap-2">
-                <div className="gap-2 lg:w-1/2 flex flex-col justify-center items-center border-0 md:border border-slate-400 md:p-2 lg:py-4 rounded-xl ">
-                  <div
-                    onClick={clickUploadPhotoButton}
-                    className="flex w-full gap-2 justify-center items-center border-2 border-slate-300 px-4 py-2 cursor-pointer hover:bg-slate-100 active:bg-slate-200 rounded-lg"
-                  >
+                <div
+                  onClick={() => document.getElementById("kpm-2").click()}
+                  className="gap-2 lg:w-1/2 flex flex-col justify-center items-center border-0 md:border border-slate-400 md:p-2 lg:py-4 rounded-xl "
+                >
+                  <div className="flex w-full gap-2 justify-center items-center border-2 border-slate-300 px-4 py-2 cursor-pointer hover:bg-slate-100 active:bg-slate-200 rounded-lg">
                     <img className="w-4 md:w-6" src={uploadIcon} alt="" />
                     <p className="text-xs md:text-sm font-bold bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent">
                       Upload File
                     </p>
                     <input
-                      id="kpm"
-                      name="kpm"
+                      id="kpm-2"
+                      name="kpm-2"
                       hidden
                       type="file"
                       accept="image/*,.pdf"
+                      onChange={(e) => {
+                        const formData = new FormData();
+
+                        formData.append("kpm", e.target.files[0]);
+
+                        axios
+                          .post(`${baseUrl}/uploads/kpm`, formData)
+                          .then((res) => {
+                            console.log(res.data);
+
+                            setValue("id_kpm-2", res.data);
+                          })
+                          .catch((err) => {
+                            console.log(err);
+                          });
+                      }}
                     />
                   </div>
                   <div>
@@ -304,6 +357,7 @@ const FormRegister = () => {
                 name="wa"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
                 placeholder="Enter Your WhatsApp Number Here"
+                {...register("wa-2")}
               />
             </div>
           </section>

@@ -27,9 +27,15 @@ const Register = () => {
 
     formData.append("kpm", e.target.files[0]);
 
-    axios.post(`${baseUrl}/uploads/kpm`, formData, {}).then((res) => {
-      setValue("kpm", res.data.kpm);
-    });
+    axios
+      .post(`${baseUrl}/uploads/kpm`, formData, {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        setValue("kpm", res.data.kpm);
+      });
   };
 
   const clickUploadPhotoButton = () => {
