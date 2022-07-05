@@ -3,6 +3,7 @@ import React from "react";
 import AmperaBackground from "../../Components/AmperaBackground/AmperaBackground";
 
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 import dashWhite from "../../Assets/Objects/dash-white.svg";
 
@@ -26,7 +27,7 @@ const ForgotPass = () => {
     }
 
     try {
-      const res = await axios.patch(
+      await axios.patch(
         baseUrl,
         {
           new_password: password,

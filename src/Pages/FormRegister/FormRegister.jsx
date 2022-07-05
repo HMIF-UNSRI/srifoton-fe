@@ -16,6 +16,34 @@ const FormRegister = () => {
 
   const onSubmitHandler = (data) => {};
 
+  const onChangeProofOfPaymentHandler = (e) => {
+    const formData = new FormData();
+    formData.append("bp", e.target.files[0]);
+
+    axios
+      .post(`${baseUrl}/uploads/bp`, formData)
+      .then(({ data: res }) => {
+        setValue("id_payment", res.data.id);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const onChangeKpmHandler = (memberNumber, e) => {
+    const formData = new FormData();
+    formData.append("kpm", e.target.files[0]);
+
+    axios
+      .post(`${baseUrl}/uploads/kpm`, formData)
+      .then(({ data: res }) => {
+        setValue(`id_kpm-${+memberNumber}`, res.data.id);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <Background>
       <div className="relative my-8 w-3/4 md:w-1/2 lg:w-[40%] mx-auto flex flex-col">
@@ -68,19 +96,7 @@ const FormRegister = () => {
                       hidden
                       type="file"
                       accept="image/*,.pdf"
-                      onChange={(e) => {
-                        const formData = new FormData();
-                        formData.append("bp", e.target.files[0]);
-                        axios
-                          .post(`${baseUrl}/uploads/bp`, formData)
-                          .then((res) => {
-                            console.log(res.data);
-                            setValue("id_payment", res.data);
-                          })
-                          .catch((err) => {
-                            console.log(err);
-                          });
-                      }}
+                      onChange={onChangeProofOfPaymentHandler}
                     />
                   </div>
                   <div>
@@ -190,21 +206,7 @@ const FormRegister = () => {
                       hidden
                       type="file"
                       accept="image/*,.pdf"
-                      onChange={(e) => {
-                        const formData = new FormData();
-                        formData.append("kpm", e.target.files[0]);
-
-                        axios
-                          .post(`${baseUrl}/uploads/kpm`, formData)
-                          .then((res) => {
-                            console.log(res.data);
-
-                            setValue("id_kpm-1", res.data);
-                          })
-                          .catch((err) => {
-                            console.log(err);
-                          });
-                      }}
+                      onChange={onChangeKpmHandler.bind(null, 1)}
                     />
                   </div>
                   <div>
@@ -313,22 +315,7 @@ const FormRegister = () => {
                       hidden
                       type="file"
                       accept="image/*,.pdf"
-                      onChange={(e) => {
-                        const formData = new FormData();
-
-                        formData.append("kpm", e.target.files[0]);
-
-                        axios
-                          .post(`${baseUrl}/uploads/kpm`, formData)
-                          .then((res) => {
-                            console.log(res.data);
-
-                            setValue("id_kpm-2", res.data);
-                          })
-                          .catch((err) => {
-                            console.log(err);
-                          });
-                      }}
+                      onChange={onChangeKpmHandler.bind(null, 2)}
                     />
                   </div>
                   <div>
