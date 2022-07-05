@@ -8,7 +8,6 @@ const AuthContext = React.createContext({
   login: (email, password) => {},
   logout: () => {},
   loadUser: () => {},
-  adminLogin: (username, password) => {},
   userData: {},
 });
 
@@ -29,6 +28,7 @@ export const AuthProvider = (props) => {
     whatsappNumber,
     university
   ) => {
+    let data;
     try {
       const response = await axios.post(`${BASE_URL}/users`, {
         id_kpm: idKpm,
@@ -39,16 +39,15 @@ export const AuthProvider = (props) => {
         password,
         no_wa: whatsappNumber,
       });
-      if (response.data.error) {
-        return { error: response.data.error };
-      }
+      data = response.data;
     } catch (error) {
       return { error: error };
     }
 
     return {
-      error: null,
-      message: "Successfully Registered, redirecting...",
+      errors: data.errors,
+      message: data.message,
+      code: data.code,
     };
   };
 
@@ -92,29 +91,6 @@ export const AuthProvider = (props) => {
     }
   };
 
-  const adminLogin = async (username, password) => {
-    let response;
-    try {
-      response = await axios.post(`${BASE_URL}/admin`, {
-        username,
-        password,
-      });
-      if (response.data.error) {
-        return { error: response.data.error };
-      }
-    } catch (error) {
-      return { error: error };
-    }
-
-    localStorage.setItem("token", response.data.token);
-    setUserData(jwtDecode(response.data.token));
-
-    return {
-      error: null,
-      message: "Successfully Logged In, redirecting...",
-    };
-  };
-
   return (
     <AuthContext.Provider
       value={{
@@ -123,7 +99,6 @@ export const AuthProvider = (props) => {
         logout,
         loadUser,
         userData,
-        adminLogin,
       }}
     >
       {props.children}
