@@ -41,11 +41,11 @@ export const AuthProvider = (props) => {
       });
       data = response.data;
     } catch (error) {
-      return { error: error };
+      return error;
     }
 
     return {
-      errors: data.errors,
+      error: data.errors,
       message: data.message,
       code: data.code,
     };
@@ -61,14 +61,14 @@ export const AuthProvider = (props) => {
       });
       data = response.data;
     } catch (error) {
-      return { errors: error };
+      return error;
     }
 
-    localStorage.setItem("token", data.access_token);
+    localStorage.setItem("token", data.data.access_token);
     setUserData(jwtDecode(data.access_token));
 
     return {
-      errors: data.errors,
+      error: data.errors,
       message: data.message,
       code: data.code,
     };

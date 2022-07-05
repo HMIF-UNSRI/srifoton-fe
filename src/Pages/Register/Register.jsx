@@ -34,7 +34,7 @@ const Register = () => {
         },
       })
       .then((res) => {
-        setValue("kpm", res.data.kpm);
+        setValue("kpm", res.data.data.id);
       });
   };
 

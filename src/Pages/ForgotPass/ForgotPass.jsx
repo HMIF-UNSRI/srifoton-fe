@@ -16,10 +16,14 @@ const ForgotPass = () => {
       `${process.env.REACT_API_URL}/api/users/forgot-password`) ||
     "http://localhost:8000/api/users/forgot-password";
 
-  const submitHandler = (data) => {
-    axios.post(baseUrl, {
-      email: data.email,
-    });
+  const submitHandler = async (data) => {
+    try {
+      await axios.post(baseUrl, {
+        email: data.email,
+      });
+    } catch (error) {
+      return error;
+    }
   };
 
   return (

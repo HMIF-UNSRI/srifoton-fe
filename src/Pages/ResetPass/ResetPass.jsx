@@ -2,9 +2,52 @@ import React from "react";
 
 import AmperaBackground from "../../Components/AmperaBackground/AmperaBackground";
 
+import { useForm } from "react-hook-form";
+
 import dashWhite from "../../Assets/Objects/dash-white.svg";
 
 const ForgotPass = () => {
+  const { register, handleSubmit } = useForm();
+
+  //check for query params
+  const queryParams = new URLSearchParams(window.location.search);
+  const token = queryParams.get("token");
+
+  const baseUrl =
+    (process.env.REACT_API_URL &&
+      `${process.env.REACT_API_URL}/api/users/reset-password`) ||
+    "http://localhost:8000/api/users/reset-password";
+
+  const onSubmitHandler = async (data) => {
+    const { password, confirmPassword } = data;
+
+    if (password !== confirmPassword) {
+      return alert("Password and Confirm Password must be the same");
+    }
+
+    try {
+      const res = await axios.patch(
+        baseUrl,
+        {
+          new_password: password,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    } catch (error) {
+      return error;
+    }
+
+    return {
+      error: data.errors,
+      message: data.message,
+      code: data.code,
+    };
+  };
+
   return (
     <AmperaBackground>
       <div className="relative my-8 w-3/4 md:w-1/2 lg:w-[40%] mx-auto flex flex-col">
@@ -20,7 +63,10 @@ const ForgotPass = () => {
       </div>
       <section className="bg-white text-black p-[40px] w-3/4 md:1/2 mx-auto mb-20 gap-4 flex flex-col rounded-xl">
         <h2 className="font-bold text-center text-xl">Reset Your Password</h2>
-        <form className="flex flex-col w-full md:w-1/2 mx-auto">
+        <form
+          onSubmit={handleSubmit(onSubmitHandler)}
+          className="flex flex-col w-full md:w-1/2 mx-auto"
+        >
           <div className="flex flex-col gap-2 md:gap-4 mb-10">
             <label htmlFor="email" className="text-base md:text-xl ">
               New Password
@@ -28,7 +74,8 @@ const ForgotPass = () => {
             <input
               type="password"
               id="password"
-              className="border border-slate-400 w-full px-3 md:px-5 py-3 text-xs md:text-lg  rounded-lg"
+              className="border border-slate-400 w-full px-3 md:px-5 py-3 text-xs md:text-lg rounded-lg"
+              {...register("password")}
             />
           </div>
           <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -39,6 +86,7 @@ const ForgotPass = () => {
               type="password"
               id="confirmPassword"
               className="border border-slate-400 w-full px-3 md:px-5 py-3 text-xs md:text-lg  rounded-lg"
+              {...register("confirmPassword")}
             />
           </div>
           <div className="flex justify-center items-center">
