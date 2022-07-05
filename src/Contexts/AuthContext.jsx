@@ -54,24 +54,24 @@ export const AuthProvider = (props) => {
 
   const login = async (email, password) => {
     let response;
+    let data;
     try {
       response = await axios.post(`${BASE_URL}/auth`, {
         email,
         password,
       });
-      if (response.data.error) {
-        return { error: response.data.error };
-      }
+      data = response.data;
     } catch (error) {
-      return { error: error };
+      return { errors: error };
     }
 
-    localStorage.setItem("token", response.data.token);
-    setUserData(jwtDecode(response.data.token));
+    localStorage.setItem("token", data.access_token);
+    setUserData(jwtDecode(data.access_token));
 
     return {
-      error: null,
-      message: "Successfully Logged In, redirecting...",
+      errors: data.errors,
+      message: data.message,
+      code: data.code,
     };
   };
 
