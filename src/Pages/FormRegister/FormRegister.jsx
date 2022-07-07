@@ -5,28 +5,59 @@ import dashWhite from "../../Assets/Objects/dash-white.svg";
 import uploadIcon from "../../Assets/Icons/upload.svg";
 
 import { useForm } from "react-hook-form";
+
 import axios from "axios";
 
 const FormRegister = () => {
   const [teamMember, setTeamMember] = useState();
 
-  const { register, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit, setValue, getValues } = useForm();
 
   const baseUrl =
     (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api/users`) ||
     "http://localhost:8000/api/users";
 
-  const onSubmitHandler = (data) => {};
+  const onSubmitHandler = async (data) => {
+    let res;
+    try {
+      res = await axios.post(baseUrl, {
+        competition: data.competition,
+        team_name: data.team_name,
+        id_payment: data.id_payment,
+        member_1: {
+          id_kpm: getValues("id_kpm-1"),
+          name: data["name-1"],
+          email: data["email-1"],
+          no_wa: data["wa-1"],
+          nim: data["nim-1"],
+          university: data["university-1"],
+          id_payment: data["id_payment-1"],
+        },
+        member_2: {
+          id_kpm: getValues("id_kpm-2"),
+          name: data["name-2"],
+          email: data["email-2"],
+          no_wa: data["wa-2"],
+          nim: data["nim-2"],
+          university: data["university-2"],
+          id_payment: data["id_payment-2"],
+        },
+      });
+    } catch (error) {
+      return console.log(error);
+    }
+    console.log(res);
+  };
 
   const teamMemberCount = (e) => {
     setTeamMember(e.target.value);
   };
 
-  const onChangeProofOfPaymentHandler = (e) => {
+  const onChangeProofOfPaymentHandler = async (e) => {
     const formData = new FormData();
     formData.append("bp", e.target.files[0]);
 
-    axios
+    await axios
       .post(`${baseUrl}/uploads/bp`, formData)
       .then(({ data: res }) => {
         setValue("id_payment", res.data.id);
@@ -36,11 +67,11 @@ const FormRegister = () => {
       });
   };
 
-  const onChangeKpmHandler = (memberNumber, e) => {
+  const onChangeKpmHandler = async (memberNumber, e) => {
     const formData = new FormData();
     formData.append("kpm", e.target.files[0]);
 
-    axios
+    await axios
       .post(`${baseUrl}/uploads/kpm`, formData)
       .then(({ data: res }) => {
         setValue(`id_kpm-${+memberNumber}`, res.data.id);
