@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import Background from "../../Components/Background/Background";
 import dashWhite from "../../Assets/Objects/dash-white.svg";
@@ -9,27 +9,13 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 
 const FormRegister = () => {
-  const [teamMember, setTeamMember] = useState();
+  const [teamMember, setTeamMember] = useState(0);
 
   const { register, handleSubmit, setValue, getValues } = useForm();
 
   const baseUrl =
     (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api/users`) ||
     "http://localhost:8000/api/users";
-
-  useEffect(() => {
-    axios
-      .get(`${baseUrl}/team`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then(({ data: res }) => {
-        const { team } = res.data;
-
-        setValue("team", team);
-      });
-  }, [baseUrl, setValue]);
 
   const onSubmitHandler = async (data) => {
     let res;
@@ -184,7 +170,7 @@ const FormRegister = () => {
                     <div
                       className={`w-4 h-4 rounded-full ring-1 ring-red-primary flex justify-center items-center outline-1 outline-blue-400 ${
                         getValues("competition") === value &&
-                        `border-4 border-white bg-red-primary`
+                        `border-4 border-white bg-red-primary transition-all duration-500 ease-in-out`
                       }`}
                       onClick={onChangeCompetitionHandler.bind(null, index)}
                       id={`comp-${index}-buffer`}
@@ -195,7 +181,6 @@ const FormRegister = () => {
                       value={value}
                       {...register("competition")}
                       hidden
-                      onClick={() => console.log(value)}
                     />
                     <label
                       htmlFor={`comp-${index}`}
