@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Background from "../../Components/Background/Background";
 import dashWhite from "../../Assets/Objects/dash-white.svg";
@@ -16,6 +16,20 @@ const FormRegister = () => {
   const baseUrl =
     (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api/users`) ||
     "http://localhost:8000/api/users";
+
+  useEffect(() => {
+    axios
+      .get(`${baseUrl}/team`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then(({ data: res }) => {
+        const { team } = res.data;
+
+        setValue("team", team);
+      });
+  }, [baseUrl, setValue]);
 
   const onSubmitHandler = async (data) => {
     let res;
@@ -67,6 +81,10 @@ const FormRegister = () => {
       });
   };
 
+  const onChangeCompetitionHandler = (compNumber, e) => {
+    document.getElementById(`comp-${compNumber}`).click();
+  };
+
   const onChangeKpmHandler = async (memberNumber, e) => {
     const formData = new FormData();
     formData.append("kpm", e.target.files[0]);
@@ -83,7 +101,7 @@ const FormRegister = () => {
 
   return (
     <Background>
-      <div className="relative my-8 w-3/4 md:w-1/2 lg:w-[40%] mx-auto flex flex-col">
+      <div className="relative my-8 w-3/4 md:w-1/2 lg:w-[40%] mx-auto flex flex-col ">
         <img src={dashWhite} alt="dash-top" className="absolute top-0 left-0" />
         <h2 className="text-3xl md:text-4xl lg:text-5xl  font-japanese text-center my-3 bg-white bg-clip-text text-transparent">
           Form Register
@@ -110,7 +128,6 @@ const FormRegister = () => {
                 id="name"
                 name="name"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                placeholder="Enter Your Tim Name Here"
                 {...register("team_name")}
               />
             </div>
@@ -156,14 +173,39 @@ const FormRegister = () => {
               <label htmlFor="name" className="text-base md:text-xl ">
                 Competition :
               </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                placeholder="Enter Your Tim Name Here"
-                {...register("competition")}
-              />
+              <div className="flex flex-col gap-4" onChange={teamMemberCount}>
+                {[
+                  "Competitive Programming",
+                  "Web Development",
+                  "UI/UX Design",
+                  "E-Sport",
+                ].map((value, index) => (
+                  <div className="flex gap-2 items-center ">
+                    <div
+                      className={`w-4 h-4 rounded-full ring-1 ring-red-primary flex justify-center items-center outline-1 outline-blue-400 ${
+                        getValues("competition") === value &&
+                        `border-4 border-white bg-red-primary`
+                      }`}
+                      onClick={onChangeCompetitionHandler.bind(null, index)}
+                      id={`comp-${index}-buffer`}
+                    ></div>
+                    <input
+                      type="radio"
+                      id={`comp-${index}`}
+                      value={value}
+                      {...register("competition")}
+                      hidden
+                      onClick={() => console.log(value)}
+                    />
+                    <label
+                      htmlFor={`comp-${index}`}
+                      className="text-xl cursor-pointer"
+                    >
+                      {value}
+                    </label>
+                  </div>
+                ))}
+              </div>
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
               <label htmlFor="team-members" className="text-base md:text-xl">
@@ -222,7 +264,6 @@ const FormRegister = () => {
                     id="name"
                     name="name"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    placeholder="Enter Your Name Here"
                     {...register("name-1")}
                   />
                 </div>
@@ -235,7 +276,6 @@ const FormRegister = () => {
                     id="nim"
                     name="nim"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    placeholder="Enter Your NIM Here"
                     {...register("nim-1")}
                   />
                 </div>
@@ -248,7 +288,6 @@ const FormRegister = () => {
                     id="email"
                     name="email"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    placeholder="Enter Your Email Here"
                     {...register("email-1")}
                   />
                 </div>
@@ -261,7 +300,6 @@ const FormRegister = () => {
                     id="university"
                     name="university"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    placeholder="Enter Your University Name Here"
                     {...register("university-1")}
                   />
                 </div>
@@ -313,7 +351,6 @@ const FormRegister = () => {
                     id="wa"
                     name="wa"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    placeholder="Enter Your WhatsApp Number Here"
                     {...register("wa-1")}
                   />
                 </div>
@@ -336,7 +373,6 @@ const FormRegister = () => {
                     id="name"
                     name="name"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    placeholder="Enter Your Name Here"
                     {...register("name-2")}
                   />
                 </div>
@@ -349,7 +385,6 @@ const FormRegister = () => {
                     id="nim"
                     name="nim"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    placeholder="Enter Your NIM Here"
                     {...register("nim-2")}
                   />
                 </div>
@@ -362,7 +397,6 @@ const FormRegister = () => {
                     id="email"
                     name="email"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    placeholder="Enter Your Email Here"
                     {...register("email-2")}
                   />
                 </div>
@@ -375,7 +409,6 @@ const FormRegister = () => {
                     id="university"
                     name="university"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    placeholder="Enter Your University Name Here"
                     {...register("university-2")}
                   />
                 </div>
@@ -427,7 +460,6 @@ const FormRegister = () => {
                     id="wa"
                     name="wa"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    placeholder="Enter Your WhatsApp Number Here"
                     {...register("wa-2")}
                   />
                 </div>

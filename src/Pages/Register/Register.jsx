@@ -93,7 +93,6 @@ const Register = () => {
                 id="name"
                 name="name"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                placeholder="Enter Your Name"
                 {...register("name")}
               />
             </div>
@@ -106,7 +105,6 @@ const Register = () => {
                 id="nim"
                 name="nim"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                placeholder="Enter Your Nim"
                 {...register("nim")}
               />
             </div>
@@ -119,7 +117,6 @@ const Register = () => {
                 id="email"
                 name="email"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                placeholder="Enter Your Email"
                 {...register("email")}
               />
             </div>
@@ -132,7 +129,6 @@ const Register = () => {
                 id="password"
                 name="password"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                placeholder="Enter Your Password"
                 {...register("password")}
               />
             </div>
@@ -145,7 +141,6 @@ const Register = () => {
                 id="university"
                 name="university"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                placeholder="Enter Your Password"
                 {...register("university")}
               />
             </div>
@@ -196,7 +191,6 @@ const Register = () => {
                 id="whatsapp"
                 name="whatsapp"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                placeholder="Enter Your Whatsapp Here"
                 {...register("whatsappNumber")}
               />
             </div>

@@ -39,7 +39,6 @@ const Settings = () => {
                 id="name"
                 name="name"
                 className="border border-slate-400 w-full  px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
-                placeholder="Enter Your Name Here"
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4">
@@ -51,7 +50,6 @@ const Settings = () => {
                 id="nim"
                 name="nim"
                 className="border border-slate-400 w-full  px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
-                placeholder="Enter Your Nim Here"
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4">
@@ -63,7 +61,6 @@ const Settings = () => {
                 id="email"
                 name="email"
                 className="border border-slate-400 w-full  px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
-                placeholder="Enter Your Email Here"
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4">
@@ -75,7 +72,6 @@ const Settings = () => {
                 id="university"
                 name="university"
                 className="border border-slate-400 w-full px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
-                placeholder="Enter Your Password Here"
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4">
@@ -87,7 +83,6 @@ const Settings = () => {
                 id="phone"
                 name="phone"
                 className="border border-slate-400 w-full px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
-                placeholder="Enter Your Password Here"
               />
             </div>
             <div className="flex gap-7 justify-center items-center">
@@ -113,7 +108,6 @@ const Settings = () => {
                   id="oldPassword"
                   name="oldPassword"
                   className="border border-slate-400 w-full px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
-                  placeholder="Enter Your Old Password Here"
                 />
               </div>
               <div className="flex flex-col gap-2 md:gap-4">
@@ -125,7 +119,6 @@ const Settings = () => {
                   id="newPassword"
                   name="newPassword"
                   className="border border-slate-400 w-full px-3 md:px-5 py-3 text-sm md:text-lg rounded-lg"
-                  placeholder="Enter Your New Password Here"
                 />
               </div>
             </div>

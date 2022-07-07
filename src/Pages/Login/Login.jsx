@@ -55,7 +55,6 @@ const Login = () => {
               id="email"
               name="email"
               className="border border-slate-400 w-full px-3 md:px-5 py-3 text-xs md:text-lg  rounded-lg"
-              placeholder="Enter Your Email Here"
               {...register("email")}
             />
           </div>
@@ -68,7 +67,6 @@ const Login = () => {
               id="password"
               name="password"
               className="border border-slate-400 w-full px-3 md:px-5 py-3 text-xs md:text-lg  rounded-lg"
-              placeholder="Enter Your Password Here"
               {...register("password")}
             />
           </div>

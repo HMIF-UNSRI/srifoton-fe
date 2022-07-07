@@ -55,6 +55,9 @@
   .button-secondary {
     @apply text-center border-[3px]  border-red-primary bg-slate-50 hover:bg-slate-100 active:bg-slate-200 text-red-primary rounded-xl lg:rounded-3xl py-1 md:py-3 lg:button-shadow-primary transition;
   }
+  .active-button {
+    @apply bg-red-700 outline-1 outline-white;
+  }
 }
 @layer utilities {
 }

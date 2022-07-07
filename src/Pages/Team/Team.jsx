@@ -31,7 +31,6 @@ const Team = () => {
                 id="name"
                 name="name"
                 className="border text-center flex justify-center items-center focus:outline-red-primary border-red-secondary bg-gradient-to-br from-red-primary to-red-secondary bg-clip-text text-base md:text-2xl text-transparent w-full px-3 md:px-4 py-1 md:py-2 rounded-lg"
-                placeholder="Enter Your Tim Name Here"
                 disabled
               >
                 <p>Melza team</p>
@@ -68,7 +67,6 @@ const Team = () => {
                 id="name"
                 name="name"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                placeholder="Enter Your Name Here"
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -80,7 +78,6 @@ const Team = () => {
                 id="nim"
                 name="nim"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                placeholder="Enter Your NIM Here"
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -92,7 +89,6 @@ const Team = () => {
                 id="email"
                 name="email"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                placeholder="Enter Your Name Here"
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -104,7 +100,6 @@ const Team = () => {
                 id="university"
                 name="university"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                placeholder="Enter Your Name Here"
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -116,7 +111,6 @@ const Team = () => {
                 id="phone"
                 name="phone"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                placeholder="Enter Your Name Here"
               />
             </div>
           </div>
@@ -135,7 +129,6 @@ const Team = () => {
                 id="name"
                 name="name"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                placeholder="Enter Your Name Here"
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -147,7 +140,6 @@ const Team = () => {
                 id="nim"
                 name="nim"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                placeholder="Enter Your NIM Here"
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -159,7 +151,6 @@ const Team = () => {
                 id="email"
                 name="email"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                placeholder="Enter Your Name Here"
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -171,7 +162,6 @@ const Team = () => {
                 id="university"
                 name="university"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                placeholder="Enter Your Name Here"
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -183,7 +173,6 @@ const Team = () => {
                 id="phone"
                 name="phone"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                placeholder="Enter Your Name Here"
               />
             </div>
           </div>
