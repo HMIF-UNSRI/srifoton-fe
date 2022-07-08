@@ -13,6 +13,7 @@ const Team = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [teamName, setTeamName] = useState();
   const [teamCompetition, setTeamCompetition] = useState();
+  const [isVerified, setIsVerified] = useState();
   const [members, setMembers] = useState();
 
   const baseUrl =
@@ -31,6 +32,7 @@ const Team = () => {
         setIsLoading(false);
         const { team } = res.data;
 
+        setIsVerified(team.is_verified);
         setTeamName(team.team_name);
         setTeamCompetition(team.competition);
         setMembers(team.members);
@@ -93,7 +95,7 @@ const Team = () => {
                   disabled
                   className="border flex gap-2 justify-center items-center text-center focus:outline-red-primary border-red-secondary text-green-700 font-bold w-full px-3 md:px-4 py-1 md:py-2 text-base md:text-2xl rounded-lg"
                 >
-                  <p>Terverifikasi</p>
+                  <p>{isVerified ? "Verified" : "Not/Yet Verified"}</p>
                   <img src={activeIcon} alt="active" className="w-4 md:w-6" />
                 </div>
               </div>
