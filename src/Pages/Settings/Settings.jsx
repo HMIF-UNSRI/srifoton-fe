@@ -17,7 +17,7 @@ const Settings = () => {
     "http://localhost:8000/api/users";
 
   useEffect(() => {
-    setIsLoading(false);
+    setIsLoading(true);
 
     axios
       .get(baseUrl, {
