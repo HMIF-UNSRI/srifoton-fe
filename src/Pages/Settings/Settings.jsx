@@ -10,7 +10,7 @@ import axios from "axios";
 
 const Settings = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const { register, setValue } = useForm();
+  const { register, setValue, handleSubmit } = useForm();
 
   const baseUrl =
     (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api/users`) ||
@@ -28,7 +28,6 @@ const Settings = () => {
       .then(({ data: res }) => {
         const { user } = res.data;
         setValue("name", user.name);
-        setValue("email", user.email);
         setValue("no_wa", user.no_wa);
         setValue("university", user.university);
         setValue("nim", user.nim);
@@ -40,9 +39,14 @@ const Settings = () => {
       });
   }, [baseUrl, setValue]);
 
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
+  const onSubmitHandler = (data) => {
+    axios.patch(`${baseUrl}/update-data`, data, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
   };
+
   return (
     <Background>
       <div className="relative my-8 w-3/4 md:w-1/2 lg:w-[40%] mx-auto flex flex-col">
@@ -59,7 +63,7 @@ const Settings = () => {
       <section className="bg-white text-black p-[40px] w-3/4 mx-auto mb-20 rounded-xl">
         {!isLoading && (
           <form
-            onSubmit={onSubmitHandler}
+            onSubmit={handleSubmit(onSubmitHandler)}
             className="flex flex-col gap-4 lg:flex-row pt-8"
           >
             <div className="flex flex-col gap-4 lg:w-1/2 lg:pr-2 lg:border-r-[3px] lg:border-r-red-secondary">
@@ -99,7 +103,7 @@ const Settings = () => {
                   id="email"
                   name="email"
                   className="border border-slate-400 w-full  px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
-                  {...register("email")}
+                  disabled
                 />
               </div>
               <div className="flex flex-col gap-2 md:gap-4">
