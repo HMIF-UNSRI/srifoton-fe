@@ -53,7 +53,7 @@ const Team = () => {
         />
       </div>
       {!isLoading ? (
-        <form className="w-3/4 mx-auto bg-white ">
+        <form className="w-full lg:w-3/4 mx-auto rounded-xl bg-white ">
           <section className="text-black p-[40px] w-full mx-auto rounded-xl">
             <div className="bg-gray-100 text-black p-[20px] rounded-xl">
               <div className="flex flex-col gap-2 md:gap-4 mb-10">
