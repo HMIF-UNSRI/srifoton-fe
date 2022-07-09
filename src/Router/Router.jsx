@@ -14,7 +14,7 @@ import Team from "../Pages/Team/Team";
 const Router = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Login />} /> {/** @Notice i had to redirect it to login for some reason since i need more time to fix broken layout in homepage */}
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/settings" element={<Settings />} />
