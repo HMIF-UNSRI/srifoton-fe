@@ -69,7 +69,7 @@ const Competition = () => {
         <Swiper
           modules={[Scrollbar]}
           spaceBetween={80}
-          slidesPerView={[1, 1, 1]}
+          slidesPerView={3}
           scrollbar={{}}
           loop={true}
           grabCursor={true}
