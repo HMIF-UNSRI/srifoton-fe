@@ -11,18 +11,22 @@ import ResetPass from "../Pages/ResetPass/ResetPass";
 import FormRegister from "../Pages/FormRegister/FormRegister";
 import Team from "../Pages/Team/Team";
 
+import RequireAuth from "../Helpers/RequireAuth";
+
 const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/settings" element={<Settings />} />
-      <Route path="/competition" element={<Competition />} />
       <Route path="/forgot-pass" element={<ForgotPass />} />
       <Route path="/reset-pass" element={<ResetPass />} />
       <Route path="/form-register" element={<FormRegister />} />
-      <Route path="/team" element={<Team />} />
+      <Route element={<RequireAuth />}>
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/competition" element={<Competition />} />
+        <Route path="/team" element={<Team />} />
+      </Route>
     </Routes>
   );
 };
