@@ -12,7 +12,11 @@ import AmperaBackground from "../../Components/AmperaBackground/AmperaBackground
 
 const Login = () => {
   const authCtx = useContext(AuthContext);
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const onSubmitHandler = (data) => {
     authCtx.login(data.email, data.password);
@@ -55,8 +59,20 @@ const Login = () => {
               id="email"
               name="email"
               className="border border-slate-400 w-full px-3 md:px-5 py-3 text-xs md:text-lg  rounded-lg"
-              {...register("email")}
+              {...register("email", {
+                required: {
+                  value: true,
+                  message: "Email is required",
+                },
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                  message: "Invalid email address",
+                },
+              })}
             />
+            {errors.email && errors.email.message && (
+              <p className="text-red-500 text-xs md:text-sm">{errors.email}</p>
+            )}
           </div>
           <div className="flex flex-col gap-2 md:gap-4 w-full lg:w-3/4 lg:px-0">
             <label htmlFor="password" className="text-base md:text-xl ">
@@ -67,12 +83,38 @@ const Login = () => {
               id="password"
               name="password"
               className="border border-slate-400 w-full px-3 md:px-5 py-3 text-xs md:text-lg  rounded-lg"
-              {...register("password")}
+              {...register("password", {
+                required: {
+                  value: true,
+                  message: "Password is required",
+                },
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                },
+
+                maxLength: {
+                  value: 20,
+                  message: "Password must be less than 20 characters",
+                },
+
+                pattern: {
+                  value:
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{6,20}$/,
+                  message:
+                    "Password must contain at least one lowercase letter, one uppercase letter, and one number",
+                },
+              })}
             />
+            {errors.password && errors.password.message && (
+              <p className="text-red-500 text-xs md:text-sm">
+                {errors.password.message}
+              </p>
+            )}
           </div>
           <div className="flex flex-col gap-2 md:gap-4 w-full px-2 lg:w-3/4 lg:px-0">
             <Link
-              to={"/forgot-password"}
+              to={"/forgot-pass"}
               className="text-sm md:text-base text-red-primary text-right hover:underline"
             >
               Forget password ?

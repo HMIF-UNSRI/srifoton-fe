@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Outlet } from "react-router-dom";
-import AuthContext from "../contexts/AuthContexts";
+import AuthContext from "../Contexts/AuthContext";
 import Error401 from "../Components/Error/Error";
 
 const RequireAuth = () => {

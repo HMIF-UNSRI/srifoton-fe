@@ -15,7 +15,13 @@ import { useForm } from "react-hook-form";
 import AuthContext from "../../Contexts/AuthContext";
 
 const Register = () => {
-  const { register, handleSubmit, setValue, getValues } = useForm();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    getValues,
+    formState: { errors },
+  } = useForm();
   const authCtx = useContext(AuthContext);
 
   const baseUrl =
@@ -93,8 +99,22 @@ const Register = () => {
                 id="name"
                 name="name"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                {...register("name")}
+                {...register("name", {
+                  required: {
+                    value: true,
+                    message: "Name is required",
+                  },
+                  pattern: {
+                    value: /^[a-zA-Z ]+$/,
+                    message: "Name must be alphabetical",
+                  },
+                })}
               />
+              {errors.name && (
+                <p className="text-red-primary text-xs md:text-sm">
+                  {errors.name}
+                </p>
+              )}
             </div>
             <div className="flex flex-col gap-2 md:gap-4">
               <label htmlFor="nim" className="text-base md:text-xl">
@@ -105,7 +125,16 @@ const Register = () => {
                 id="nim"
                 name="nim"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                {...register("nim")}
+                {...register("nim", {
+                  required: {
+                    value: true,
+                    message: "Nim is required",
+                  },
+                  pattern: {
+                    value: /^[0-9]{9}$/,
+                    message: "Nim must be 9 digits",
+                  },
+                })}
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4">
@@ -117,7 +146,16 @@ const Register = () => {
                 id="email"
                 name="email"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                {...register("email")}
+                {...register("email", {
+                  required: {
+                    value: true,
+                    message: "Email is required",
+                  },
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                    message: "Email must be valid",
+                  },
+                })}
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4">
@@ -129,7 +167,25 @@ const Register = () => {
                 id="password"
                 name="password"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                {...register("password")}
+                {...register("password", {
+                  required: {
+                    value: true,
+                    message: "Password is required",
+                  },
+                  minLength: {
+                    value: 8,
+                    message: "Password must be at least 8 characters",
+                  },
+                  maxLength: {
+                    value: 20,
+                    message: "Password must be at most 16 characters",
+                  },
+                  pattern: {
+                    value:
+                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                    message: "Password must be valid",
+                  },
+                })}
               />
             </div>
             <div className="flex flex-col gap-2 md:gap-4">
@@ -141,7 +197,16 @@ const Register = () => {
                 id="university"
                 name="university"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                {...register("university")}
+                {...register("university", {
+                  required: {
+                    value: true,
+                    message: "Universitas is required",
+                  },
+                  pattern: {
+                    value: /^[a-zA-Z ]+$/,
+                    message: "Universitas must be alphabetical",
+                  },
+                })}
               />
             </div>
           </div>
@@ -191,7 +256,16 @@ const Register = () => {
                 id="whatsapp"
                 name="whatsapp"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                {...register("whatsappNumber")}
+                {...register("whatsappNumber", {
+                  required: {
+                    value: true,
+                    message: "Whatsapp Number is required",
+                  },
+                  pattern: {
+                    value: /^[0-9]{10,20}$/,
+                    message: "Whatsapp Number must be 10 digits",
+                  },
+                })}
               />
             </div>
             <div className="mx-auto flex flex-col md:mt-[4.5rem] gap-2 md:gap-4 lg:gap-8 justify-center ">
