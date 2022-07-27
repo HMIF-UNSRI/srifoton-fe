@@ -76,7 +76,27 @@ const ForgotPass = () => {
               type="password"
               id="password"
               className="border border-slate-400 w-full px-3 md:px-5 py-3 text-xs md:text-lg rounded-lg"
-              {...register("password")}
+              {...register("password", {
+                required: {
+                  value: true,
+                  message: "Password is required",
+                },
+                minLength: {
+                  value: 8,
+                  message: "Password must be at least 8 characters",
+                },
+
+                maxLength: {
+                  value: 20,
+                  message: "Password must be less than 20 characters",
+                },
+                pattern: {
+                  value:
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,20}$/,
+                  message:
+                    "Password must contain at least one lowercase letter, one uppercase letter, and one number",
+                },
+              })}
             />
           </div>
           <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -87,7 +107,27 @@ const ForgotPass = () => {
               type="password"
               id="confirmPassword"
               className="border border-slate-400 w-full px-3 md:px-5 py-3 text-xs md:text-lg  rounded-lg"
-              {...register("confirmPassword")}
+              {...register("confirmPassword", {
+                required: {
+                  value: true,
+                  message: "Password is required",
+                },
+                minLength: {
+                  value: 8,
+                  message: "Password must be at least 8 characters",
+                },
+
+                maxLength: {
+                  value: 20,
+                  message: "Password must be less than 20 characters",
+                },
+                pattern: {
+                  value:
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,20}$/,
+                  message:
+                    "Password must contain at least one lowercase letter, one uppercase letter, and one number",
+                },
+              })}
             />
           </div>
           <div className="flex justify-center items-center">

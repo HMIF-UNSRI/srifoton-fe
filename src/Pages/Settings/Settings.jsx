@@ -288,7 +288,7 @@ const Settings = () => {
                       },
                     })}
                   />
-                  {errors.new && errors.new_password.message && (
+                  {errors.new_password && errors.new_password.message && (
                     <p className="text-red-500 text-xs md:text-sm">
                       {errors.new_password.message}
                     </p>
