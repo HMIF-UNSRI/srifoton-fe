@@ -54,6 +54,12 @@ const Navbar = () => {
               >
                 {authCtx.userData.name}
               </Link>
+              <p
+                className="font-bold text-white hover:underline transition-all duration-150"
+                onClick={() => authCtx.logout()}
+              >
+                Logout
+              </p>
             </>
           ) : (
             <>
