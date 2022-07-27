@@ -9,7 +9,11 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 
 const ForgotPass = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const baseUrl =
     (process.env.REACT_API_URL &&
@@ -55,8 +59,22 @@ const ForgotPass = () => {
               type="email"
               id="email"
               className="border border-slate-400 w-full px-3 md:px-5 py-3 text-xs md:text-lg  rounded-lg"
-              {...register("email")}
+              {...register("email", {
+                required: {
+                  value: true,
+                  message: "Email is required",
+                },
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                  message: "Invalid email address",
+                },
+              })}
             />
+            {errors.email && errors.email.message && (
+              <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                {errors.email.message}
+              </p>
+            )}
           </div>
           <div className="flex justify-center items-center">
             <button className="button-primary w-1/2" type="submit">

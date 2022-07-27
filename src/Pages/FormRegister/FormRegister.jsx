@@ -10,8 +10,17 @@ import axios from "axios";
 
 const FormRegister = () => {
   const [teamMember, setTeamMember] = useState(0);
+  const [pop, setPop] = useState(null);
+  const [kpm1, setKpm1] = useState(null);
+  const [kpm2, setKpm2] = useState(null);
 
-  const { register, handleSubmit, setValue, getValues ,formState: { errors }} = useForm();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    getValues,
+    formState: { errors },
+  } = useForm();
 
   const baseUrl =
     (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api`) ||
@@ -20,42 +29,46 @@ const FormRegister = () => {
   const onSubmitHandler = async (data) => {
     try {
       let competition_name = data.competition;
-      if(competition_name === "Competitive Programming"){
+      if (competition_name === "Competitive Programming") {
         competition_name = "CP";
-      }else if(competition_name === "Web Development"){
+      } else if (competition_name === "Web Development") {
         competition_name = "WEB";
-      }else if(competition_name === "UI/UX Design"){
+      } else if (competition_name === "UI/UX Design") {
         competition_name = "UI/UX";
-      }else{
+      } else {
         competition_name = "ESPORT";
       }
-      await axios.post(`${baseUrl}/teams`, {
-        competition: competition_name,
-        team_name: data.team_name,
-        id_payment: data.id_payment,
-        member_1: {
-          id_kpm: getValues("id_kpm-1"),
-          name: data["name1"],
-          email: data["email1"],
-          no_wa: data["wa1"],
-          nim: data["nim1"],
-          university: data["university1"],
-          id_payment: data["id_payment1"],
+      await axios.post(
+        `${baseUrl}/teams`,
+        {
+          competition: competition_name,
+          team_name: data.team_name,
+          id_payment: data.id_payment,
+          member_1: {
+            id_kpm: getValues("id_kpm-1"),
+            name: data["name1"],
+            email: data["email1"],
+            no_wa: data["wa1"],
+            nim: data["nim1"],
+            university: data["university1"],
+            id_payment: data["id_payment1"],
+          },
+          member_2: {
+            id_kpm: getValues("id_kpm-2"),
+            name: data["name2"],
+            email: data["email2"],
+            no_wa: data["wa2"],
+            nim: data["nim2"],
+            university: data["university2"],
+            id_payment: data["id_payment2"],
+          },
         },
-        member_2: {
-          id_kpm: getValues("id_kpm-2"),
-          name: data["name2"],
-          email: data["email2"],
-          no_wa: data["wa2"],
-          nim: data["nim2"],
-          university: data["university2"],
-          id_payment: data["id_payment2"],
-        },
-      },{
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
     } catch (error) {
       return error;
     }
@@ -73,10 +86,11 @@ const FormRegister = () => {
 
   const onChangeProofOfPaymentHandler = async (e) => {
     const formData = new FormData();
+    setPop(e.target.files[0].name);
     formData.append("bp", e.target.files[0]);
 
     await axios
-      .post(`${baseUrl}/uploads/payments`, formData,{
+      .post(`${baseUrl}/uploads/payments`, formData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
           "content-type": "multipart/form-data",
@@ -95,6 +109,16 @@ const FormRegister = () => {
   };
 
   const onChangeKpmHandler = async (memberNumber, e) => {
+    switch (memberNumber) {
+      case 1:
+        setKpm1(e.target.files[0].name);
+        break;
+      case 2:
+        setKpm2(e.target.files[0].name);
+        break;
+      default:
+        break;
+    }
     const formData = new FormData();
     formData.append("kpm", e.target.files[0]);
 
@@ -148,9 +172,9 @@ const FormRegister = () => {
                   },
                 })}
               />
-              {errors.team_name && errors.team_name.message && (
-                <p className="text-red-500 text-xs md:text-sm">
-                  {errors.team_name.message}
+              {errors.email && errors.email.message && (
+                <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                  {errors.email.message}
                 </p>
               )}
             </div>
@@ -190,6 +214,16 @@ const FormRegister = () => {
                     max 2MB*
                   </span>
                 </div>
+                {pop && (
+                  <p className="text-white bg-green-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                    {pop}
+                  </p>
+                )}
+                {errors.id_payment && errors.id_payment.message && (
+                  <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                    {errors.id_payment.message}
+                  </p>
+                )}
               </div>
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -225,7 +259,7 @@ const FormRegister = () => {
                       hidden
                     />
                     {errors.competition && errors.competition.message && (
-                      <p className="text-red-500 text-xs md:text-sm">
+                      <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                         {errors.competition.message}
                       </p>
                     )}
@@ -308,7 +342,7 @@ const FormRegister = () => {
                     })}
                   />
                   {errors.name1 && errors.name1.message && (
-                    <p className="text-red-500 text-xs md:text-sm">
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                       {errors.name1.message}
                     </p>
                   )}
@@ -334,7 +368,7 @@ const FormRegister = () => {
                     })}
                   />
                   {errors.nim1 && errors.nim1.message && (
-                    <p className="text-red-500 text-xs md:text-sm">
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                       {errors.nim1.message}
                     </p>
                   )}
@@ -360,7 +394,7 @@ const FormRegister = () => {
                     })}
                   />
                   {errors.email1 && errors.email1.message && (
-                    <p className="text-red-500 text-xs md:text-sm">
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                       {errors.email1.message}
                     </p>
                   )}
@@ -386,7 +420,7 @@ const FormRegister = () => {
                     })}
                   />
                   {errors.university1 && errors.university1.message && (
-                    <p className="text-red-500 text-xs md:text-sm">
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                       {errors.university1.message}
                     </p>
                   )}
@@ -428,6 +462,16 @@ const FormRegister = () => {
                         max 2MB*
                       </span>
                     </div>
+                    {kpm1 && (
+                      <p className="text-white bg-green-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                        {kpm1}
+                      </p>
+                    )}
+                    {errors.kpm1 && errors.kpm1.message && (
+                      <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                        {errors.kpm1.message}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -451,7 +495,7 @@ const FormRegister = () => {
                     })}
                   />
                   {errors.wa1 && errors.wa1.message && (
-                    <p className="text-red-500 text-xs md:text-sm">
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                       {errors.wa1.message}
                     </p>
                   )}
@@ -487,7 +531,7 @@ const FormRegister = () => {
                     })}
                   />
                   {errors.name2 && errors.name2.message && (
-                    <p className="text-red-500 text-xs md:text-sm">
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                       {errors.name2.message}
                     </p>
                   )}
@@ -513,7 +557,7 @@ const FormRegister = () => {
                     })}
                   />
                   {errors.nim2 && errors.nim2.message && (
-                    <p className="text-red-500 text-xs md:text-sm">
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                       {errors.nim2.message}
                     </p>
                   )}
@@ -539,7 +583,7 @@ const FormRegister = () => {
                     })}
                   />
                   {errors.email2 && errors.email2.message && (
-                    <p className="text-red-500 text-xs md:text-sm">
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                       {errors.email2.message}
                     </p>
                   )}
@@ -565,7 +609,7 @@ const FormRegister = () => {
                     })}
                   />
                   {errors.university2 && errors.university2.message && (
-                    <p className="text-red-500 text-xs md:text-sm">
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                       {errors.university2.message}
                     </p>
                   )}
@@ -607,6 +651,16 @@ const FormRegister = () => {
                         max 2MB*
                       </span>
                     </div>
+                    {kpm2 && (
+                      <p className="text-white bg-green-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                        {kpm1}
+                      </p>
+                    )}
+                    {errors.kpm2 && errors.kpm2.message && (
+                      <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                        {errors.kpm2.message}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -630,7 +684,7 @@ const FormRegister = () => {
                     })}
                   />
                   {errors.wa2 && errors.wa2.message && (
-                    <p className="text-red-500 text-xs md:text-sm">
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                       {errors.wa2.message}
                     </p>
                   )}

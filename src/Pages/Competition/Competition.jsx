@@ -46,7 +46,8 @@ const Competition = () => {
       },
       false
     );
-  }, []);
+    console.log(screenSize);
+  }, [screenSize]);
 
   return (
     <Background>
