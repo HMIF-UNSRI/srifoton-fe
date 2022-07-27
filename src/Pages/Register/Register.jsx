@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 import axios from "axios";
@@ -15,6 +15,8 @@ import { useForm } from "react-hook-form";
 import AuthContext from "../../Contexts/AuthContext";
 
 const Register = () => {
+  const [fileName, setFileName] = useState(null);
+
   const {
     register,
     handleSubmit,
@@ -29,6 +31,8 @@ const Register = () => {
     "http://localhost:8000/api";
 
   const onChangeUploadHandler = (e) => {
+    setFileName(e.target.files[0].name);
+
     const formData = new FormData();
 
     formData.append("kpm", e.target.files[0]);
@@ -41,6 +45,12 @@ const Register = () => {
       })
       .then((res) => {
         setValue("kpm", res.data.data.id);
+      })
+      .catch((err) => {
+        console.log(err);
+        errors.kpm = {
+          message: "Failed to upload KPM",
+        };
       });
   };
 
@@ -49,6 +59,7 @@ const Register = () => {
   };
 
   const onSubmitHandler = (data) => {
+    console.log(data);
     authCtx.register(
       getValues("kpm"),
       data.name,
@@ -58,6 +69,7 @@ const Register = () => {
       data.whatsappNumber,
       data.university
     );
+    setValue("kpm", null);
   };
 
   return (
@@ -111,7 +123,7 @@ const Register = () => {
                 })}
               />
               {errors.name && errors.name.message && (
-                <p className="text-red-500 text-xs md:text-sm">
+                <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                   {errors.name.message}
                 </p>
               )}
@@ -137,12 +149,10 @@ const Register = () => {
                 })}
               />
               {errors.nim && errors.nim.message && (
-                <p className="text-red-500 text-xs md:text-sm">
+                <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                   {errors.nim.message}
                 </p>
               )}
-
-
             </div>
             <div className="flex flex-col gap-2 md:gap-4">
               <label htmlFor="email" className="text-base md:text-xl ">
@@ -165,7 +175,7 @@ const Register = () => {
                 })}
               />
               {errors.email && errors.email.message && (
-                <p className="text-red-500 text-xs md:text-sm">
+                <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                   {errors.email.message}
                 </p>
               )}
@@ -193,15 +203,15 @@ const Register = () => {
                     message: "Password must be at most 16 characters",
                   },
                   pattern: {
-                    value:
-                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                    message: "Password must consist of lowercase, uppercase, number and specialCharacter ",
+                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/,
+                    message:
+                      "Password must consist of lowercase, uppercase, number and specialCharacter ",
                   },
                 })}
               />
-              {errors.password && errors.password.message && (
-                <p className="text-red-500 text-xs md:text-sm">
-                  {errors.password.message}
+              {errors.email && errors.email.message && (
+                <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                  {errors.email.message}
                 </p>
               )}
             </div>
@@ -226,7 +236,7 @@ const Register = () => {
                 })}
               />
               {errors.university && errors.university.message && (
-                <p className="text-red-500 text-xs md:text-sm">
+                <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                   {errors.university.message}
                 </p>
               )}
@@ -259,7 +269,7 @@ const Register = () => {
                     </div>
                     <div>
                       <p className="hidden md:block text-sm text-slate-500">
-                        Or drop a file
+                        Upload File Here
                       </p>
                     </div>
                   </div>
@@ -268,6 +278,16 @@ const Register = () => {
                   maks 2 mb*
                 </span>
               </div>
+              {fileName && (
+                <p className="text-white bg-green-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                  {fileName}
+                </p>
+              )}
+              {errors.kpm && errors.kpm.message && (
+                <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                  {errors.kpm.message}
+                </p>
+              )}
             </div>
             <div className="flex flex-col gap-2 md:gap-4">
               <label htmlFor="whatsapp" className="text-base md:text-xl ">
@@ -290,7 +310,7 @@ const Register = () => {
                 })}
               />
               {errors.whatsappNumber && errors.whatsappNumber.message && (
-                <p className="text-red-500 text-xs md:text-sm">
+                <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                   {errors.whatsappNumber.message}
                 </p>
               )}

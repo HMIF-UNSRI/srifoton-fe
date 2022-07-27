@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
@@ -15,8 +15,13 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, dirtyFields },
   } = useForm();
+
+  useEffect(() => {
+    console.log("errors", errors);
+    console.log("dirtyFields", dirtyFields);
+  }, [errors, dirtyFields]);
 
   const onSubmitHandler = (data) => {
     authCtx.login(data.email, data.password);
@@ -58,7 +63,7 @@ const Login = () => {
               type="email"
               id="email"
               name="email"
-              className="border border-slate-400 w-full px-3 md:px-5 py-3 text-xs md:text-lg  rounded-lg"
+              className="border border-slate-400 w-full px-3 md:px-5 py-3 text-xs md:text-lg rounded-lg"
               {...register("email", {
                 required: {
                   value: true,
@@ -71,7 +76,9 @@ const Login = () => {
               })}
             />
             {errors.email && errors.email.message && (
-              <p className="text-red-500 text-xs md:text-sm">{errors.email.message}</p>
+              <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                {errors.email.message}
+              </p>
             )}
           </div>
           <div className="flex flex-col gap-2 md:gap-4 w-full lg:w-3/4 lg:px-0">
@@ -89,8 +96,8 @@ const Login = () => {
                   message: "Password is required",
                 },
                 minLength: {
-                  value: 6,
-                  message: "Password must be at least 6 characters",
+                  value: 8,
+                  message: "Password must be at least 8 characters",
                 },
 
                 maxLength: {
@@ -107,7 +114,7 @@ const Login = () => {
               })}
             />
             {errors.password && errors.password.message && (
-              <p className="text-red-500 text-xs md:text-sm">
+              <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                 {errors.password.message}
               </p>
             )}

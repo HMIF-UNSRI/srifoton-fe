@@ -83,7 +83,6 @@ const Home = () => {
             src="/background/maskot.png"
             alt="Mascot"
             className="mt-4 md:mt-0 xl:-mt-24 mb-12 z-0"
-            srcset=""
           />
         </div>
       </div>
@@ -154,7 +153,7 @@ const Home = () => {
                   <div>
                     <a
                       className="font-bold transition-all duration-150 bg-red-primary w-fit z-10 border-[#ff6107] shadow-lg shadow-[#ff610769] text-white border-2 border-transparent hover:bg-red-700 hover:border-red-primary-semibold block px-7 py-3 rounded-full"
-                      href={authCtx.userData ? "/competition" : "/login"}
+                      href={authCtx.userData ? "/competitiony" : "/login"}
                     >
                       View the Competition
                     </a>
@@ -175,9 +174,9 @@ const Home = () => {
         </div>
         <div className="w-full px-3 lg:px-24 xl:px-80">
           <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap border-4 rounded-xl px-12 py-12 border-[#ff6107]">
-            <img src="/sponsors/sp3.png" alt="sp1" srcset="" />
-            <img src="/sponsors/sp2.png" alt="sp1" srcset="" />
-            <img src="/sponsors/sp1.png" alt="sp1" srcset="" />
+            <img src="/sponsors/sp3.png" alt="sp1" />
+            <img src="/sponsors/sp2.png" alt="sp1" />
+            <img src="/sponsors/sp1.png" alt="sp1" />
           </div>
           <Swiper
             modules={[Scrollbar]}
@@ -192,7 +191,7 @@ const Home = () => {
               return (
                 <SwiperSlide>
                   <div className="flex justify-center items-center h-full">
-                    <img src={sponsor.src} alt="" srcset="" />
+                    <img src={sponsor.src} alt="" />
                   </div>
                 </SwiperSlide>
               );
@@ -211,12 +210,7 @@ const Home = () => {
           </div>
         </div>
         <div className="w-full py-24 flex flex-row items-center justify-center px-3 lg:px-24 xl:px-80">
-          <img
-            src="/background/placeholder.png"
-            className="w-[700px]"
-            alt=""
-            srcset=""
-          />
+          <img src="/background/placeholder.png" className="w-[700px]" alt="" />
         </div>
       </div>
       <Footer />

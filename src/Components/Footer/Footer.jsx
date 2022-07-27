@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const FbIcon = () => {
   return (
     <svg
@@ -42,8 +44,8 @@ const IgIcon = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M5.28936 0.31523C6.24909 0.271049 6.55509 0.26123 8.99982 0.26123C11.4445 0.26123 11.7505 0.271867 12.7095 0.31523C13.6684 0.358594 14.3229 0.511594 14.8956 0.733321C15.4954 0.959958 16.0395 1.31423 16.4895 1.77241C16.9476 2.22159 17.3011 2.76487 17.5269 3.36541C17.7495 3.93814 17.9016 4.59269 17.9458 5.54996C17.99 6.51132 17.9998 6.81732 17.9998 9.26123C17.9998 11.706 17.9892 12.012 17.9458 12.9717C17.9025 13.929 17.7495 14.5835 17.5269 15.1562C17.3011 15.7569 16.947 16.301 16.4895 16.7509C16.0395 17.209 15.4954 17.5625 14.8956 17.7883C14.3229 18.0109 13.6684 18.163 12.7111 18.2072C11.7505 18.2514 11.4445 18.2612 8.99982 18.2612C6.55509 18.2612 6.24909 18.2506 5.28936 18.2072C4.33209 18.1639 3.67754 18.0109 3.10482 17.7883C2.50421 17.5625 1.96003 17.2084 1.51018 16.7509C1.05231 16.3014 0.697984 15.7575 0.471908 15.157C0.250181 14.5843 0.0979987 13.9298 0.0538169 12.9725C0.00963506 12.0111 -0.000183105 11.7051 -0.000183105 9.26123C-0.000183105 6.8165 0.0104532 6.5105 0.0538169 5.55159C0.0971805 4.59269 0.250181 3.93814 0.471908 3.36541C0.698317 2.76493 1.05291 2.22103 1.511 1.77159C1.96021 1.31382 2.50384 0.959502 3.104 0.733321C3.67673 0.511594 4.33127 0.359412 5.28854 0.31523H5.28936ZM12.6366 1.93523C11.6875 1.89187 11.4028 1.88287 8.99982 1.88287C6.59682 1.88287 6.31209 1.89187 5.363 1.93523C4.48509 1.97532 4.00891 2.12178 3.69145 2.24532C3.27173 2.40896 2.97145 2.60287 2.65645 2.91787C2.35785 3.20836 2.12806 3.56201 1.98391 3.95287C1.86036 4.27032 1.71391 4.7465 1.67382 5.62441C1.63045 6.5735 1.62145 6.85823 1.62145 9.26123C1.62145 11.6642 1.63045 11.949 1.67382 12.898C1.71391 13.776 1.86036 14.2521 1.98391 14.5696C2.12791 14.9599 2.35782 15.3141 2.65645 15.6046C2.94691 15.9032 3.30118 16.1331 3.69145 16.2771C4.00891 16.4007 4.48509 16.5471 5.363 16.5872C6.31209 16.6306 6.596 16.6396 8.99982 16.6396C11.4036 16.6396 11.6875 16.6306 12.6366 16.5872C13.5145 16.5471 13.9907 16.4007 14.3082 16.2771C14.7279 16.1135 15.0282 15.9196 15.3432 15.6046C15.6418 15.3141 15.8717 14.9599 16.0157 14.5696C16.1393 14.2521 16.2857 13.776 16.3258 12.898C16.3692 11.949 16.3782 11.6642 16.3782 9.26123C16.3782 6.85823 16.3692 6.5735 16.3258 5.62441C16.2857 4.7465 16.1393 4.27032 16.0157 3.95287C15.8521 3.53314 15.6582 3.23287 15.3432 2.91787C15.0527 2.61929 14.699 2.38949 14.3082 2.24532C13.9907 2.12178 13.5145 1.97532 12.6366 1.93523ZM7.85027 12.0357C8.49226 12.3029 9.20713 12.339 9.87276 12.1377C10.5384 11.9365 11.1135 11.5103 11.4999 10.9322C11.8862 10.354 12.0599 9.65958 11.9911 8.96759C11.9224 8.2756 11.6155 7.62894 11.123 7.13805C10.809 6.82426 10.4294 6.58399 10.0114 6.43453C9.59337 6.28508 9.14744 6.23016 8.70568 6.27373C8.26391 6.31731 7.83731 6.45828 7.45657 6.68652C7.07583 6.91475 6.75043 7.22457 6.50379 7.59365C6.25716 7.96274 6.09543 8.38192 6.03024 8.82102C5.96505 9.26011 5.99803 9.7082 6.1268 10.133C6.25558 10.5578 6.47694 10.9488 6.77495 11.2778C7.07297 11.6068 7.44022 11.8657 7.85027 12.0357ZM5.72873 5.99014C6.15829 5.56057 6.66826 5.21982 7.22952 4.98734C7.79077 4.75487 8.39232 4.63521 8.99982 4.63521C9.60732 4.63521 10.2089 4.75486 10.7701 4.98734C11.3314 5.21982 11.8413 5.56057 12.2709 5.99014C12.7005 6.41971 13.0412 6.92967 13.2737 7.49093C13.5062 8.05218 13.6258 8.65373 13.6258 9.26123C13.6258 9.86873 13.5062 10.4703 13.2737 11.0315C13.0412 11.5928 12.7005 12.1028 12.2709 12.5323C11.4034 13.3999 10.2267 13.8873 8.99982 13.8873C7.77292 13.8873 6.59627 13.3999 5.72873 12.5323C4.86118 11.6648 4.3738 10.4881 4.3738 9.26123C4.3738 8.03433 4.86118 6.85769 5.72873 5.99014ZM14.6518 5.32414C14.7583 5.22372 14.8435 5.10297 14.9024 4.96903C14.9614 4.83509 14.9928 4.69068 14.995 4.54435C14.9971 4.39803 14.9699 4.25277 14.9148 4.11717C14.8598 3.98156 14.7782 3.85838 14.6747 3.7549C14.5712 3.65142 14.448 3.56976 14.3124 3.51474C14.1768 3.45973 14.0316 3.43248 13.8852 3.43462C13.7389 3.43675 13.5945 3.46822 13.4606 3.52716C13.3266 3.58611 13.2059 3.67133 13.1055 3.77778C12.9102 3.9848 12.8032 4.25978 12.8074 4.54435C12.8115 4.82893 12.9264 5.10068 13.1277 5.30192C13.3289 5.50316 13.6007 5.61805 13.8852 5.6222C14.1698 5.62635 14.4448 5.51943 14.6518 5.32414Z"
         fill="currentColor"
       />
@@ -76,103 +78,102 @@ const Footer = () => {
           className="w-[250px] h-auto mb-8"
           src="/background/footerlogo.png"
           alt="Srifoton"
-          srcset=""
         />
         <div className="grid grid-cols-1 md:grid-cols-4 gap-5 md:gap-2 lg:gap-3">
           <div className="flex flex-col gap-1 text-white text-lg">
-            <a
+            <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              href="/"
+              to="/"
             >
               Home
-            </a>
-            <a
+            </Link>
+            <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              href="#"
+              to="#"
             >
               About
-            </a>
-            <a
+            </Link>
+            <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              href="#"
+              to="#"
             >
               Competition
-            </a>
-            <a
+            </Link>
+            <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              href="#"
+              to="#"
             >
               Webinar
-            </a>
+            </Link>
           </div>
           <div className="flex flex-col gap-1 text-white text-lg">
             <p className="font-bold">Competition</p>
-            <a
+            <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              href="#"
+              to="#"
             >
               Competitive Programming
-            </a>
-            <a
+            </Link>
+            <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              href="#"
+              to="#"
             >
               UI / UX Design
-            </a>
-            <a
+            </Link>
+            <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              href="#"
+              to="#"
             >
               Webinar
-            </a>
+            </Link>
           </div>
           <div className="flex flex-col gap-1 text-white text-lg">
             <p className="font-bold">Company</p>
-            <a
+            <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              href="#"
+              to="#"
             >
               Contact Us
-            </a>
-            <a
+            </Link>
+            <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              href="#"
+              to="#"
             >
               Blog
-            </a>
-            <a
+            </Link>
+            <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              href="#"
+              to="#"
             >
               Culture
-            </a>
-            <a
+            </Link>
+            <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              href="#"
+              to="#"
             >
               Security
-            </a>
+            </Link>
           </div>
           <div className="flex flex-col gap-1 text-white text-lg">
             <p className="font-bold">Support</p>
-            <a
+            <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              href="#"
+              to="#"
             >
               Getting Started
-            </a>
-            <a
+            </Link>
+            <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              href="#"
+              to="#"
             >
               Help Center
-            </a>
-            <a
+            </Link>
+            <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              href="#"
+              to="#"
             >
               Server Status
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -180,52 +181,52 @@ const Footer = () => {
       <div className="xl:px-48 lg:px-24 px-0">
         <div className="flex flex-col-reverse gap-5 xl:flex-row justify-center items-center xl:justify-around">
           <div className="flex flex-row justify-center items-center gap-2">
-            <a
+            <Link
               className="text-black-light bg-white p-2 rounded-3xl hover:text-white hover:bg-red-primary transition-all block ease-linear duration-200"
-              href="#"
+              to="#"
             >
               <FbIcon />
-            </a>
-            <a
+            </Link>
+            <Link
               className="text-black-light bg-white p-2 rounded-3xl hover:text-white hover:bg-red-primary transition-all block ease-linear duration-200"
-              href="#"
+              to="#"
             >
               <TwtIcon />
-            </a>
-            <a
+            </Link>
+            <Link
               className="text-black-light bg-white p-2 rounded-3xl hover:text-white hover:bg-red-primary transition-all block ease-linear duration-200"
-              href="#"
+              to="#"
             >
               <IgIcon />
-            </a>
-            <a
+            </Link>
+            <Link
               className="text-black-light bg-white p-2 rounded-3xl hover:text-white hover:bg-red-primary transition-all block ease-linear duration-200"
-              href="#"
+              to="#"
             >
               <DribbleIcon />
-            </a>
+            </Link>
           </div>
           <div className="flex flex-row w-fit gap-5 text-white xl:text-lg">
-            <a
+            <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              href="#"
+              to="#"
             >
               Terms of Services
-            </a>
+            </Link>
             <p>|</p>
-            <a
+            <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              href="#"
+              to="#"
             >
               Privacy and Policy
-            </a>
+            </Link>
             <p>|</p>
-            <a
+            <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              href="#"
+              to="#"
             >
               Licenses
-            </a>
+            </Link>
             <p>|</p>
             <p>Copyright 2022 © Srifoton</p>
           </div>
