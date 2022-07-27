@@ -10,17 +10,17 @@ import axios from "axios";
 
 const Settings = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const { register, setValue, handleSubmit } = useForm();
+  const { register, setValue, handleSubmit, formState: { errors } } = useForm();
 
   const baseUrl =
-    (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api/users`) ||
-    "http://localhost:8000/api/users";
+    (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api`) ||
+    "http://localhost:8000/api";
 
   useEffect(() => {
     setIsLoading(true);
 
     axios
-      .get(baseUrl, {
+      .get(`${baseUrl}/users`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -40,7 +40,7 @@ const Settings = () => {
   }, [baseUrl, setValue]);
 
   const onSubmitHandler = (data) => {
-    axios.patch(`${baseUrl}/update-data`, data, {
+    axios.put(`${baseUrl}/users` , data, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -79,8 +79,22 @@ const Settings = () => {
                   id="name"
                   name="name"
                   className="border border-slate-400 w-full  px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
-                  {...register("name")}
+                  {...register("name", {
+                    required: {
+                      value: true,
+                      message: "Name is required",
+                    },
+                    pattern: {
+                      value: /^[a-zA-Z ]+$/,
+                      message: "Name must be alphabetical",
+                    },
+                  })}
                 />
+                {errors.name && errors.name.message && (
+                  <p className="text-red-500 text-xs md:text-sm">
+                    {errors.name.message}
+                  </p>
+                )}
               </div>
               <div className="flex flex-col gap-2 md:gap-4">
                 <label htmlFor="nim" className="text-lg md:text-xl">
@@ -91,8 +105,22 @@ const Settings = () => {
                   id="nim"
                   name="nim"
                   className="border border-slate-400 w-full  px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
-                  {...register("nim")}
+                  {...register("nim", {
+                    required: {
+                      value: true,
+                      message: "Nim is required",
+                    },
+                    pattern: {
+                      value: /^[0-9]{7,16}$/,
+                      message: "Nim must be 7 - 16 digits",
+                    },
+                  })}
                 />
+                {errors.nim && errors.nim.message && (
+                  <p className="text-red-500 text-xs md:text-sm">
+                    {errors.nim.message}
+                  </p>
+                )}
               </div>
               <div className="flex flex-col gap-2 md:gap-4">
                 <label htmlFor="email" className="text-lg md:text-xl ">
@@ -115,8 +143,22 @@ const Settings = () => {
                   id="university"
                   name="university"
                   className="border border-slate-400 w-full px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
-                  {...register("university")}
+                  {...register("university", {
+                    required: {
+                      value: true,
+                      message: "University is required",
+                    },
+                    pattern: {
+                      value: /^[a-zA-Z ]+$/,
+                      message: "University must be alphabetical",
+                    },
+                  })}
                 />
+                {errors.university && errors.university.message && (
+                  <p className="text-red-500 text-xs md:text-sm">
+                    {errors.university.message}
+                  </p>
+                )}
               </div>
               <div className="flex flex-col gap-2 md:gap-4">
                 <label htmlFor="phone" className="text-lg md:text-xl ">
@@ -127,8 +169,22 @@ const Settings = () => {
                   id="no_wa"
                   name="no_wa"
                   className="border border-slate-400 w-full px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
-                  {...register("no_wa")}
+                  {...register("no_wa", {
+                    required: {
+                      value: true,
+                      message: "Whatsapp Number is required",
+                    },
+                    pattern: {
+                      value: /^[0-9]{10,20}$/,
+                      message: "Whatsapp Number must be 10 digits",
+                    },
+                  })}
                 />
+                {errors.no_wa && errors.no_wa.message && (
+                  <p className="text-red-500 text-xs md:text-sm">
+                    {errors.no_wa.message}
+                  </p>
+                )}
               </div>
               <div className="flex gap-7 justify-center items-center">
                 <button type="reset" className="button-secondary w-1/3">
@@ -153,7 +209,22 @@ const Settings = () => {
                     id="oldPassword"
                     name="oldPassword"
                     className="border border-slate-400 w-full px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
+                    {...register("old_password", {
+                      required: {
+                        value: true,
+                        message: "Whatsapp Number is required",
+                      },
+                      pattern: {
+                        value: /^[0-9]{10,20}$/,
+                        message: "Whatsapp Number must be 10 digits",
+                      },
+                    })}
                   />
+                  {errors.old_password && errors.old_password.message && (
+                    <p className="text-red-500 text-xs md:text-sm">
+                      {errors.old_password.message}
+                    </p>
+                  )}
                 </div>
                 <div className="flex flex-col gap-2 md:gap-4">
                   <label htmlFor="newPassword" className="text-lg md:text-xl ">

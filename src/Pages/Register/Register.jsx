@@ -25,8 +25,8 @@ const Register = () => {
   const authCtx = useContext(AuthContext);
 
   const baseUrl =
-    (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api/users`) ||
-    "http://localhost:8000/api/users";
+    (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api`) ||
+    "http://localhost:8000/api";
 
   const onChangeUploadHandler = (e) => {
     const formData = new FormData();
@@ -110,9 +110,9 @@ const Register = () => {
                   },
                 })}
               />
-              {errors.name && (
-                <p className="text-red-primary text-xs md:text-sm">
-                  {errors.name}
+              {errors.name && errors.name.message && (
+                <p className="text-red-500 text-xs md:text-sm">
+                  {errors.name.message}
                 </p>
               )}
             </div>
@@ -131,11 +131,18 @@ const Register = () => {
                     message: "Nim is required",
                   },
                   pattern: {
-                    value: /^[0-9]{9}$/,
-                    message: "Nim must be 9 digits",
+                    value: /^[0-9]{7,16}$/,
+                    message: "Nim must be 7 - 16 digits",
                   },
                 })}
               />
+              {errors.nim && errors.nim.message && (
+                <p className="text-red-500 text-xs md:text-sm">
+                  {errors.nim.message}
+                </p>
+              )}
+
+
             </div>
             <div className="flex flex-col gap-2 md:gap-4">
               <label htmlFor="email" className="text-base md:text-xl ">
@@ -157,6 +164,11 @@ const Register = () => {
                   },
                 })}
               />
+              {errors.email && errors.email.message && (
+                <p className="text-red-500 text-xs md:text-sm">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
             <div className="flex flex-col gap-2 md:gap-4">
               <label htmlFor="password" className="text-base md:text-xl ">
@@ -183,10 +195,15 @@ const Register = () => {
                   pattern: {
                     value:
                       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                    message: "Password must be valid",
+                    message: "Password must consist of lowercase, uppercase, number and specialCharacter ",
                   },
                 })}
               />
+              {errors.password && errors.password.message && (
+                <p className="text-red-500 text-xs md:text-sm">
+                  {errors.password.message}
+                </p>
+              )}
             </div>
             <div className="flex flex-col gap-2 md:gap-4">
               <label htmlFor="password" className="text-base md:text-xl ">
@@ -200,14 +217,19 @@ const Register = () => {
                 {...register("university", {
                   required: {
                     value: true,
-                    message: "Universitas is required",
+                    message: "University is required",
                   },
                   pattern: {
                     value: /^[a-zA-Z ]+$/,
-                    message: "Universitas must be alphabetical",
+                    message: "University must be alphabetical",
                   },
                 })}
               />
+              {errors.university && errors.university.message && (
+                <p className="text-red-500 text-xs md:text-sm">
+                  {errors.university.message}
+                </p>
+              )}
             </div>
           </div>
           <div className="flex flex-col gap-4 lg:w-1/2 ">
@@ -267,6 +289,11 @@ const Register = () => {
                   },
                 })}
               />
+              {errors.whatsappNumber && errors.whatsappNumber.message && (
+                <p className="text-red-500 text-xs md:text-sm">
+                  {errors.whatsappNumber.message}
+                </p>
+              )}
             </div>
             <div className="mx-auto flex flex-col md:mt-[4.5rem] gap-2 md:gap-4 lg:gap-8 justify-center ">
               <button className="button-primary md:text-lg w-full">

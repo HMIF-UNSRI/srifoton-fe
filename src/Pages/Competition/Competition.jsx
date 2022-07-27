@@ -11,6 +11,8 @@ import webDevelopment from "../../Assets/CompetitionIcon/web-development.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar } from "swiper";
 
+import { Link } from "react-router-dom";
+
 // Import Swiper styles
 import "swiper/css/bundle";
 
@@ -45,8 +47,6 @@ const Competition = () => {
       false
     );
   }, []);
-
-  console.log(screenSize);
 
   return (
     <Background>
@@ -90,9 +90,12 @@ const Competition = () => {
                     <h2 className="text-xl">{competition.title}</h2>
                   </div>
                   <div>
-                    <button className="button-primary py-3 px-8 mb-10">
+                    <Link
+                      className="button-primary py-3 px-8 mb-10"
+                      to="/form-register"
+                    >
                       Register Now
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

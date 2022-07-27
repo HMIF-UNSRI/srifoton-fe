@@ -21,11 +21,11 @@ const Router = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/forgot-pass" element={<ForgotPass />} />
       <Route path="/reset-pass" element={<ResetPass />} />
-      <Route path="/form-register" element={<FormRegister />} />
       <Route element={<RequireAuth />}>
         <Route path="/settings" element={<Settings />} />
         <Route path="/competition" element={<Competition />} />
         <Route path="/team" element={<Team />} />
+        <Route path="/form-register" element={<FormRegister />} />
       </Route>
     </Routes>
   );

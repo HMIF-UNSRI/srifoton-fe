@@ -71,7 +71,7 @@ const Login = () => {
               })}
             />
             {errors.email && errors.email.message && (
-              <p className="text-red-500 text-xs md:text-sm">{errors.email}</p>
+              <p className="text-red-500 text-xs md:text-sm">{errors.email.message}</p>
             )}
           </div>
           <div className="flex flex-col gap-2 md:gap-4 w-full lg:w-3/4 lg:px-0">

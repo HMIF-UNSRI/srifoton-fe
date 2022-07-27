@@ -11,42 +11,60 @@ import axios from "axios";
 const FormRegister = () => {
   const [teamMember, setTeamMember] = useState(0);
 
-  const { register, handleSubmit, setValue, getValues } = useForm();
+  const { register, handleSubmit, setValue, getValues ,formState: { errors }} = useForm();
 
   const baseUrl =
-    (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api/users`) ||
-    "http://localhost:8000/api/users";
+    (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api`) ||
+    "http://localhost:8000/api";
 
   const onSubmitHandler = async (data) => {
-    let res;
     try {
-      res = await axios.post(baseUrl, {
-        competition: data.competition,
+      let competition_name = data.competition;
+      if(competition_name === "Competitive Programming"){
+        competition_name = "CP";
+      }else if(competition_name === "Web Development"){
+        competition_name = "WEB";
+      }else if(competition_name === "UI/UX Design"){
+        competition_name = "UI/UX";
+      }else{
+        competition_name = "ESPORT";
+      }
+      await axios.post(`${baseUrl}/teams`, {
+        competition: competition_name,
         team_name: data.team_name,
         id_payment: data.id_payment,
         member_1: {
           id_kpm: getValues("id_kpm-1"),
-          name: data["name-1"],
-          email: data["email-1"],
-          no_wa: data["wa-1"],
-          nim: data["nim-1"],
-          university: data["university-1"],
-          id_payment: data["id_payment-1"],
+          name: data["name1"],
+          email: data["email1"],
+          no_wa: data["wa1"],
+          nim: data["nim1"],
+          university: data["university1"],
+          id_payment: data["id_payment1"],
         },
         member_2: {
           id_kpm: getValues("id_kpm-2"),
-          name: data["name-2"],
-          email: data["email-2"],
-          no_wa: data["wa-2"],
-          nim: data["nim-2"],
-          university: data["university-2"],
-          id_payment: data["id_payment-2"],
+          name: data["name2"],
+          email: data["email2"],
+          no_wa: data["wa2"],
+          nim: data["nim2"],
+          university: data["university2"],
+          id_payment: data["id_payment2"],
+        },
+      },{
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
     } catch (error) {
-      return console.log(error);
+      return error;
     }
-    console.log(res);
+
+    return {
+      error: data.errors,
+      message: data.message,
+      code: data.code,
+    };
   };
 
   const teamMemberCount = (e) => {
@@ -58,7 +76,12 @@ const FormRegister = () => {
     formData.append("bp", e.target.files[0]);
 
     await axios
-      .post(`${baseUrl}/uploads/bp`, formData)
+      .post(`${baseUrl}/uploads/payments`, formData,{
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "content-type": "multipart/form-data",
+        },
+      })
       .then(({ data: res }) => {
         setValue("id_payment", res.data.id);
       })
@@ -114,8 +137,22 @@ const FormRegister = () => {
                 id="name"
                 name="name"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                {...register("team_name")}
+                {...register("team_name", {
+                  required: {
+                    value: true,
+                    message: "Team name is required",
+                  },
+                  pattern: {
+                    value: /^[a-zA-Z ]+$/,
+                    message: "Team name must be alphabetical",
+                  },
+                })}
               />
+              {errors.team_name && errors.team_name.message && (
+                <p className="text-red-500 text-xs md:text-sm">
+                  {errors.team_name.message}
+                </p>
+              )}
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
               <label htmlFor="kpm" className="text-base md:text-xl ">
@@ -179,9 +216,19 @@ const FormRegister = () => {
                       type="radio"
                       id={`comp-${index}`}
                       value={value}
-                      {...register("competition")}
+                      {...register("competition", {
+                        required: {
+                          value: true,
+                          message: "Competition is required",
+                        },
+                      })}
                       hidden
                     />
+                    {errors.competition && errors.competition.message && (
+                      <p className="text-red-500 text-xs md:text-sm">
+                        {errors.competition.message}
+                      </p>
+                    )}
                     <label
                       htmlFor={`comp-${index}`}
                       className="text-xl cursor-pointer"
@@ -249,8 +296,22 @@ const FormRegister = () => {
                     id="name"
                     name="name"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    {...register("name-1")}
+                    {...register("name1", {
+                      required: {
+                        value: true,
+                        message: "Member name is required",
+                      },
+                      pattern: {
+                        value: /^[a-zA-Z ]+$/,
+                        message: "Member name must be alphabetical",
+                      },
+                    })}
                   />
+                  {errors.name1 && errors.name1.message && (
+                    <p className="text-red-500 text-xs md:text-sm">
+                      {errors.name1.message}
+                    </p>
+                  )}
                 </div>
                 <div className="flex flex-col gap-2 md:gap-4 mb-10">
                   <label htmlFor="name" className="text-base md:text-xl ">
@@ -261,8 +322,22 @@ const FormRegister = () => {
                     id="nim"
                     name="nim"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    {...register("nim-1")}
+                    {...register("nim1", {
+                      required: {
+                        value: true,
+                        message: "Nim is required",
+                      },
+                      pattern: {
+                        value: /^[0-9]{7,16}$/,
+                        message: "Nim must be 7 - 16 digits",
+                      },
+                    })}
                   />
+                  {errors.nim1 && errors.nim1.message && (
+                    <p className="text-red-500 text-xs md:text-sm">
+                      {errors.nim1.message}
+                    </p>
+                  )}
                 </div>
                 <div className="flex flex-col gap-2 md:gap-4 mb-10">
                   <label htmlFor="name" className="text-base md:text-xl ">
@@ -273,8 +348,22 @@ const FormRegister = () => {
                     id="email"
                     name="email"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    {...register("email-1")}
+                    {...register("email1", {
+                      required: {
+                        value: true,
+                        message: "Email is required",
+                      },
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                        message: "Email must be valid",
+                      },
+                    })}
                   />
+                  {errors.email1 && errors.email1.message && (
+                    <p className="text-red-500 text-xs md:text-sm">
+                      {errors.email1.message}
+                    </p>
+                  )}
                 </div>
                 <div className="flex flex-col gap-2 md:gap-4 mb-10">
                   <label htmlFor="University" className="text-base md:text-xl ">
@@ -285,8 +374,22 @@ const FormRegister = () => {
                     id="university"
                     name="university"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    {...register("university-1")}
+                    {...register("university1", {
+                      required: {
+                        value: true,
+                        message: "University is required",
+                      },
+                      pattern: {
+                        value: /^[a-zA-Z ]+$/,
+                        message: "University must be alphabetical",
+                      },
+                    })}
                   />
+                  {errors.university1 && errors.university1.message && (
+                    <p className="text-red-500 text-xs md:text-sm">
+                      {errors.university1.message}
+                    </p>
+                  )}
                 </div>
                 <div className="flex flex-col gap-2 md:gap-4 mb-10">
                   <label htmlFor="kpm" className="text-base md:text-xl ">
@@ -336,8 +439,22 @@ const FormRegister = () => {
                     id="wa"
                     name="wa"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    {...register("wa-1")}
+                    {...register("wa1", {
+                      required: {
+                        value: true,
+                        message: "Whatsapp Number is required",
+                      },
+                      pattern: {
+                        value: /^[0-9]{10,20}$/,
+                        message: "Whatsapp Number must be 10 digits",
+                      },
+                    })}
                   />
+                  {errors.wa1 && errors.wa1.message && (
+                    <p className="text-red-500 text-xs md:text-sm">
+                      {errors.wa1.message}
+                    </p>
+                  )}
                 </div>
               </section>
             </>
@@ -358,8 +475,22 @@ const FormRegister = () => {
                     id="name"
                     name="name"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    {...register("name-2")}
+                    {...register("name2", {
+                      required: {
+                        value: true,
+                        message: "Member name is required",
+                      },
+                      pattern: {
+                        value: /^[a-zA-Z ]+$/,
+                        message: "Member name must be alphabetical",
+                      },
+                    })}
                   />
+                  {errors.name2 && errors.name2.message && (
+                    <p className="text-red-500 text-xs md:text-sm">
+                      {errors.name2.message}
+                    </p>
+                  )}
                 </div>
                 <div className="flex flex-col gap-2 md:gap-4 mb-10">
                   <label htmlFor="name" className="text-base md:text-xl ">
@@ -370,8 +501,22 @@ const FormRegister = () => {
                     id="nim"
                     name="nim"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    {...register("nim-2")}
+                    {...register("nim2", {
+                      required: {
+                        value: true,
+                        message: "Nim is required",
+                      },
+                      pattern: {
+                        value: /^[0-9]{7,16}$/,
+                        message: "Nim must be 7 - 16 digits",
+                      },
+                    })}
                   />
+                  {errors.nim2 && errors.nim2.message && (
+                    <p className="text-red-500 text-xs md:text-sm">
+                      {errors.nim2.message}
+                    </p>
+                  )}
                 </div>
                 <div className="flex flex-col gap-2 md:gap-4 mb-10">
                   <label htmlFor="name" className="text-base md:text-xl ">
@@ -382,8 +527,22 @@ const FormRegister = () => {
                     id="email"
                     name="email"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    {...register("email-2")}
+                    {...register("email2", {
+                      required: {
+                        value: true,
+                        message: "Email is required",
+                      },
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                        message: "Email must be valid",
+                      },
+                    })}
                   />
+                  {errors.email2 && errors.email2.message && (
+                    <p className="text-red-500 text-xs md:text-sm">
+                      {errors.email2.message}
+                    </p>
+                  )}
                 </div>
                 <div className="flex flex-col gap-2 md:gap-4 mb-10">
                   <label htmlFor="University" className="text-base md:text-xl ">
@@ -394,8 +553,22 @@ const FormRegister = () => {
                     id="university"
                     name="university"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    {...register("university-2")}
+                    {...register("university2", {
+                      required: {
+                        value: true,
+                        message: "University is required",
+                      },
+                      pattern: {
+                        value: /^[a-zA-Z ]+$/,
+                        message: "University must be alphabetical",
+                      },
+                    })}
                   />
+                  {errors.university2 && errors.university2.message && (
+                    <p className="text-red-500 text-xs md:text-sm">
+                      {errors.university2.message}
+                    </p>
+                  )}
                 </div>
                 <div className="flex flex-col gap-2 md:gap-4 mb-10">
                   <label htmlFor="kpm" className="text-base md:text-xl ">
@@ -445,8 +618,22 @@ const FormRegister = () => {
                     id="wa"
                     name="wa"
                     className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
-                    {...register("wa-2")}
+                    {...register("wa2", {
+                      required: {
+                        value: true,
+                        message: "Whatsapp Number is required",
+                      },
+                      pattern: {
+                        value: /^[0-9]{10,20}$/,
+                        message: "Whatsapp Number must be 10 digits",
+                      },
+                    })}
                   />
+                  {errors.wa2 && errors.wa2.message && (
+                    <p className="text-red-500 text-xs md:text-sm">
+                      {errors.wa2.message}
+                    </p>
+                  )}
                 </div>
               </section>
             </>

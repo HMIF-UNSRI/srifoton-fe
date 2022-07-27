@@ -17,21 +17,20 @@ const Team = () => {
   const [members, setMembers] = useState();
 
   const baseUrl =
-    (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api/users`) ||
-    "http://localhost:8000/api/users";
+    (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api`) ||
+    "http://localhost:8000/api";
 
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`${baseUrl}/team`, {
+      .get(`${baseUrl}/teams`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       })
       .then(({ data: res }) => {
         setIsLoading(false);
-        const { team } = res.data;
-
+        const team = res.data;
         setIsVerified(team.is_verified);
         setTeamName(team.team_name);
         setTeamCompetition(team.competition);
