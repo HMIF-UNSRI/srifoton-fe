@@ -104,10 +104,9 @@ const Login = () => {
                   value: 20,
                   message: "Password must be less than 20 characters",
                 },
-
                 pattern: {
                   value:
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{6,20}$/,
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,20}$/,
                   message:
                     "Password must contain at least one lowercase letter, one uppercase letter, and one number",
                 },

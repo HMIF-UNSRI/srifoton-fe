@@ -143,8 +143,8 @@ const Register = () => {
                     message: "Nim is required",
                   },
                   pattern: {
-                    value: /^[0-9]{7,16}$/,
-                    message: "Nim must be 7 - 16 digits",
+                    value: /^[0-9]{6,20}$/,
+                    message: "Nim must be 6 - 20 digits",
                   },
                 })}
               />
@@ -198,14 +198,16 @@ const Register = () => {
                     value: 8,
                     message: "Password must be at least 8 characters",
                   },
+
                   maxLength: {
                     value: 20,
-                    message: "Password must be at most 16 characters",
+                    message: "Password must be less than 20 characters",
                   },
                   pattern: {
-                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/,
+                    value:
+                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,20}$/,
                     message:
-                      "Password must consist of lowercase, uppercase, number and specialCharacter ",
+                      "Password must contain at least one lowercase letter, one uppercase letter, and one number",
                   },
                 })}
               />

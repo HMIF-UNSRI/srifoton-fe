@@ -10,7 +10,12 @@ import axios from "axios";
 
 const Settings = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const { register, setValue, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    setValue,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const baseUrl =
     (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api`) ||
@@ -40,7 +45,7 @@ const Settings = () => {
   }, [baseUrl, setValue]);
 
   const onSubmitHandler = (data) => {
-    axios.put(`${baseUrl}/users` , data, {
+    axios.put(`${baseUrl}/users`, data, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -91,7 +96,7 @@ const Settings = () => {
                   })}
                 />
                 {errors.name && errors.name.message && (
-                  <p className="text-red-500 text-xs md:text-sm">
+                  <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                     {errors.name.message}
                   </p>
                 )}
@@ -111,13 +116,13 @@ const Settings = () => {
                       message: "Nim is required",
                     },
                     pattern: {
-                      value: /^[0-9]{7,16}$/,
-                      message: "Nim must be 7 - 16 digits",
+                      value: /^[0-9]{6,20}$/,
+                      message: "Nim must be 6 - 20 digits",
                     },
                   })}
                 />
                 {errors.nim && errors.nim.message && (
-                  <p className="text-red-500 text-xs md:text-sm">
+                  <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                     {errors.nim.message}
                   </p>
                 )}
@@ -132,7 +137,22 @@ const Settings = () => {
                   name="email"
                   className="border border-slate-400 w-full  px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
                   disabled
+                  {...register("email", {
+                    required: {
+                      value: true,
+                      message: "Email is required",
+                    },
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                      message: "Email must be valid",
+                    },
+                  })}
                 />
+                {errors.email && errors.email.message && (
+                  <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                    {errors.email.message}
+                  </p>
+                )}
               </div>
               <div className="flex flex-col gap-2 md:gap-4">
                 <label htmlFor="university" className="text-lg md:text-xl ">
@@ -155,7 +175,7 @@ const Settings = () => {
                   })}
                 />
                 {errors.university && errors.university.message && (
-                  <p className="text-red-500 text-xs md:text-sm">
+                  <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                     {errors.university.message}
                   </p>
                 )}
@@ -181,7 +201,7 @@ const Settings = () => {
                   })}
                 />
                 {errors.no_wa && errors.no_wa.message && (
-                  <p className="text-red-500 text-xs md:text-sm">
+                  <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                     {errors.no_wa.message}
                   </p>
                 )}
@@ -212,11 +232,22 @@ const Settings = () => {
                     {...register("old_password", {
                       required: {
                         value: true,
-                        message: "Whatsapp Number is required",
+                        message: "Password is required",
+                      },
+                      minLength: {
+                        value: 8,
+                        message: "Password must be at least 8 characters",
+                      },
+
+                      maxLength: {
+                        value: 20,
+                        message: "Password must be less than 20 characters",
                       },
                       pattern: {
-                        value: /^[0-9]{10,20}$/,
-                        message: "Whatsapp Number must be 10 digits",
+                        value:
+                          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,20}$/,
+                        message:
+                          "Password must contain at least one lowercase letter, one uppercase letter, and one number",
                       },
                     })}
                   />
@@ -235,7 +266,33 @@ const Settings = () => {
                     id="newPassword"
                     name="newPassword"
                     className="border border-slate-400 w-full px-3 md:px-5 py-3 text-sm md:text-lg rounded-lg"
+                    {...register("new_password", {
+                      required: {
+                        value: true,
+                        message: "Password is required",
+                      },
+                      minLength: {
+                        value: 8,
+                        message: "Password must be at least 8 characters",
+                      },
+
+                      maxLength: {
+                        value: 20,
+                        message: "Password must be less than 20 characters",
+                      },
+                      pattern: {
+                        value:
+                          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,20}$/,
+                        message:
+                          "Password must contain at least one lowercase letter, one uppercase letter, and one number",
+                      },
+                    })}
                   />
+                  {errors.new && errors.new_password.message && (
+                    <p className="text-red-500 text-xs md:text-sm">
+                      {errors.new_password.message}
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="flex gap-7 justify-center items-center">

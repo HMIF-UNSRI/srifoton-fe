@@ -362,8 +362,8 @@ const FormRegister = () => {
                         message: "Nim is required",
                       },
                       pattern: {
-                        value: /^[0-9]{7,16}$/,
-                        message: "Nim must be 7 - 16 digits",
+                        value: /^[0-9]{6,20}$/,
+                        message: "Nim must be 6 - 20 digits",
                       },
                     })}
                   />
@@ -551,8 +551,8 @@ const FormRegister = () => {
                         message: "Nim is required",
                       },
                       pattern: {
-                        value: /^[0-9]{7,16}$/,
-                        message: "Nim must be 7 - 16 digits",
+                        value: /^[0-9]{6,20}$/,
+                        message: "Nim must be 6 - 20 digits",
                       },
                     })}
                   />
