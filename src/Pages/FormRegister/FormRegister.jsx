@@ -86,7 +86,7 @@ const FormRegister = () => {
 
   const onChangeProofOfPaymentHandler = async (e) => {
     const formData = new FormData();
-    setPop(e.target.files[0].name);
+
     formData.append("bp", e.target.files[0]);
 
     await axios
@@ -98,6 +98,7 @@ const FormRegister = () => {
       })
       .then(({ data: res }) => {
         setValue("id_payment", res.data.id);
+        setPop(e.target.files[0].name);
       })
       .catch((err) => {
         console.log(err);
@@ -109,16 +110,6 @@ const FormRegister = () => {
   };
 
   const onChangeKpmHandler = async (memberNumber, e) => {
-    switch (memberNumber) {
-      case 1:
-        setKpm1(e.target.files[0].name);
-        break;
-      case 2:
-        setKpm2(e.target.files[0].name);
-        break;
-      default:
-        break;
-    }
     const formData = new FormData();
     formData.append("kpm", e.target.files[0]);
 
@@ -126,6 +117,16 @@ const FormRegister = () => {
       .post(`${baseUrl}/uploads/kpm`, formData)
       .then(({ data: res }) => {
         setValue(`id_kpm-${+memberNumber}`, res.data.id);
+        switch (memberNumber) {
+          case 1:
+            setKpm1(e.target.files[0].name);
+            break;
+          case 2:
+            setKpm2(e.target.files[0].name);
+            break;
+          default:
+            break;
+        }
       })
       .catch((err) => {
         console.log(err);

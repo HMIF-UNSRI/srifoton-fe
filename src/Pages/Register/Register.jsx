@@ -31,8 +31,6 @@ const Register = () => {
     "http://localhost:8000/api";
 
   const onChangeUploadHandler = (e) => {
-    setFileName(e.target.files[0].name);
-
     const formData = new FormData();
 
     formData.append("kpm", e.target.files[0]);
@@ -45,6 +43,7 @@ const Register = () => {
       })
       .then((res) => {
         setValue("kpm", res.data.data.id);
+        setFileName(e.target.files[0].name);
       })
       .catch((err) => {
         console.log(err);
