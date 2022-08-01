@@ -50,10 +50,13 @@
     box-shadow: 0px 2px 5px 5px rgba(196, 0, 24, 0.2);
   }
   .button-primary {
-    @apply text-center border-[3px]  border-red-secondary bg-red-primary hover:bg-red-primary-semibold active:bg-red-primary-bold text-white rounded-xl lg:rounded-3xl py-1 md:py-3 lg:button-shadow-primary transition;
+    @apply text-center border-[3px]  border-red-secondary bg-red-primary hover:bg-red-primary-semibold active:bg-red-primary-bold text-white rounded-full py-1 md:py-3 lg:button-shadow-primary transition;
   }
   .button-secondary {
-    @apply text-center border-[3px]  border-red-primary bg-slate-50 hover:bg-slate-100 active:bg-slate-200 text-red-primary rounded-xl lg:rounded-3xl py-1 md:py-3 lg:button-shadow-primary transition;
+    @apply text-center border-[3px]  border-red-primary bg-slate-50 hover:bg-slate-100 active:bg-slate-200 text-red-primary rounded-xl lg:rounded-full py-1 md:py-3 lg:button-shadow-primary transition;
+  }
+  .button-secondary-alt {
+    @apply text-center border-[3px]  border-red-secondary bg-transparent hover:bg-red-primary-semibold active:bg-red-primary-bold text-white rounded-full py-1 md:py-3 lg:button-shadow-primary transition;
   }
   .active-button {
     @apply bg-red-700 outline-1 outline-white;
