@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 import Background from "../../Components/Background/Background";
 
 import dashWhite from "../../Assets/Objects/dash-white.svg";
@@ -7,7 +8,6 @@ import activeIcon from "../../Assets/Icons/active.svg";
 
 import axios from "axios";
 
-import { useEffect, useState } from "react";
 
 const Team = () => {
   const [isLoading, setIsLoading] = useState(false);

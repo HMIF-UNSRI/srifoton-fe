@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import axios from "axios";
@@ -24,8 +24,16 @@ const Register = () => {
     getValues,
     formState: { errors },
   } = useForm();
+  
   const authCtx = useContext(AuthContext);
-
+  useEffect(()=>{
+    if(authCtx.apiResponseMessage){
+      const intervalID = setInterval(() => {
+        authCtx.SetApiResponseMessage(null)
+      }, 5000);
+      return () => clearInterval(intervalID)
+    }
+  }, [authCtx])
   const baseUrl =
     (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api`) ||
     "http://localhost:8000/api";
@@ -46,7 +54,6 @@ const Register = () => {
         setFileName(e.target.files[0].name);
       })
       .catch((err) => {
-        console.log(err);
         errors.kpm = {
           message: "Failed to upload KPM",
         };
@@ -68,7 +75,6 @@ const Register = () => {
       data.whatsappNumber,
       data.university
     );
-    setValue("kpm", null);
   };
 
   return (
@@ -96,6 +102,21 @@ const Register = () => {
         <p className="text-sm md:text-base text-center mt-4">
           Please Fill In Your Data Completely
         </p>
+        {authCtx.apiResponseMessage && (
+          <>
+            {authCtx.apiResponseMessage.errors && (
+              <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                {authCtx.apiResponseMessage.message.split(":")[2]}
+              </p>
+            )}
+
+            {!authCtx.apiResponseMessage.errors && (
+              <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                {authCtx.apiResponseMessage.message}
+              </p>
+            )}
+          </>
+        )}
         <form
           onSubmit={handleSubmit(onSubmitHandler)}
           className="flex flex-col gap-4 lg:flex-row pt-8"
