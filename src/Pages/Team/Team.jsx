@@ -96,7 +96,9 @@ const Team = () => {
                   } font-bold w-full px-3 md:px-4 py-1 md:py-2 text-base md:text-2xl rounded-lg`}
                 >
                   <p>{isVerified ? "Verified" : "Unverified"}</p>
-                  <img src={activeIcon} alt="active" className="w-4 md:w-6" />
+                  {isVerified && (
+                    <img src={activeIcon} alt="active" className="w-4 md:w-6" />
+                  )}
                 </div>
               </div>
             </div>
