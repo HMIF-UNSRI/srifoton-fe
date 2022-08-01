@@ -2,10 +2,7 @@ import { useState, useEffect } from "react";
 import Background from "../../Components/Background/Background";
 
 import dashWhite from "../../Assets/Objects/dash-white.svg";
-import competitiveProgramming from "../../Assets/CompetitionIcon/competitive-programming.png";
-import eSport from "../../Assets/CompetitionIcon/e-sport.png";
-import uiuxDesign from "../../Assets/CompetitionIcon/uiux-design.png";
-import webDevelopment from "../../Assets/CompetitionIcon/web-development.png";
+import { competitions } from "../../StaticData/Data";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -15,25 +12,6 @@ import { Link } from "react-router-dom";
 
 // Import Swiper styles
 import "swiper/css/bundle";
-
-const competitions = [
-  {
-    title: "Competitive Programming",
-    image: competitiveProgramming,
-  },
-  {
-    title: "Web Development",
-    image: webDevelopment,
-  },
-  {
-    title: "UI/UX Design",
-    image: uiuxDesign,
-  },
-  {
-    title: "E-Sport",
-    image: eSport,
-  },
-];
 
 const Competition = () => {
   // detect user screen size
