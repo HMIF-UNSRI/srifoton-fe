@@ -1,5 +1,3 @@
-import React from "react";
-
 import AmperaBackground from "../../Components/AmperaBackground/AmperaBackground";
 
 import { useForm } from "react-hook-form";
