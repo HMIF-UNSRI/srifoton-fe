@@ -36,7 +36,7 @@ const Settings = () => {
         setValue("no_wa", user.no_wa);
         setValue("university", user.university);
         setValue("nim", user.nim);
-
+        setValue("email", user.email);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -135,24 +135,9 @@ const Settings = () => {
                   type="text"
                   id="email"
                   name="email"
-                  className="border border-slate-400 w-full  px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
+                  className="border bg-slate-500 border-slate-400 w-full  px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
                   disabled
-                  {...register("email", {
-                    required: {
-                      value: true,
-                      message: "Email is required",
-                    },
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                      message: "Email must be valid",
-                    },
-                  })}
                 />
-                {errors.email && errors.email.message && (
-                  <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
-                    {errors.email.message}
-                  </p>
-                )}
               </div>
               <div className="flex flex-col gap-2 md:gap-4">
                 <label htmlFor="university" className="text-lg md:text-xl ">
