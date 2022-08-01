@@ -7,8 +7,10 @@ import dashWhite from "../../Assets/Objects/dash-white.svg";
 import axios from "axios";
 
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 const ForgotPass = () => {
+  const [apiResponseMessage, SetApiResponseMessage] = useState(null);
   const {
     register,
     handleSubmit,
@@ -22,10 +24,12 @@ const ForgotPass = () => {
 
   const submitHandler = async (data) => {
     try {
-      await axios.post(baseUrl, {
+      const res = await axios.post(baseUrl, {
         email: data.email,
       });
+      SetApiResponseMessage(res.data)
     } catch (error) {
+      SetApiResponseMessage(error.response.data)
       return error;
     }
   };
@@ -51,6 +55,25 @@ const ForgotPass = () => {
           className="flex flex-col w-full md:w-1/2 mx-auto"
           onSubmit={handleSubmit(submitHandler)}
         >
+        {apiResponseMessage && (
+          <>
+            {apiResponseMessage.errors && (
+              <p className="text-white bg-red-600 px-2 py-1 my-2 rounded-lg text-xs md:text-lg">
+                {apiResponseMessage.message.split(":")[2]}
+              </p>
+            )}
+
+            {apiResponseMessage.errors ? (
+              <p className="text-white bg-red-600 px-2 py-1 my-2 rounded-lg text-xs md:text-lg">
+                {apiResponseMessage.message}
+              </p>
+            ) : (
+              <p className="text-white bg-green-600 px-2 py-1 my-2 rounded-lg text-xs md:text-lg text-center">
+                we have send the forgot password email
+              </p>
+            )}
+          </>
+        )}
           <div className="flex flex-col gap-2 md:gap-4 mb-10">
             <label htmlFor="email" className="text-base md:text-xl ">
               Email

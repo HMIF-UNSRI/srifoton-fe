@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
@@ -15,13 +15,17 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, dirtyFields },
+    formState: { errors },
   } = useForm();
 
-  useEffect(() => {
-    console.log("errors", errors);
-    console.log("dirtyFields", dirtyFields);
-  }, [errors, dirtyFields]);
+  useEffect(()=>{
+    if(authCtx.apiResponseMessage){
+      const intervalID = setInterval(() => {
+        authCtx.SetApiResponseMessage(null)
+      }, 5000);
+      return () => clearInterval(intervalID)
+    }
+  }, [authCtx])
 
   const onSubmitHandler = (data) => {
     authCtx.login(data.email, data.password);
@@ -55,6 +59,21 @@ const Login = () => {
           onSubmit={handleSubmit(onSubmitHandler)}
           className="flex flex-col gap-2 w-full md:gap-4 pt-8 justify-center items-center"
         >
+          {authCtx.apiResponseMessage && (
+          <>
+            {authCtx.apiResponseMessage.errors && (
+              <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                {authCtx.apiResponseMessage.message.split(":")[2]}
+              </p>
+            )}
+
+            {!authCtx.apiResponseMessage.errors && (
+              <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                {authCtx.apiResponseMessage.message}
+              </p>
+            )}
+          </>
+        )}
           <div className="flex flex-col gap-2 md:gap-4 w-full lg:w-3/4 lg:px-0">
             <label htmlFor="name" className="text-base md:text-xl ">
               Email* :

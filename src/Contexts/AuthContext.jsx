@@ -9,6 +9,8 @@ const AuthContext = React.createContext({
   logout: () => {},
   loadUser: () => {},
   userData: {},
+  apiResponseMessage: {},
+  SetApiResponseMessage: (message) => {},
 });
 
 const BASE_URL =
@@ -17,6 +19,7 @@ const BASE_URL =
 
 export const AuthProvider = (props) => {
   const [userData, setUserData] = useState(null);
+  const [apiResponseMessage, SetApiResponseMessage] = useState(null);
   const navigate = useNavigate();
 
   const register = async (
@@ -41,6 +44,7 @@ export const AuthProvider = (props) => {
       });
       data = response.data;
     } catch (error) {
+      SetApiResponseMessage(error.response.data);
       return error;
     }
 
@@ -61,12 +65,13 @@ export const AuthProvider = (props) => {
       });
       data = response.data;
     } catch (error) {
+      SetApiResponseMessage(error.response.data)
+      console.log("Exist")
       return error;
     }
 
     localStorage.setItem("token", data.data.access_token);
-    setUserData(jwtDecode(data.access_token));
-
+    setUserData(jwtDecode(data.data.access_token));
     return {
       error: data.errors,
       message: data.message,
@@ -87,7 +92,6 @@ export const AuthProvider = (props) => {
       if (decoded.exp < Date.now() / 1000) {
         return logout();
       }
-      setUserData(decoded);
     }
   };
 
@@ -99,6 +103,8 @@ export const AuthProvider = (props) => {
         logout,
         loadUser,
         userData,
+        apiResponseMessage,
+        SetApiResponseMessage
       }}
     >
       {props.children}

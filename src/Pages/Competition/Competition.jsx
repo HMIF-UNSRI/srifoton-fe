@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Background from "../../Components/Background/Background";
 
 import dashWhite from "../../Assets/Objects/dash-white.svg";

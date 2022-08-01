@@ -1,3 +1,4 @@
+import React from "react";
 import Background from "../../Components/Background/Background";
 
 import dashWhite from "../../Assets/Objects/dash-white.svg";
