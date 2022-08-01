@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { set } from "react-hook-form";
 
 const AuthContext = React.createContext({
   register: (email, name, nim, password, confirmPassword) => {},
@@ -92,6 +93,7 @@ export const AuthProvider = (props) => {
       if (decoded.exp < Date.now() / 1000) {
         return logout();
       }
+      setUserData(decoded)
     }
   };
 
