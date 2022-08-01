@@ -44,7 +44,7 @@ const Competition = () => {
           className="absolute bottom-0 right-60"
         />
       </div>
-      <div className="mx-auto w-3/4 py-10">
+      <div className="mx-auto w-3/4 py-5">
         <Swiper
           modules={[Scrollbar]}
           spaceBetween={80}
@@ -56,7 +56,7 @@ const Competition = () => {
         >
           {competitions.map((competition, index) => (
             <SwiperSlide>
-              <div className="flex flex-col justify-center items-center gap-4">
+              <div className="flex flex-col justify-center items-center gap-4 py-6">
                 <div className="flex justify-center items-center w-full h-[400px] gap-6">
                   <div className="w-5 h-full bg-red-primary rounded-xl"></div>
                   <div className="bg-black-light w-full h-full rounded-xl flex justify-center items-center">
