@@ -4,50 +4,10 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import dashTop from "../../Assets/Objects/dash-white.svg";
 import dashBot from "../../Assets/Objects/dash-white.svg";
-import competitiveProgramming from "../../Assets/CompetitionIcon/competitive-programming.png";
-import eSport from "../../Assets/CompetitionIcon/e-sport.png";
-import uiuxDesign from "../../Assets/CompetitionIcon/uiux-design.png";
-import webDevelopment from "../../Assets/CompetitionIcon/web-development.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar } from "swiper";
-
-const competitions = [
-  {
-    title: "Competitive Programming",
-    image: competitiveProgramming,
-    desc: "Competitive Programming merupakan lomba untuk menyelesaikan permasalahan berupa soal dalam bentuk program dengan batas waktu tertentu. Lomba ini dikerjakan secara tim sebanyak x orang, lomba ini diadakan pada platform Hackerrank.",
-  },
-  {
-    title: "Web Development",
-    image: webDevelopment,
-    desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum dolore totam a repudiandae nesciunt illo? Eius fugit architecto aliquid ea quo tenetur ratione culpa fuga sed! Fugit officiis earum doloribus.",
-  },
-  {
-    title: "UI/UX Design",
-    image: uiuxDesign,
-    desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum dolore totam a repudiandae nesciunt illo? Eius fugit architecto aliquid ea quo tenetur ratione culpa fuga sed! Fugit officiis earum doloribus.",
-  },
-  {
-    title: "E-Sport",
-    image: eSport,
-    desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum dolore totam a repudiandae nesciunt illo? Eius fugit architecto aliquid ea quo tenetur ratione culpa fuga sed! Fugit officiis earum doloribus.",
-  },
-];
-
-const sponsors = [
-  {
-    src: "/sponsors/sp4.png",
-  },
-  {
-    src: "/sponsors/sp5.png",
-  },
-  {
-    src: "/sponsors/sp6.png",
-  },
-  {
-    src: "/sponsors/sp7.png",
-  },
-];
+import { competitions } from "../../StaticData/Data";
+import { sponsors } from "../../StaticData/Data";
 
 const Home = () => {
   const authCtx = useContext(AuthContext);
@@ -134,7 +94,7 @@ const Home = () => {
             return (
               <div className="group flex flex-col justify-center items-center gap-4">
                 <div className="flex justify-start items-end w-full h-[400px] gap-6">
-                  <div className="bg-black-light group-hover:bg-[linear-gradient(0.41deg,_#1B1919_-8.48%,_#C40018_185.48%)] w-full h-full rounded-xl flex justify-center items-center">
+                  <div className="bg-[linear-gradient(0.41deg,_#1B1919_-8.48%,_#1B1919_185.48%)] group-hover:bg-[linear-gradient(0.41deg,_#1B1919_-8.48%,_#C40018_185.48%)] w-full h-full rounded-xl flex justify-center items-center">
                     <img
                       src={competition.image}
                       className="w-[400px]"
@@ -153,7 +113,7 @@ const Home = () => {
                   <div>
                     <a
                       className="font-bold transition-all duration-150 bg-red-primary w-fit z-10 border-[#ff6107] shadow-lg shadow-[#ff610769] text-white border-2 border-transparent hover:bg-red-700 hover:border-red-primary-semibold block px-7 py-3 rounded-full"
-                      href={authCtx.userData ? "/competitiony" : "/login"}
+                      href={authCtx.userData ? `/competition/${competition.link}` : "/login"}
                     >
                       View the Competition
                     </a>
