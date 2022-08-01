@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     authCtx.loadUser();
-  }, [authCtx]);
+  }, []);
 
   return (
     <div>
