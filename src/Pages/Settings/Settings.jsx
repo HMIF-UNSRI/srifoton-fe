@@ -137,6 +137,7 @@ const Settings = () => {
                   name="email"
                   className="border bg-slate-200 border-slate-400 w-full text-gray-500 px-3 md:px-5 py-3 text-sm md:text-lg  rounded-lg"
                   disabled
+                  {...register("email")}
                 />
               </div>
               <div className="flex flex-col gap-2 md:gap-4">
