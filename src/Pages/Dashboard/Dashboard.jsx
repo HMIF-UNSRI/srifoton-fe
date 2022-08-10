@@ -1,10 +1,44 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import { Link } from "react-router-dom";
 import dashWhite from "../../Assets/Objects/dash-white.svg";
+import axios from "axios";
+import AuthContext from "../../Contexts/AuthContext";
+
+const baseUrl =
+  (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api`) ||
+  "http://localhost:8000/api";
 
 const Dashboard = () => {
+  const authCtx = useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState(false);
+  const [teamName, setTeamName] = useState();
+  const [name, setName] = useState();
+  const [teamCompetition, setTeamCompetition] = useState();
+  const [isVerified, setIsVerified] = useState();
+  const [hasCompetition, setHasCompetition] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    axios
+      .get(`${baseUrl}/teams`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then(({ data: res }) => {
+        setIsLoading(false);
+        const team = res.data;
+        setIsVerified(team.is_verified);
+        setTeamName(team.team_name);
+        setTeamCompetition(team.competition);
+        if (isLoading === true) {
+          setHasCompetition(true);
+        }
+      });
+  }, [baseUrl]);
+
   return (
     <div
       className={`bg-[rgb(34,34,34)] w-screen min-h-screen h-full bg-center bg-cover bg-no-repeat`}
@@ -20,7 +54,7 @@ const Dashboard = () => {
                 className="absolute top-0 left-60"
               />
               <h2 className="text-xl md:text-2xl lg:text-3xl  font-japanese text-center my-3 text-white">
-                SELAMAT DATANG USER
+                SELAMAT DATANG {authCtx.userData.name}
               </h2>
               <img
                 src={dashWhite}
@@ -29,20 +63,39 @@ const Dashboard = () => {
               />
             </div>
           </div>
-          <img src="/background/ornament.png" alt="img" className="-mt-32 z-[0]" />
+          <img
+            src="/background/ornament.png"
+            alt="img"
+            className="-mt-32 z-[0]"
+          />
           <div className="bg-transparent w-full border-4 min-h-[250px] flex rounded-xl px-5 py-2 border-[#ff6107] mt-24 justify-center items-center">
-            <div className="relative w-4/5 md:w-2/3 lg:w-1/2 mx-auto flex flex-row justify-center items-center">
-              <div className="flex flex-col gap-5">
-                <p className="text-red-secondary opacity-90">
-                  Kamu belum mengikuti kompetisi
-                </p>
-                <Link
-                      className="button-primary py-3 px-8 mb-10"
-                      to="/form-register"
-                    >
-                      Ikuti Kompetisi
-                    </Link>
-              </div>
+            <div className="relative w-full flex flex-row justify-center items-center">
+              {isLoading ? (
+                <div className="flex flex-col gap-5">
+                  <p className="text-red-secondary opacity-90">
+                    Kamu belum mengikuti kompetisi
+                  </p>
+                  <Link
+                    className="button-primary py-3 px-8 mb-10"
+                    to="/form-register"
+                  >
+                    Ikuti Kompetisi
+                  </Link>
+                </div>
+              ) : (
+                <div className="w-full p-5 rounded-xl bg-primary-dark-main flex flex-col gap-5">
+                  <p className="bg-red-primary px-5 py-3 font-bold text-center uppercase text-2xl rounded-lg text-white w-full">
+                    {teamName}
+                  </p>
+                  <p className="text-center text-white">Competition Name:</p>
+                  <p className="text-center bg-[#222222] text-white rounded-xl px-5 py-3 text-xl w-full">
+                    {teamCompetition}
+                  </p>
+                  <Link className="button-primary py-3 px-8" to="/team">
+                    Lihat Detail Pembayaran
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>
