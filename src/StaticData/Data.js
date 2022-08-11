@@ -159,16 +159,16 @@ export const competitions = [
 ];
   
 export const sponsors = [
-  {
-    src: "/sponsors/sp4.png",
-  },
-  {
-    src: "/sponsors/sp5.png",
-  },
-  {
-    src: "/sponsors/sp6.png",
-  },
-  {
-    src: "/sponsors/sp7.png",
-  },
+  // {
+  //   src: "/sponsors/sp4.png",
+  // },
+  // {
+  //   src: "/sponsors/sp5.png",
+  // },
+  // {
+  //   src: "/sponsors/sp6.png",
+  // },
+  // {
+  //   src: "/sponsors/sp7.png",
+  // },
 ];

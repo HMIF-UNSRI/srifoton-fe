@@ -115,9 +115,9 @@ const Home = () => {
         </div>
         <div className="w-full px-3 lg:px-24 xl:px-80">
           <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap border-4 rounded-xl px-12 py-12 border-[#ff6107]">
-            <img src="/sponsors/sp3.png" alt="sp1" />
+            {/* <img src="/sponsors/sp3.png" alt="sp1" />
             <img src="/sponsors/sp2.png" alt="sp1" />
-            <img src="/sponsors/sp1.png" alt="sp1" />
+            <img src="/sponsors/sp1.png" alt="sp1" /> */}
           </div>
           <Swiper
             modules={[Scrollbar]}
