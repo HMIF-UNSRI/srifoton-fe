@@ -25,13 +25,7 @@ const Home = () => {
             SRIFOTON
           </p>
           <p className="text-xl text-center px-2 w-full md:w-3/4 text-white">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo,
-            laborum voluptate aut laudantium tempora accusamus atque illum
-            ipsum, ipsam quasi, at explicabo itaque! Veritatis rem magnam hic?
-            Cum, delectus deserunt? Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Ab debitis inventore quaerat voluptatibus beatae a
-            libero error omnis? Dolor provident cum similique hic molestias,
-            reprehenderit culpa vitae ducimus suscipit error.
+            Sriwijaya Informatics Exhibiion atau yang biasa dikenali dengan Srifoton adalah forum kompetitif berskala nasional yang mewadahi mahasiswa untuk menyalurkan minat dan bakat mereka dalam dunia industri teknologi. Event ini memiliki dua acara yaitu Perlombaan dan Seminar
           </p>
           <a
             className="font-bold transition-all duration-150 bg-red-primary mt-12 z-10 border-[#ff6107] shadow-lg shadow-[#ff610769] text-white border-2 border-transparent hover:bg-red-700 hover:border-red-primary-semibold block px-7 py-3 rounded-full"
@@ -58,24 +52,10 @@ const Home = () => {
         </div>
         <div className="grid md:grid-cols-2 gap-5 lg:px-52 xl:px-72">
           <p className="text-white text-lg md:text-xl lg:text-2xl">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque
-            laborum quidem eveniet quibusdam, non adipisci saepe facere
-            voluptatum natus nostrum ipsum eum quia fuga magnam ea, enim
-            accusamus ut reiciendis. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Odit facere modi obcaecati! Doloribus,
-            reprehenderit quas tenetur minima rerum voluptas deleniti sapiente
-            alias obcaecati. Optio fugiat sapiente molestiae cumque, eligendi
-            exercitationem.
+            Sriwijaya Informatics Exhibiion atau yang biasa dikenali dengan Srifoton adalah forum kompetitif berskala nasional yang mewadahi mahasiswa untuk menyalurkan minat dan bakat mereka dalam dunia industri teknologi. Event ini memiliki dua acara yaitu Perlombaan dan Seminar
           </p>
           <p className="text-white text-lg md:text-xl lg:text-2xl">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque
-            laborum quidem eveniet quibusdam, non adipisci saepe facere
-            voluptatum natus nostrum ipsum eum quia fuga magnam ea, enim
-            accusamus ut reiciendis. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Odit facere modi obcaecati! Doloribus,
-            reprehenderit quas tenetur minima rerum voluptas deleniti sapiente
-            alias obcaecati. Optio fugiat sapiente molestiae cumque, eligendi
-            exercitationem.
+            Ajang kompetitif yang disediakan adalah Competitive Programming, UI/UX Competition, Web Development, dan E-Sport Competition. Seminar yang diadakan membawa topik utama di bidang teknologi dan kesehatan mental.
           </p>
         </div>
       </div>
