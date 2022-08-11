@@ -99,8 +99,11 @@ const Register = () => {
             className="absolute bottom-0 right-0"
           />
         </div>
-        <p className="text-sm md:text-base text-center mt-4">
-          Please Fill In Your Data Completely
+        <p className="text-sm md:text-base text-red-primary text-center mt-4">
+          Pendaftaran akan dibuka pada tanggal 15 Agustus 2022. 
+        </p>
+        <p className="text-sm md:text-base text-red-primary text-center">
+          stay tune di IG Kami srifoton.official untuk informasi lebih lanjut 
         </p>
         {authCtx.apiResponseMessage && (
           <>

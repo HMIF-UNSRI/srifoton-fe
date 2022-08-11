@@ -113,7 +113,8 @@ const Home = () => {
                   <div>
                     <a
                       className="font-bold transition-all duration-150 bg-red-primary w-fit z-10 border-[#ff6107] shadow-lg shadow-[#ff610769] text-white border-2 border-transparent hover:bg-red-700 hover:border-red-primary-semibold block px-7 py-3 rounded-full"
-                      href={authCtx.userData ? `/competition/${competition.link}` : "/login"}
+                      // href={authCtx.userData ? `/competition/${competition.link}` : "/login"}
+                      href={`/competition/${competition.link}`}
                     >
                       View the Competition
                     </a>

@@ -52,9 +52,13 @@ const Login = () => {
             className="absolute bottom-0 right-0"
           />
         </div>
-        <p className="text-sm md:text-base text-center mt-4">
-          To participate in the competition, please login.
+        <p className="text-sm md:text-base text-red-primary text-center mt-4">
+          Pendaftaran akan dibuka pada tanggal 15 Agustus 2022. 
         </p>
+        <p className="text-sm md:text-base text-red-primary text-center">
+          stay tune di IG Kami srifoton.official untuk informasi lebih lanjut 
+        </p>
+
         <form
           onSubmit={handleSubmit(onSubmitHandler)}
           className="flex flex-col gap-2 w-full md:gap-4 pt-8 justify-center items-center"

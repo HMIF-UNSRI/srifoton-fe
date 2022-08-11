@@ -7,76 +7,152 @@ export const competitions = [
   {
     title: "Competitive Programming",
     image: competitiveProgramming,
-    desc: "Competitive Programming merupakan lomba untuk menyelesaikan permasalahan berupa soal dalam bentuk program dengan batas waktu tertentu. Lomba ini dikerjakan secara tim sebanyak x orang, lomba ini diadakan pada platform Hackerrank.",
+    desc: "Competitive Programming adalah sebuah kompetisi yang akan menguji pengetahuan dan pemahaman peserta dalam Logic and Algorithm. Peserta diharuskan untuk memecahkan masalah yang diberikan dengan membuat program yang berisi algoritma-algoritma penyelesaian masalah tersebut.",
     link: "competitive-programming",
-    guidebook: "/guidebook.pdf",
+    guidebook: "https://drive.google.com/drive/u/5/folders/1Zn-UCRhXb3xBHbKFhKg1y4wJF1UnhVb-",
     contacts: [
       {
-        name: "Contact Person 1",
-        wa: "+62 821-2345-6789",
-        line: "@placeholdervalue"
+        name: "Arya Kusuma",
+        wa: "0895 32637 5573",
+        line: "@aryakusuma832"
       },
       {
-        name: "Contact Person 2",
-        wa: "+62 821-2345-6789",
-        line: "@placeholdervalue"
+        name: "Efan Fitriyan",
+        wa: "0812 7861 2312",
+        line: "@epanfit"
+      }
+    ],
+    timeline: [
+      {
+        name: "Pendaftaran",
+        date: "15 Agustus - 26 September 2022"
+      },
+      {
+        name: "Penyisihan",
+        date: "8 Oktober 2022"
+      },
+      {
+        name: "PengumumanFinalis",
+        date: "9 Oktober 2022"
+      },
+      {
+        name: "Final",
+        date: "15 Oktober 2022"
+      },
+      {
+        name: "Pengumuman",
+        date: "22 Oktober 2022"
       }
     ],
   },
   {
     title: "Web Development",
     image: webDevelopment,
-    desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum dolore totam a repudiandae nesciunt illo? Eius fugit architecto aliquid ea quo tenetur ratione culpa fuga sed! Fugit officiis earum doloribus.",
+    desc: "Web Development bertujuan untuk menguji kemampuan yang dimiliki para peserta dalam berkreasi dan berinovasi memberikan suatu solusi berupa penyelesaian masalah (problem solving) dengan cara membangun sebuah website.",
     link: "web-development",
-    guidebook: "/guidebook.pdf",
+    guidebook: "https://drive.google.com/drive/u/5/folders/1Zn-UCRhXb3xBHbKFhKg1y4wJF1UnhVb-",
     contacts: [
       {
-        name: "Contact Person 1",
-        wa: "+62 821-2345-6789",
-        line: "@placeholdervalue"
+        name: "Achmad Mario Sunjabar",
+        wa: "0823 7264 5098",
+        line: "@rioams"
       },
       {
-        name: "Contact Person 2",
-        wa: "+62 821-2345-6789",
-        line: "@placeholdervalue"
+        name: "Jovanic Morgan",
+        wa: "0858 8316 8942",
+        line: "@jovanicmorgan"
+      }
+    ],
+    timeline: [
+      {
+        name: "Pendaftaran",
+        date: "15 Agustus - 26 September 2022"
+      },
+      {
+        name: "Penyisihan",
+        date: "25 Agustus 2022 - 27 September 2022"
+      },
+      {
+        name: "Pengumuman",
+        date: "22 Oktober 2022"
       }
     ],
   },
   {
     title: "UI/UX Design",
     image: uiuxDesign,
-    desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum dolore totam a repudiandae nesciunt illo? Eius fugit architecto aliquid ea quo tenetur ratione culpa fuga sed! Fugit officiis earum doloribus.",
+    desc: "UI/UX Design merupakan proses membuat desain antarmuka yang fokus pada keindahan dari sebuah tampilan dan bertujuan untuk membuat tampilan situs lebih enak dipandang mata dalam proses meningkatkan kepuasan pengguna situs atau aplikasi tertentu melalui kegunaan dan kesenangan yang diberikan dalam interaksi antara pengguna dan produk.",
     link: "ui-ux-design",
-    guidebook: "/guidebook.pdf",
+    guidebook: "https://drive.google.com/drive/u/5/folders/1Zn-UCRhXb3xBHbKFhKg1y4wJF1UnhVb-",
     contacts: [
       {
-        name: "Contact Person 1",
-        wa: "+62 821-2345-6789",
-        line: "@placeholdervalue"
+        name: "Yusuf Erdin",
+        wa: "0859 1065 54874",
+        line: "-"
       },
       {
-        name: "Contact Person 2",
-        wa: "+62 821-2345-6789",
-        line: "@placeholdervalue"
+        name: "Eka Wira",
+        wa: "0823 7765 8632",
+        line: "-"
+      }
+    ],
+    timeline: [
+      {
+        name: "Pendaftaran Peserta",
+        date: "15 Agustus - 26 September 2022"
+      },
+      {
+        name: "Pengumpulan Karya",
+        date: "25 Agustus 2022 - 27 September 2022"
+      },
+      {
+        name: "Pengumuman Finalis",
+        date: "7 Oktober 2022"
+      },
+      {
+        name: "Presentasi Final Peserta",
+        date: "9 Oktober 2022"
+      },
+      {
+        name: "Pengumuman Pemenang",
+        date: "22 Oktober 2022"
       }
     ],
   },
   {
     title: "E-Sport",
     image: eSport,
-    desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum dolore totam a repudiandae nesciunt illo? Eius fugit architecto aliquid ea quo tenetur ratione culpa fuga sed! Fugit officiis earum doloribus.",
+    desc: "Esport Competition adalah kategori lomba yang mengompetisikan game yang termasuk dalam kategori Esport, Mobile Legends dipilih menjadi satu-satunya permainan yang diperlombakan dalam kategori ini.",
     link: "esport",
-    guidebook: "/guidebook.pdf",
+    guidebook: "https://drive.google.com/drive/u/5/folders/1Zn-UCRhXb3xBHbKFhKg1y4wJF1UnhVb-",
     contacts: [
       {
-        name: "Contact Person 1",
-        wa: "+62 821-2345-6789",
-        line: "@placeholdervalue"
+        name: "Sultan Rafi",
+        wa: "0823 7193 8993",
+        line: "-"
       },
       {
-        name: "Contact Person 2",
-        wa: "+62 821-2345-6789",
-        line: "@placeholdervalue"
+        name: "Rizky Rahmad D",
+        wa: "0813 7743 6895",
+        line: "-"
+      }
+    ],
+    timeline: [
+      {
+        name: "Pendaftaran",
+        date: "15 Agustus - 26 September 2022"
+      },
+      {
+        name: "Penyisihan",
+        date: "8 Oktober 2022"
+      },
+      {
+        name: "Semifinal & Final",
+        date: "9 Oktober 2022"
+      },
+      {
+        name: "Pengumuman",
+        date: "22 Oktober 2022"
       }
     ],
   },
