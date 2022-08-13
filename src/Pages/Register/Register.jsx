@@ -234,9 +234,9 @@ const Register = () => {
                   },
                 })}
               />
-              {errors.email && errors.email.message && (
+              {errors.password && errors.password.message && (
                 <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
-                  {errors.email.message}
+                  {errors.password.message}
                 </p>
               )}
             </div>
