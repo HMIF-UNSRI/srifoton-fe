@@ -54,7 +54,7 @@ const FormRegister = () => {
             email: data["email1"],
             no_wa: data["wa1"],
             nim: data["nim1"],
-            university: data["university1"]
+            university: data["university1"],
           },
           member_2: teamMember > 1 && {
             id_kpm: getValues("id_kpm-2"),
@@ -62,7 +62,7 @@ const FormRegister = () => {
             email: data["email2"],
             no_wa: data["wa2"],
             nim: data["nim2"],
-            university: data["university2"]
+            university: data["university2"],
           },
           member_3: teamMember > 2 && {
             id_kpm: getValues("id_kpm-3"),
@@ -70,23 +70,23 @@ const FormRegister = () => {
             email: data["email3"],
             no_wa: data["wa3"],
             nim: data["nim3"],
-            university: data["university3"]
+            university: data["university3"],
           },
-          member_4: teamMember > 3 && {
+          member_4: teamMember > 2 && {
             id_kpm: getValues("id_kpm-4"),
             name: data["name4"],
             email: data["email4"],
             no_wa: data["wa4"],
             nim: data["nim4"],
-            university: data["university4"]
+            university: data["university4"],
           },
-          member_5: teamMember > 4 && {
+          member_5: teamMember > 5 && {
             id_kpm: getValues("id_kpm-5"),
             name: data["name5"],
             email: data["email5"],
             no_wa: data["wa5"],
             nim: data["nim5"],
-            university: data["university5"]
+            university: data["university5"],
           },
         },
         {
@@ -352,7 +352,7 @@ const FormRegister = () => {
                     type="radio"
                     name="team-members"
                     id="team-5"
-                    value={4}
+                    value={5}
                   />
                   <label htmlFor="team-5" className="text-xl">
                     Five Team Member (E-Sport Only)
@@ -363,7 +363,7 @@ const FormRegister = () => {
                     type="radio"
                     name="team-members"
                     id="team-6"
-                    value={5}
+                    value={6}
                   />
                   <label htmlFor="team-6" className="text-xl">
                     Five Team Member + Substitute player (E-Sport Only)
@@ -1121,9 +1121,6 @@ const FormRegister = () => {
                   )}
                 </div>
               </section>
-
-
-
             </>
           )}
 
