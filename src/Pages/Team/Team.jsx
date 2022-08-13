@@ -28,13 +28,14 @@ const Team = () => {
         },
       })
       .then(({ data: res }) => {
-        setIsLoading(false);
         const team = res.data;
         setIsVerified(team.is_verified);
         setTeamName(team.team_name);
         setTeamCompetition(team.competition);
         setMembers(team.members);
+        setIsLoading(false);
       });
+      console.log(members)
   }, [baseUrl]);
 
   return (
@@ -107,7 +108,7 @@ const Team = () => {
             members.map((member, index) => (
               <section className="text-black p-[40px] w-full mx-auto rounded-xl">
                 <p className="focus:outline-red-primary border-red-secondary bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent mb-4 text-xl">
-                  {`${index === 0 ? "First" : "Second"}`} Member data
+                  {`${index === 0 ? "First" : index === 1 ? "Second" : index === 2 ? "Third" : index === 3 ? "Fourth" : "Substitute"}`} Member data
                 </p>
                 <div className="bg-gray-100 text-black p-[20px] rounded-xl">
                   <div className="flex flex-col gap-2 md:gap-4 mb-10">

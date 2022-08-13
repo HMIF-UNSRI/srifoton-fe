@@ -13,6 +13,9 @@ const FormRegister = () => {
   const [pop, setPop] = useState(null);
   const [kpm1, setKpm1] = useState(null);
   const [kpm2, setKpm2] = useState(null);
+  const [kpm3, setKpm3] = useState(null);
+  const [kpm4, setKpm4] = useState(null);
+  const [kpm5, setKpm5] = useState(null);
 
   const {
     register,
@@ -38,6 +41,7 @@ const FormRegister = () => {
       } else {
         competition_name = "ESPORT";
       }
+
       await axios.post(
         `${baseUrl}/teams`,
         {
@@ -50,8 +54,7 @@ const FormRegister = () => {
             email: data["email1"],
             no_wa: data["wa1"],
             nim: data["nim1"],
-            university: data["university1"],
-            id_payment: data["id_payment1"],
+            university: data["university1"]
           },
           member_2: {
             id_kpm: getValues("id_kpm-2"),
@@ -59,8 +62,31 @@ const FormRegister = () => {
             email: data["email2"],
             no_wa: data["wa2"],
             nim: data["nim2"],
-            university: data["university2"],
-            id_payment: data["id_payment2"],
+            university: data["university2"]
+          },
+          member_3: {
+            id_kpm: getValues("id_kpm-3"),
+            name: data["name3"],
+            email: data["email3"],
+            no_wa: data["wa3"],
+            nim: data["nim3"],
+            university: data["university3"]
+          },
+          member_4: {
+            id_kpm: getValues("id_kpm-4"),
+            name: data["name4"],
+            email: data["email4"],
+            no_wa: data["wa4"],
+            nim: data["nim4"],
+            university: data["university4"]
+          },
+          member_5: {
+            id_kpm: getValues("id_kpm-5"),
+            name: data["name5"],
+            email: data["email5"],
+            no_wa: data["wa5"],
+            nim: data["nim5"],
+            university: data["university5"]
           },
         },
         {
@@ -123,6 +149,15 @@ const FormRegister = () => {
             break;
           case 2:
             setKpm2(e.target.files[0].name);
+            break;
+          case 3:
+            setKpm3(e.target.files[0].name);
+            break;
+          case 4:
+            setKpm4(e.target.files[0].name);
+            break;
+          case 5:
+            setKpm5(e.target.files[0].name);
             break;
           default:
             break;
@@ -310,6 +345,28 @@ const FormRegister = () => {
                   />
                   <label htmlFor="team-3" className="text-xl">
                     Two Team Member
+                  </label>
+                </div>
+                <div className="flex gap-2">
+                  <input
+                    type="radio"
+                    name="team-members"
+                    id="team-5"
+                    value={4}
+                  />
+                  <label htmlFor="team-5" className="text-xl">
+                    Five Team Member (E-Sport Only)
+                  </label>
+                </div>
+                <div className="flex gap-2">
+                  <input
+                    type="radio"
+                    name="team-members"
+                    id="team-6"
+                    value={5}
+                  />
+                  <label htmlFor="team-6" className="text-xl">
+                    Five Team Member + Substitute player (E-Sport Only)
                   </label>
                 </div>
               </div>
@@ -654,7 +711,7 @@ const FormRegister = () => {
                     </div>
                     {kpm2 && (
                       <p className="text-white bg-green-600 px-2 py-1 rounded-lg text-xs md:text-lg">
-                        {kpm1}
+                        {kpm2}
                       </p>
                     )}
                     {errors.kpm2 && errors.kpm2.message && (
@@ -687,6 +744,571 @@ const FormRegister = () => {
                   {errors.wa2 && errors.wa2.message && (
                     <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
                       {errors.wa2.message}
+                    </p>
+                  )}
+                </div>
+              </section>
+            </>
+          )}
+
+          {teamMember > 2 && (
+            <>
+              <p className="text-xs md:text-sm bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent mb-5">
+                Third Member Data*
+              </p>
+              <section className="bg-gray-100 text-black p-[20px] mb-20 rounded-xl">
+                <div className="flex flex-col gap-2 md:gap-4 mb-10">
+                  <label htmlFor="name" className="text-base md:text-xl ">
+                    Name :
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
+                    {...register("name3", {
+                      required: {
+                        value: true,
+                        message: "Member name is required",
+                      },
+                      pattern: {
+                        value: /^[a-zA-Z ]+$/,
+                        message: "Member name must be alphabetical",
+                      },
+                    })}
+                  />
+                  {errors.name3 && errors.name3.message && (
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                      {errors.name3.message}
+                    </p>
+                  )}
+                </div>
+                <div className="flex flex-col gap-2 md:gap-4 mb-10">
+                  <label htmlFor="name" className="text-base md:text-xl ">
+                    NIM :
+                  </label>
+                  <input
+                    type="text"
+                    id="nim"
+                    name="nim"
+                    className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
+                    {...register("nim3", {
+                      required: {
+                        value: true,
+                        message: "Nim is required",
+                      },
+                      pattern: {
+                        value: /^[0-9]{6,20}$/,
+                        message: "Nim must be 6 - 20 digits",
+                      },
+                    })}
+                  />
+                  {errors.nim3 && errors.nim3.message && (
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                      {errors.nim3.message}
+                    </p>
+                  )}
+                </div>
+                <div className="flex flex-col gap-2 md:gap-4 mb-10">
+                  <label htmlFor="name" className="text-base md:text-xl ">
+                    Email :
+                  </label>
+                  <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
+                    {...register("email3", {
+                      required: {
+                        value: true,
+                        message: "Email is required",
+                      },
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                        message: "Email must be valid",
+                      },
+                    })}
+                  />
+                  {errors.email3 && errors.email3.message && (
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                      {errors.email3.message}
+                    </p>
+                  )}
+                </div>
+                <div className="flex flex-col gap-2 md:gap-4 mb-10">
+                  <label htmlFor="University" className="text-base md:text-xl ">
+                    University :
+                  </label>
+                  <input
+                    type="text"
+                    id="university"
+                    name="university"
+                    className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
+                    {...register("university3", {
+                      required: {
+                        value: true,
+                        message: "University is required",
+                      },
+                      pattern: {
+                        value: /^[a-zA-Z ]+$/,
+                        message: "University must be alphabetical",
+                      },
+                    })}
+                  />
+                  {errors.university3 && errors.university3.message && (
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                      {errors.university3.message}
+                    </p>
+                  )}
+                </div>
+                <div className="flex flex-col gap-2 md:gap-4 mb-10">
+                  <label htmlFor="kpm" className="text-base md:text-xl ">
+                    KPM :
+                  </label>
+                  <div className="flex flex-col gap-2">
+                    <div
+                      onClick={() => document.getElementById("kpm-3").click()}
+                      className="gap-2 lg:w-1/2 flex flex-col justify-center items-center border-0 md:border border-slate-400 md:p-2 lg:py-4 rounded-xl "
+                    >
+                      <div className="flex w-full gap-2 justify-center items-center border-2 border-slate-300 px-4 py-2 cursor-pointer hover:bg-slate-100 active:bg-slate-200 rounded-lg">
+                        <img className="w-4 md:w-6" src={uploadIcon} alt="" />
+                        <p className="text-xs md:text-sm font-bold bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent">
+                          Upload File
+                        </p>
+                        <input
+                          id="kpm-3"
+                          name="kpm-3"
+                          hidden
+                          type="file"
+                          accept="image/*,.pdf"
+                          onChange={onChangeKpmHandler.bind(null, 3)}
+                        />
+                      </div>
+                      <div>
+                        <p className="hidden md:block text-sm text-slate-500">
+                          Or drop a file
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-row justify-between lg:w-1/2">
+                      <span className="text-xs md:text-sm text-slate-500">
+                        jpg, jpeg, png, and pdf only
+                      </span>
+                      <span className="text-xs md:text-sm text-slate-500">
+                        max 2MB*
+                      </span>
+                    </div>
+                    {kpm3 && (
+                      <p className="text-white bg-green-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                        {kpm3}
+                      </p>
+                    )}
+                    {errors.kpm3 && errors.kpm3.message && (
+                      <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                        {errors.kpm3.message}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2 md:gap-4 mb-10">
+                  <label htmlFor="University" className="text-base md:text-xl ">
+                    No Wa :
+                  </label>
+                  <input
+                    type="text"
+                    id="wa"
+                    name="wa"
+                    className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
+                    {...register("wa3", {
+                      required: {
+                        value: true,
+                        message: "Whatsapp Number is required",
+                      },
+                      pattern: {
+                        value: /^[0-9]{10,20}$/,
+                        message: "Whatsapp Number must be 10 digits",
+                      },
+                    })}
+                  />
+                  {errors.wa3 && errors.wa3.message && (
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                      {errors.wa3.message}
+                    </p>
+                  )}
+                </div>
+              </section>
+              <p className="text-xs md:text-sm bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent mb-5">
+                Fourth Member Data*
+              </p>
+              <section className="bg-gray-100 text-black p-[20px] mb-20 rounded-xl">
+                <div className="flex flex-col gap-2 md:gap-4 mb-10">
+                  <label htmlFor="name" className="text-base md:text-xl ">
+                    Name :
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
+                    {...register("name4", {
+                      required: {
+                        value: true,
+                        message: "Member name is required",
+                      },
+                      pattern: {
+                        value: /^[a-zA-Z ]+$/,
+                        message: "Member name must be alphabetical",
+                      },
+                    })}
+                  />
+                  {errors.name4 && errors.name4.message && (
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                      {errors.name4.message}
+                    </p>
+                  )}
+                </div>
+                <div className="flex flex-col gap-2 md:gap-4 mb-10">
+                  <label htmlFor="name" className="text-base md:text-xl ">
+                    NIM :
+                  </label>
+                  <input
+                    type="text"
+                    id="nim"
+                    name="nim"
+                    className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
+                    {...register("nim4", {
+                      required: {
+                        value: true,
+                        message: "Nim is required",
+                      },
+                      pattern: {
+                        value: /^[0-9]{6,20}$/,
+                        message: "Nim must be 6 - 20 digits",
+                      },
+                    })}
+                  />
+                  {errors.nim4 && errors.nim4.message && (
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                      {errors.nim4.message}
+                    </p>
+                  )}
+                </div>
+                <div className="flex flex-col gap-2 md:gap-4 mb-10">
+                  <label htmlFor="name" className="text-base md:text-xl ">
+                    Email :
+                  </label>
+                  <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
+                    {...register("email4", {
+                      required: {
+                        value: true,
+                        message: "Email is required",
+                      },
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                        message: "Email must be valid",
+                      },
+                    })}
+                  />
+                  {errors.email4 && errors.email4.message && (
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                      {errors.email4.message}
+                    </p>
+                  )}
+                </div>
+                <div className="flex flex-col gap-2 md:gap-4 mb-10">
+                  <label htmlFor="University" className="text-base md:text-xl ">
+                    University :
+                  </label>
+                  <input
+                    type="text"
+                    id="university"
+                    name="university"
+                    className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
+                    {...register("university4", {
+                      required: {
+                        value: true,
+                        message: "University is required",
+                      },
+                      pattern: {
+                        value: /^[a-zA-Z ]+$/,
+                        message: "University must be alphabetical",
+                      },
+                    })}
+                  />
+                  {errors.university4 && errors.university4.message && (
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                      {errors.university4.message}
+                    </p>
+                  )}
+                </div>
+                <div className="flex flex-col gap-2 md:gap-4 mb-10">
+                  <label htmlFor="kpm" className="text-base md:text-xl ">
+                    KPM :
+                  </label>
+                  <div className="flex flex-col gap-2">
+                    <div
+                      onClick={() => document.getElementById("kpm-4").click()}
+                      className="gap-2 lg:w-1/2 flex flex-col justify-center items-center border-0 md:border border-slate-400 md:p-2 lg:py-4 rounded-xl "
+                    >
+                      <div className="flex w-full gap-2 justify-center items-center border-2 border-slate-300 px-4 py-2 cursor-pointer hover:bg-slate-100 active:bg-slate-200 rounded-lg">
+                        <img className="w-4 md:w-6" src={uploadIcon} alt="" />
+                        <p className="text-xs md:text-sm font-bold bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent">
+                          Upload File
+                        </p>
+                        <input
+                          id="kpm-4"
+                          name="kpm-4"
+                          hidden
+                          type="file"
+                          accept="image/*,.pdf"
+                          onChange={onChangeKpmHandler.bind(null, 4)}
+                        />
+                      </div>
+                      <div>
+                        <p className="hidden md:block text-sm text-slate-500">
+                          Or drop a file
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-row justify-between lg:w-1/2">
+                      <span className="text-xs md:text-sm text-slate-500">
+                        jpg, jpeg, png, and pdf only
+                      </span>
+                      <span className="text-xs md:text-sm text-slate-500">
+                        max 2MB*
+                      </span>
+                    </div>
+                    {kpm4 && (
+                      <p className="text-white bg-green-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                        {kpm4}
+                      </p>
+                    )}
+                    {errors.kpm4 && errors.kpm4.message && (
+                      <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                        {errors.kpm4.message}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2 md:gap-4 mb-10">
+                  <label htmlFor="University" className="text-base md:text-xl ">
+                    No Wa :
+                  </label>
+                  <input
+                    type="text"
+                    id="wa"
+                    name="wa"
+                    className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
+                    {...register("wa4", {
+                      required: {
+                        value: true,
+                        message: "Whatsapp Number is required",
+                      },
+                      pattern: {
+                        value: /^[0-9]{10,20}$/,
+                        message: "Whatsapp Number must be 10 digits",
+                      },
+                    })}
+                  />
+                  {errors.wa4 && errors.wa4.message && (
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                      {errors.wa4.message}
+                    </p>
+                  )}
+                </div>
+              </section>
+
+
+
+            </>
+          )}
+
+          {teamMember > 4 && (
+            <>
+              <p className="text-xs md:text-sm bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent mb-5">
+                Substitute Member Data*
+              </p>
+              <section className="bg-gray-100 text-black p-[20px] mb-20 rounded-xl">
+                <div className="flex flex-col gap-2 md:gap-4 mb-10">
+                  <label htmlFor="name" className="text-base md:text-xl ">
+                    Name :
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
+                    {...register("name5", {
+                      required: {
+                        value: true,
+                        message: "Member name is required",
+                      },
+                      pattern: {
+                        value: /^[a-zA-Z ]+$/,
+                        message: "Member name must be alphabetical",
+                      },
+                    })}
+                  />
+                  {errors.name5 && errors.name5.message && (
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                      {errors.name5.message}
+                    </p>
+                  )}
+                </div>
+                <div className="flex flex-col gap-2 md:gap-4 mb-10">
+                  <label htmlFor="name" className="text-base md:text-xl ">
+                    NIM :
+                  </label>
+                  <input
+                    type="text"
+                    id="nim"
+                    name="nim"
+                    className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
+                    {...register("nim5", {
+                      required: {
+                        value: true,
+                        message: "Nim is required",
+                      },
+                      pattern: {
+                        value: /^[0-9]{6,20}$/,
+                        message: "Nim must be 6 - 20 digits",
+                      },
+                    })}
+                  />
+                  {errors.nim5 && errors.nim5.message && (
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                      {errors.nim5.message}
+                    </p>
+                  )}
+                </div>
+                <div className="flex flex-col gap-2 md:gap-4 mb-10">
+                  <label htmlFor="name" className="text-base md:text-xl ">
+                    Email :
+                  </label>
+                  <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
+                    {...register("email5", {
+                      required: {
+                        value: true,
+                        message: "Email is required",
+                      },
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                        message: "Email must be valid",
+                      },
+                    })}
+                  />
+                  {errors.email5 && errors.email5.message && (
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                      {errors.email5.message}
+                    </p>
+                  )}
+                </div>
+                <div className="flex flex-col gap-2 md:gap-4 mb-10">
+                  <label htmlFor="University" className="text-base md:text-xl ">
+                    University :
+                  </label>
+                  <input
+                    type="text"
+                    id="university"
+                    name="university"
+                    className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
+                    {...register("university5", {
+                      required: {
+                        value: true,
+                        message: "University is required",
+                      },
+                      pattern: {
+                        value: /^[a-zA-Z ]+$/,
+                        message: "University must be alphabetical",
+                      },
+                    })}
+                  />
+                  {errors.university5 && errors.university5.message && (
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                      {errors.university5.message}
+                    </p>
+                  )}
+                </div>
+                <div className="flex flex-col gap-2 md:gap-4 mb-10">
+                  <label htmlFor="kpm" className="text-base md:text-xl ">
+                    KPM :
+                  </label>
+                  <div className="flex flex-col gap-2">
+                    <div
+                      onClick={() => document.getElementById("kpm-5").click()}
+                      className="gap-2 lg:w-1/2 flex flex-col justify-center items-center border-0 md:border border-slate-400 md:p-2 lg:py-4 rounded-xl "
+                    >
+                      <div className="flex w-full gap-2 justify-center items-center border-2 border-slate-300 px-4 py-2 cursor-pointer hover:bg-slate-100 active:bg-slate-200 rounded-lg">
+                        <img className="w-4 md:w-6" src={uploadIcon} alt="" />
+                        <p className="text-xs md:text-sm font-bold bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent">
+                          Upload File
+                        </p>
+                        <input
+                          id="kpm-5"
+                          name="kpm-5"
+                          hidden
+                          type="file"
+                          accept="image/*,.pdf"
+                          onChange={onChangeKpmHandler.bind(null, 5)}
+                        />
+                      </div>
+                      <div>
+                        <p className="hidden md:block text-sm text-slate-500">
+                          Or drop a file
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-row justify-between lg:w-1/2">
+                      <span className="text-xs md:text-sm text-slate-500">
+                        jpg, jpeg, png, and pdf only
+                      </span>
+                      <span className="text-xs md:text-sm text-slate-500">
+                        max 2MB*
+                      </span>
+                    </div>
+                    {kpm5 && (
+                      <p className="text-white bg-green-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                        {kpm5}
+                      </p>
+                    )}
+                    {errors.kpm5 && errors.kpm5.message && (
+                      <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                        {errors.kpm5.message}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2 md:gap-4 mb-10">
+                  <label htmlFor="University" className="text-base md:text-xl ">
+                    No Wa :
+                  </label>
+                  <input
+                    type="text"
+                    id="wa"
+                    name="wa"
+                    className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
+                    {...register("wa5", {
+                      required: {
+                        value: true,
+                        message: "Whatsapp Number is required",
+                      },
+                      pattern: {
+                        value: /^[0-9]{10,20}$/,
+                        message: "Whatsapp Number must be 10 digits",
+                      },
+                    })}
+                  />
+                  {errors.wa5 && errors.wa5.message && (
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                      {errors.wa5.message}
                     </p>
                   )}
                 </div>
