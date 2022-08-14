@@ -8,7 +8,7 @@ import AuthContext from "../../Contexts/AuthContext";
 
 const baseUrl =
   (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api`) ||
-  "http://localhost:8000/api";
+  "http://103.82.242.239/api";
 
 const Dashboard = () => {
   const authCtx = useContext(AuthContext);

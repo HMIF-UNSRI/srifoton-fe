@@ -19,7 +19,7 @@ const Settings = () => {
 
   const baseUrl =
     (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api`) ||
-    "http://localhost:8000/api";
+    "http://103.82.242.239/api";
 
   useEffect(() => {
     setIsLoading(true);

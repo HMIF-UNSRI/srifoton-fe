@@ -24,7 +24,6 @@ const Competition = () => {
       },
       false
     );
-    console.log(screenSize);
   }, [screenSize]);
 
   return (
@@ -71,9 +70,9 @@ const Competition = () => {
                   <div>
                     <Link
                       className="button-primary py-3 px-8 mb-10"
-                      to="/form-register"
+                      to={`/competition/${competition.link}`}
                     >
-                      Register Now
+                      Competition Detail
                     </Link>
                   </div>
                 </div>
