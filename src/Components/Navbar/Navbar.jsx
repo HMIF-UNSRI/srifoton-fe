@@ -43,6 +43,14 @@ const Navbar = () => {
             >
               Beranda
             </Link>
+            {authCtx.userData && (
+              <Link
+                className="text-gray-300 hover:text-white hover:underline transition-all duration-150"
+                to="/dashboard"
+              >
+                Dashboard
+              </Link>
+            )}
             <Link
               className="text-gray-300 hover:text-white hover:underline transition-all duration-150"
               to="/competition"
