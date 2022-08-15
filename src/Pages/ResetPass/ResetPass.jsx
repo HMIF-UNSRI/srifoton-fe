@@ -17,7 +17,7 @@ const ForgotPass = () => {
   const baseUrl =
     (process.env.REACT_API_URL &&
       `${process.env.REACT_API_URL}/api/users/reset-password`) ||
-    "http://103.82.242.239/api/users/reset-password";
+    "https://srifoton.hmifunsri.org/api/users/reset-password";
 
   const onSubmitHandler = async (data) => {
     const { password, confirmPassword } = data;

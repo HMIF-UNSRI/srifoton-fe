@@ -16,7 +16,7 @@ const AuthContext = React.createContext({
 
 const BASE_URL =
   (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api`) ||
-  "http://103.82.242.239/api";
+  "https://srifoton.hmifunsri.org/api";
 
 export const AuthProvider = (props) => {
   const [userData, setUserData] = useState(null);
@@ -48,7 +48,8 @@ export const AuthProvider = (props) => {
       SetApiResponseMessage(error.response.data);
       return error;
     }
-
+    SetApiResponseMessage(data);
+    navigate("/login")
     return {
       error: data.errors,
       message: data.message,
@@ -67,12 +68,12 @@ export const AuthProvider = (props) => {
       data = response.data;
     } catch (error) {
       SetApiResponseMessage(error.response.data)
-      console.log("Exist")
       return error;
     }
 
     localStorage.setItem("token", data.data.access_token);
     setUserData(jwtDecode(data.data.access_token));
+    navigate("/dashboard")
     return {
       error: data.errors,
       message: data.message,

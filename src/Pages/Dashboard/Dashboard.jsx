@@ -8,7 +8,7 @@ import AuthContext from "../../Contexts/AuthContext";
 
 const baseUrl =
   (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api`) ||
-  "http://103.82.242.239/api";
+  "https://srifoton.hmifunsri.org/api";
 
 const Dashboard = () => {
   const authCtx = useContext(AuthContext);
@@ -77,7 +77,7 @@ const Dashboard = () => {
                   </p>
                   <Link
                     className="button-primary py-3 px-8 mb-10"
-                    to="/form-register"
+                    to="/competition"
                   >
                     Ikuti Kompetisi
                   </Link>

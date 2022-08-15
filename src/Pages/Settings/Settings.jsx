@@ -19,7 +19,7 @@ const Settings = () => {
 
   const baseUrl =
     (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api`) ||
-    "http://103.82.242.239/api";
+    "https://srifoton.hmifunsri.org/api";
 
   useEffect(() => {
     setIsLoading(true);

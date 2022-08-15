@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Background from "../../Components/Background/Background";
 import dashWhite from "../../Assets/Objects/dash-white.svg";
 import uploadIcon from "../../Assets/Icons/upload.svg";
+import { useNavigate } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
 
@@ -10,6 +11,8 @@ import axios from "axios";
 
 const FormRegister = () => {
   const [teamMember, setTeamMember] = useState(0);
+  const [apiResponseMessage, SetApiResponseMessage] = useState(null);
+  const navigate = useNavigate();
   const [pop, setPop] = useState(null);
   const [kpm1, setKpm1] = useState(null);
   const [kpm2, setKpm2] = useState(null);
@@ -27,10 +30,12 @@ const FormRegister = () => {
 
   const baseUrl =
     (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api`) ||
-    "http://103.82.242.239/api";
+    "https://srifoton.hmifunsri.org/api";
 
   const onSubmitHandler = async (data) => {
+    let responseData;
     try {
+
       let competition_name = data.competition;
       if (competition_name === "Competitive Programming") {
         competition_name = "CP";
@@ -42,52 +47,52 @@ const FormRegister = () => {
         competition_name = "ESPORT";
       }
 
-      await axios.post(
+      const response = await axios.post(
         `${baseUrl}/teams`,
         {
           competition: competition_name,
           team_name: data.team_name,
           id_payment: data.id_payment,
-          member_1: {
+          member_1: teamMember > 0 ? {
             id_kpm: getValues("id_kpm-1"),
             name: data["name1"],
             email: data["email1"],
             no_wa: data["wa1"],
             nim: data["nim1"],
-            university: data["university1"]
-          },
-          member_2: {
+            university: data["university1"],
+          } : null,
+          member_2: teamMember > 1 ? {
             id_kpm: getValues("id_kpm-2"),
             name: data["name2"],
             email: data["email2"],
             no_wa: data["wa2"],
             nim: data["nim2"],
-            university: data["university2"]
-          },
-          member_3: {
+            university: data["university2"],
+          } : null,
+          member_3: teamMember > 2 ? {
             id_kpm: getValues("id_kpm-3"),
             name: data["name3"],
             email: data["email3"],
             no_wa: data["wa3"],
             nim: data["nim3"],
-            university: data["university3"]
-          },
-          member_4: {
+            university: data["university3"],
+          } : null,
+          member_4: teamMember > 3 ? {
             id_kpm: getValues("id_kpm-4"),
             name: data["name4"],
             email: data["email4"],
             no_wa: data["wa4"],
             nim: data["nim4"],
-            university: data["university4"]
-          },
-          member_5: {
+            university: data["university4"],
+          } : null,
+          member_5: teamMember > 4 ? {
             id_kpm: getValues("id_kpm-5"),
             name: data["name5"],
             email: data["email5"],
             no_wa: data["wa5"],
             nim: data["nim5"],
-            university: data["university5"]
-          },
+            university: data["university5"],
+          } : null,
         },
         {
           headers: {
@@ -95,10 +100,13 @@ const FormRegister = () => {
           },
         }
       );
+      responseData = response.data;
     } catch (error) {
+      window.scrollTo({top: 0, left : 0, behavior: 'smooth'})
+      SetApiResponseMessage(error.response.data);
       return error;
     }
-
+    SetApiResponseMessage(responseData)
     return {
       error: data.errors,
       message: data.message,
@@ -187,6 +195,32 @@ const FormRegister = () => {
           <p className="text-xs md:text-sm bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent mb-5">
             Team Data*
           </p>
+          {apiResponseMessage && (
+          <>
+            {apiResponseMessage.errors && (
+              <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                {apiResponseMessage.message.split(":")[2]}
+              </p>
+            )}
+
+            {!apiResponseMessage.errors && (
+              <>
+              {apiResponseMessage.message && (
+                <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                  {apiResponseMessage.message}
+                </p>
+              )}
+
+              {!apiResponseMessage.message && (
+                <p className="text-white bg-green-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                  Success. Please check your email
+                </p>
+              )}
+
+              </>
+            )}
+          </>
+        )}
           <section className="bg-gray-100 text-black p-[20px] mb-20 rounded-xl">
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
               <label htmlFor="name" className="text-base md:text-xl ">
@@ -232,7 +266,7 @@ const FormRegister = () => {
                       id="payment"
                       hidden
                       type="file"
-                      accept="image/*,.pdf"
+                      accept="image/*"
                       onChange={onChangeProofOfPaymentHandler}
                     />
                   </div>
@@ -244,10 +278,55 @@ const FormRegister = () => {
                 </div>
                 <div className="flex flex-row justify-between lg:w-1/2">
                   <span className="text-xs md:text-sm text-slate-500">
-                    jpg, jpeg, png, and pdf only
+                    jpg, jpeg, and png only
                   </span>
                   <span className="text-xs md:text-sm text-slate-500">
                     max 2MB*
+                  </span>
+                </div>
+                <br></br>
+                <div className="flex flex-row justify-between lg:w-1/2">
+                  <span className="text-xs md:text-sm text-slate-500">
+                    <b>Account Name</b> 
+                  </span>
+                  <span className="text-xs md:text-sm text-slate-500">
+                    <b>Bank Name</b>
+                  </span>
+                  <span className="text-bold text-xs md:text-sm text-slate-500">
+                    <b>Account Number</b>
+                  </span>
+                </div>
+                <div className="flex flex-row justify-between lg:w-1/2">
+                  <span className="text-xs md:text-sm text-slate-500">
+                    DELLIN IRAWAN
+                  </span>
+                  <span className="text-xs md:text-sm text-slate-500">
+                    Bank Mandiri
+                  </span>
+                  <span className="text-bold text-xs md:text-sm text-slate-500">
+                    1100015397265
+                  </span>
+                </div>
+                <div className="flex flex-row justify-between lg:w-1/2">
+                  <span className="text-xs md:text-sm text-slate-500">
+                    LIDIA NURHALIZA
+                  </span>
+                  <span className="text-xs md:text-sm text-slate-500">
+                    Bank Rakyat Indonesia
+                  </span>
+                  <span className="text-bold text-xs md:text-sm text-slate-500">
+                    339001048915534
+                  </span>
+                </div>
+                <div className="flex flex-row justify-between lg:w-1/2">
+                  <span className="text-xs md:text-sm text-slate-500">
+                    FEBIYANTI W
+                  </span>
+                  <span className="text-xs md:text-sm text-slate-500">
+                    Bank Central Asia
+                  </span>
+                  <span className="text-bold text-xs md:text-sm text-slate-500">
+                    1150650875
                   </span>
                 </div>
                 {pop && (
@@ -322,7 +401,7 @@ const FormRegister = () => {
                     value={0}
                   />
                   <label htmlFor="team-1" className="text-xl">
-                    Solo
+                    Solo (Not For E-Sport)
                   </label>
                 </div>
                 <div className="flex gap-2">
@@ -333,7 +412,7 @@ const FormRegister = () => {
                     value={1}
                   />
                   <label htmlFor="team-2" className="text-xl">
-                    One Team Member
+                    One Team Member (Not For E-Sport)
                   </label>
                 </div>
                 <div className="flex gap-2">
@@ -344,7 +423,7 @@ const FormRegister = () => {
                     value={2}
                   />
                   <label htmlFor="team-3" className="text-xl">
-                    Two Team Member
+                    Two Team Member (Not For E-Sport)
                   </label>
                 </div>
                 <div className="flex gap-2">
@@ -355,7 +434,7 @@ const FormRegister = () => {
                     value={4}
                   />
                   <label htmlFor="team-5" className="text-xl">
-                    Five Team Member (E-Sport Only)
+                    Four Team Member (E-Sport Only)
                   </label>
                 </div>
                 <div className="flex gap-2">
@@ -366,7 +445,7 @@ const FormRegister = () => {
                     value={5}
                   />
                   <label htmlFor="team-6" className="text-xl">
-                    Five Team Member + Substitute player (E-Sport Only)
+                    Four Team Member + Substitute player (E-Sport Only)
                   </label>
                 </div>
               </div>
@@ -502,7 +581,7 @@ const FormRegister = () => {
                           name="kpm-1"
                           hidden
                           type="file"
-                          accept="image/*,.pdf"
+                          accept="image/*"
                           onChange={onChangeKpmHandler.bind(null, 1)}
                         />
                       </div>
@@ -514,7 +593,7 @@ const FormRegister = () => {
                     </div>
                     <div className="flex flex-row justify-between lg:w-1/2">
                       <span className="text-xs md:text-sm text-slate-500">
-                        jpg, jpeg, png, and pdf only
+                        jpg, jpeg, and png only
                       </span>
                       <span className="text-xs md:text-sm text-slate-500">
                         max 2MB*
@@ -691,7 +770,7 @@ const FormRegister = () => {
                           name="kpm-2"
                           hidden
                           type="file"
-                          accept="image/*,.pdf"
+                          accept="image/*"
                           onChange={onChangeKpmHandler.bind(null, 2)}
                         />
                       </div>
@@ -703,7 +782,7 @@ const FormRegister = () => {
                     </div>
                     <div className="flex flex-row justify-between lg:w-1/2">
                       <span className="text-xs md:text-sm text-slate-500">
-                        jpg, jpeg, png, and pdf only
+                        jpg, jpeg, and png only
                       </span>
                       <span className="text-xs md:text-sm text-slate-500">
                         max 2MB*
@@ -880,7 +959,7 @@ const FormRegister = () => {
                           name="kpm-3"
                           hidden
                           type="file"
-                          accept="image/*,.pdf"
+                          accept="image/*"
                           onChange={onChangeKpmHandler.bind(null, 3)}
                         />
                       </div>
@@ -892,7 +971,7 @@ const FormRegister = () => {
                     </div>
                     <div className="flex flex-row justify-between lg:w-1/2">
                       <span className="text-xs md:text-sm text-slate-500">
-                        jpg, jpeg, png, and pdf only
+                        jpg, jpeg, and png only
                       </span>
                       <span className="text-xs md:text-sm text-slate-500">
                         max 2MB*
@@ -1064,7 +1143,7 @@ const FormRegister = () => {
                           name="kpm-4"
                           hidden
                           type="file"
-                          accept="image/*,.pdf"
+                          accept="image/*"
                           onChange={onChangeKpmHandler.bind(null, 4)}
                         />
                       </div>
@@ -1076,7 +1155,7 @@ const FormRegister = () => {
                     </div>
                     <div className="flex flex-row justify-between lg:w-1/2">
                       <span className="text-xs md:text-sm text-slate-500">
-                        jpg, jpeg, png, and pdf only
+                        jpg, jpeg, and png only
                       </span>
                       <span className="text-xs md:text-sm text-slate-500">
                         max 2MB*
@@ -1121,9 +1200,6 @@ const FormRegister = () => {
                   )}
                 </div>
               </section>
-
-
-
             </>
           )}
 
@@ -1256,7 +1332,7 @@ const FormRegister = () => {
                           name="kpm-5"
                           hidden
                           type="file"
-                          accept="image/*,.pdf"
+                          accept="image/*"
                           onChange={onChangeKpmHandler.bind(null, 5)}
                         />
                       </div>
@@ -1268,7 +1344,7 @@ const FormRegister = () => {
                     </div>
                     <div className="flex flex-row justify-between lg:w-1/2">
                       <span className="text-xs md:text-sm text-slate-500">
-                        jpg, jpeg, png, and pdf only
+                        jpg, jpeg, and png only
                       </span>
                       <span className="text-xs md:text-sm text-slate-500">
                         max 2MB*

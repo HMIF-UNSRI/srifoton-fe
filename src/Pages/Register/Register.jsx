@@ -36,7 +36,7 @@ const Register = () => {
   }, [authCtx])
   const baseUrl =
     (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api`) ||
-    "http://103.82.242.239/api";
+    "https://srifoton.hmifunsri.org/api";
 
   const onChangeUploadHandler = (e) => {
     const formData = new FormData();
@@ -99,11 +99,8 @@ const Register = () => {
             className="absolute bottom-0 right-0"
           />
         </div>
-        <p className="text-sm md:text-base text-red-primary text-center mt-4">
-          Pendaftaran akan dibuka pada tanggal 15 Agustus 2022. 
-        </p>
-        <p className="text-sm md:text-base text-red-primary text-center">
-          stay tune di IG Kami srifoton.official untuk informasi lebih lanjut 
+        <p className="text-sm md:text-base  text-center mt-4">
+          please fill this form 
         </p>
         {authCtx.apiResponseMessage && (
           <>
@@ -114,9 +111,20 @@ const Register = () => {
             )}
 
             {!authCtx.apiResponseMessage.errors && (
-              <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
-                {authCtx.apiResponseMessage.message}
-              </p>
+              <>
+              {authCtx.apiResponseMessage.message && (
+                <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                  {authCtx.apiResponseMessage.message}
+                </p>
+              )}
+
+              {!authCtx.apiResponseMessage.message && (
+                <p className="text-white bg-green-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                  Success. Please check your email
+                </p>
+              )}
+
+              </>
             )}
           </>
         )}
@@ -288,7 +296,7 @@ const Register = () => {
                         name="kpm"
                         hidden
                         type="file"
-                        accept="image/*,.pdf"
+                        accept="image/*"
                         onChange={onChangeUploadHandler}
                       />
                     </div>
@@ -299,9 +307,14 @@ const Register = () => {
                     </div>
                   </div>
                 </div>
-                <span className="text-xs md:text-sm text-slate-500">
-                  maks 2 mb*
-                </span>
+                <div className="flex flex-row justify-between lg:w-1/2">
+                  <span className="text-xs md:text-sm text-slate-500">
+                    jpg, jpeg, and png only
+                  </span>
+                  <span className="text-xs md:text-sm text-slate-500">
+                    max 2MB*
+                  </span>
+                </div>
               </div>
               {fileName && (
                 <p className="text-white bg-green-600 px-2 py-1 rounded-lg text-xs md:text-lg">
