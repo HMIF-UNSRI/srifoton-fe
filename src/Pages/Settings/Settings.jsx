@@ -65,7 +65,7 @@ const Settings = () => {
           className="absolute bottom-0 right-0"
         />
       </div>
-      <section className="bg-white text-black p-[40px] w-full lg:w-3/4 mx-auto mb-20 rounded-xl">
+      <section className="bg-white text-black p-[40px] w-[90%] lg:w-3/4 mx-auto mb-20 rounded-xl">
         {!isLoading && (
           <form
             onSubmit={handleSubmit(onSubmitHandler)}

@@ -182,8 +182,8 @@ const FormRegister = () => {
         />
       </div>
 
-      <section className="bg-white text-black p-[40px] w-3/4 mx-auto mb-20 rounded-xl">
-        <form onSubmit={handleSubmit(onSubmitHandler)} className="pt-3">
+      <section className="bg-white text-black w-[90%] lg:w-4/5 mx-auto mb-20 rounded-xl py-8">
+        <form onSubmit={handleSubmit(onSubmitHandler)} className="pt-3 w-full w-[90%] lg:w-4/5 mx-auto">
           <p className="text-xs md:text-sm bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent mb-5">
             Team Data*
           </p>
@@ -347,6 +347,7 @@ const FormRegister = () => {
                     Two Team Member
                   </label>
                 </div>
+                {getValues("competition") === "E-Sport" && (<>
                 <div className="flex gap-2">
                   <input
                     type="radio"
@@ -369,6 +370,7 @@ const FormRegister = () => {
                     Five Team Member + Substitute player (E-Sport Only)
                   </label>
                 </div>
+                  </>)}
               </div>
             </div>
           </section>
