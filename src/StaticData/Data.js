@@ -158,17 +158,35 @@ export const competitions = [
   },
 ];
   
-export const sponsors = [
-  // {
-  //   src: "/sponsors/sp4.png",
-  // },
-  // {
-  //   src: "/sponsors/sp5.png",
-  // },
-  // {
-  //   src: "/sponsors/sp6.png",
-  // },
-  // {
-  //   src: "/sponsors/sp7.png",
-  // },
-];
+export const sponsors = {
+  xl: [
+    "/sponsors/xl/sp1.png",
+    "/sponsors/xl/sp2.png",
+    "/sponsors/xl/sp3.png",
+    "/sponsors/xl/sp4.png",
+  ],
+  lg: [
+    "/sponsors/lg/sp1.png",
+    "/sponsors/lg/sp2.png",
+    "/sponsors/lg/sp3.png",
+    "/sponsors/lg/sp4.png",
+  ],
+  md: [
+    "/sponsors/md/sp1.png",
+    "/sponsors/md/sp2.png",
+    "/sponsors/md/sp3.png",
+    "/sponsors/md/sp4.png",
+  ],
+  sm: [
+    "/sponsors/sm/sp1.png",
+    "/sponsors/sm/sp2.png",
+    "/sponsors/sm/sp3.png",
+    "/sponsors/sm/sp4.png",
+  ],
+  xs: [
+    "/sponsors/xs/sp1.png",
+    "/sponsors/xs/sp2.png",
+    "/sponsors/xs/sp3.png",
+    "/sponsors/xs/sp4.png",
+  ],
+};
