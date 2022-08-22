@@ -12,6 +12,7 @@ import FormRegister from "../Pages/FormRegister/FormRegister";
 import Team from "../Pages/Team/Team";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import CompDesc from "../Pages/CompDesc/CompDesc";
+import Activate from "../Pages/Activate/Activate";
 
 import RequireAuth from "../Helpers/RequireAuth";
 
@@ -23,10 +24,11 @@ const Router = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/forgot-pass" element={<ForgotPass />} />
       <Route path="/reset-pass" element={<ResetPass />} />
+      <Route path="/activate" element={<Activate />} />
       <Route path="/competition/:slug" element={<CompDesc />} />
       <Route path="/competition" element={<Competition />} />
       <Route element={<RequireAuth />}>
-      <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/team" element={<Team />} />
         <Route path="/form-register" element={<FormRegister />} />
