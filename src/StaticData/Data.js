@@ -106,7 +106,7 @@ export const competitions = [
         date: "25 Agustus 2022 - 27 September 2022"
       },
       {
-        name: "Pengumuman Finalis",
+        name: "Pengumuman Finalis Peserta",
         date: "7 Oktober 2022"
       },
       {

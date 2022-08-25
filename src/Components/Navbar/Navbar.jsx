@@ -43,24 +43,36 @@ const Navbar = () => {
             >
               Beranda
             </Link>
+            {authCtx.userData && (
+              <Link
+                className="text-gray-300 hover:text-white hover:underline transition-all duration-150"
+                to="/dashboard"
+              >
+                Dashboard
+              </Link>
+            )}
             <Link
               className="text-gray-300 hover:text-white hover:underline transition-all duration-150"
               to="/competition"
             >
               Kompetisi
             </Link>
+            {authCtx.userData && (
             <Link
               className="text-gray-300 hover:text-white hover:underline transition-all duration-150"
               to="/team"
             >
               Tim
             </Link>
+            )}
+            {authCtx.userData && (
             <Link
               className="text-gray-300 hover:text-white hover:underline transition-all duration-150"
               to="/settings"
             >
-              Settings
+              Pengaturan
             </Link>
+            )}
           </div>
           <div className="hidden sm:flex flex-row gap-5 items-center">
             {authCtx.userData ? (
@@ -71,12 +83,13 @@ const Navbar = () => {
                 >
                   {authCtx.userData.name}
                 </Link>
-                <p
-                  className="font-bold text-white hover:underline transition-all duration-150"
+                <Link
+                  className="font-bold transition-all duration-150 bg-red-primary text-white border-2 border-transparent hover:bg-red-700 hover:border-red-primary-semibold block px-5 py-1 rounded-full"
                   onClick={() => authCtx.logout()}
+                  to="/"
                 >
                   Logout
-                </p>
+                </Link>
               </>
             ) : (
               <>

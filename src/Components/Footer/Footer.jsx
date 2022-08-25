@@ -71,6 +71,18 @@ const DribbleIcon = () => {
   );
 };
 
+const OnCompetitionClick = () => {
+  window.scrollTo({top: 0, left : 0, behavior: 'smooth'})
+}
+
+const OnAboutClick = () => {
+  window.scrollTo({top: 900, left : 0, behavior: 'smooth'})
+}
+
+const OnSponsorClick = () => {
+  window.scrollTo({top: 3200, left : 0, behavior: 'smooth'})
+}
+
 const Footer = () => {
   return (
     <footer className="bg-black-light px-24 py-12">
@@ -85,24 +97,35 @@ const Footer = () => {
             <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
               to="/"
+              onClick={OnCompetitionClick}
             >
               Home
             </Link>
             <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              to="#"
+              to="/"
+              onClick={OnAboutClick}
             >
               About
             </Link>
             <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              to="#"
+              to="/"
+              onClick={OnSponsorClick}
+            >
+              Sponsor
+            </Link>
+            <Link
+              className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
+              to="/competition"
+              onClick={OnCompetitionClick}
             >
               Competition
             </Link>
             <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              to="#"
+              to="/"
+              onClick={OnCompetitionClick}
             >
               Webinar
             </Link>
@@ -111,21 +134,31 @@ const Footer = () => {
             <p className="font-bold">Competition</p>
             <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              to="#"
+              to="/competition/competitive-programming"
+              onClick={OnCompetitionClick}
             >
               Competitive Programming
             </Link>
             <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              to="#"
+              to="/competition/ui-ux-design"
+              onClick={OnCompetitionClick}
             >
               UI / UX Design
             </Link>
             <Link
               className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
-              to="#"
+              to="/competition/esport"
+              onClick={OnCompetitionClick}
             >
-              Webinar
+              E-Sport
+            </Link>
+            <Link
+              className="hover:text-red-primary transition-all ease-linear duration-200 w-fit"
+              to="/competition/web-development"
+              onClick={OnCompetitionClick}
+            >
+              Web Development
             </Link>
           </div>
           <div className="flex flex-col gap-1 text-white text-lg">

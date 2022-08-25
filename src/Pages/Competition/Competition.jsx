@@ -46,8 +46,12 @@ const Competition = () => {
       <div className="mx-auto w-3/4 py-5">
         <Swiper
           modules={[Scrollbar]}
-          spaceBetween={80}
-          slidesPerView={3}
+          spaceBetween={
+            (screenSize <= 650 && 10) || (screenSize <= 1080 && 40) || 80
+          }
+          slidesPerView={
+            (screenSize <= 650 && 1) || (screenSize <= 1080 && 2) || 3
+          }
           scrollbar={{}}
           loop={true}
           grabCursor={true}

@@ -14,6 +14,7 @@ const Team = () => {
   const [teamCompetition, setTeamCompetition] = useState();
   const [isVerified, setIsVerified] = useState();
   const [members, setMembers] = useState();
+  const [isHaveTeam, SetIsHaveTeam] = useState(true);
 
   const baseUrl =
     (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api`) ||
@@ -21,6 +22,7 @@ const Team = () => {
 
   useEffect(() => {
     setIsLoading(true);
+    SetIsHaveTeam(true);
     axios
       .get(`${baseUrl}/teams`, {
         headers: {
@@ -34,8 +36,9 @@ const Team = () => {
         setTeamCompetition(team.competition);
         setMembers(team.members);
         setIsLoading(false);
+      }).catch(() => {
+        SetIsHaveTeam(false);
       });
-      console.log(members)
   }, [baseUrl]);
 
   return (
@@ -183,9 +186,13 @@ const Team = () => {
               </section>
             ))}
         </form>
-      ) : (
+      ) : isHaveTeam ? (
         <>
           <p className="bg-white text-center mx-auto w-1/2">Loading...</p>
+        </>
+      ) : (
+        <>
+          <p className="bg-white text-center mx-auto w-1/2">You Don't Have A Team</p>
         </>
       )}
     </Background>

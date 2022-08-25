@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import AuthContext from "../../Contexts/AuthContext";
+import React from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import dashTop from "../../Assets/Objects/dash-white.svg";
@@ -10,7 +9,6 @@ import { competitions } from "../../StaticData/Data";
 import { sponsors } from "../../StaticData/Data";
 
 const Home = () => {
-  const authCtx = useContext(AuthContext);
   return (
     <div
       className={`bg-[rgb(34,34,34)] w-screen min-h-screen h-full bg-center bg-cover bg-no-repeat`}
@@ -25,7 +23,7 @@ const Home = () => {
             SRIFOTON
           </p>
           <p className="text-xl text-center px-2 w-full md:w-3/4 text-white">
-            Sriwijaya Informatics Exhibiion atau yang biasa dikenali dengan Srifoton adalah forum kompetitif berskala nasional yang mewadahi mahasiswa untuk menyalurkan minat dan bakat mereka dalam dunia industri teknologi. Event ini memiliki dua acara yaitu Perlombaan dan Seminar
+            Sriwijaya Informatics Exhibition atau yang biasa dikenali dengan Srifoton adalah forum kompetitif berskala nasional yang mewadahi mahasiswa untuk menyalurkan minat dan bakat mereka dalam dunia industri teknologi. Event ini memiliki dua acara yaitu Perlombaan dan Seminar
           </p>
           <a
             className="font-bold transition-all duration-150 bg-red-primary mt-12 z-10 border-[#ff6107] shadow-lg shadow-[#ff610769] text-white border-2 border-transparent hover:bg-red-700 hover:border-red-primary-semibold block px-7 py-3 rounded-full"
@@ -61,7 +59,7 @@ const Home = () => {
       </div>
       <div className="bg-[url('../public/background/blur.png')] min-h-screen py-10 bg-contain bg-no-repeat md:bg-center">
         <div className="flex flex-col justify-center items-center">
-          <div className="flex flex-col w-[80%] md:w-[50%] lg:w-[20%] mt-12 pt-5 pb-2 md:pt-24 md:pb-12">
+          <div className="flex flex-col w-[80%] md:w-[50%] lg:w-[25%] mt-12 pt-5 pb-2 md:pt-24 md:pb-12">
             <img src={dashTop} alt="dash-top" className="self-start" />
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-japanese text-center my-3 bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent">
               COMPETITION
@@ -105,7 +103,7 @@ const Home = () => {
           })}
         </div>
         <div className="flex flex-col justify-center items-center">
-          <div className="flex flex-col w-[80%] md:w-[50%] lg:w-[20%] mt-12 pt-5 pb-2 md:pt-24 md:pb-12">
+          <div className="flex flex-col w-[80%] md:w-[50%] lg:w-[25%] mt-12 pt-5 pb-2 md:pt-24 md:pb-12">
             <img src={dashTop} alt="dash-top" className="self-start" />
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-japanese text-center my-3 bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent">
               SPONSORSHIP
@@ -151,7 +149,7 @@ const Home = () => {
           </div>
         </div>
         <div className="w-full py-24 flex flex-row items-center justify-center px-3 lg:px-24 xl:px-80">
-          <img src="/background/placeholder.png" className="w-[700px]" alt="" />
+          <img src="/background/speakers.png" className="w-[700px]" alt="" />
         </div>
       </div>
       <Footer />

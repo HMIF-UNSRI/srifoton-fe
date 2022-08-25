@@ -1,14 +1,11 @@
-import React, { useContext } from "react";
 import Background from "../../Components/Background/Background";
 
 import dashWhite from "../../Assets/Objects/dash-white.svg";
 import { competitions } from "../../StaticData/Data";
-import AuthContext from "../../Contexts/AuthContext";
 import { Link, useParams } from "react-router-dom";
 
 
 const CompDesc = () => {
-  const authCtx = useContext(AuthContext);
   const params = useParams();
   const getSlug = competitions.filter((el) => {
     return el.link === params.slug
@@ -55,8 +52,7 @@ const CompDesc = () => {
               </a>
               <Link
                 className="button-secondary-alt py-3 px-8"
-                // to="/form-register"
-                to = {authCtx.userData ? "/form-register" : "/login"} 
+                to = "/form-register"
               >
                 Register Now
               </Link>
@@ -131,7 +127,7 @@ const CompDesc = () => {
           {getSlug.contacts.map((el, idx) => (
             <li key={idx} className="relative bg-white rounded-xl w-full p-5 mb-6 lg:mb-0">
               <div className="flex w-full flex-row items-start gap-5">
-                <img src="https://via.placeholder.com/100/000000/FFFFFF?text=Placeholder" className="rounded-xl" alt="img" />
+                <img src="/background/avatar.png" className="rounded-xl w-[100px]" alt="img" />
                 <div className="flex flex-col w-full">
                   <p className="text-[1.35rem] font-semibold text-red-primary">
                     {el.name}

@@ -32,7 +32,7 @@ const Login = () => {
   };
   return (
     <AmperaBackground>
-      <div className="mb-6">
+      <div className="mb-6  flex flex-col justify-center items-center">
         <p className="text-2xl md:text-4xl lg:text-6xl text-center">
           HMIF UNSRI 2022
         </p>
@@ -40,7 +40,7 @@ const Login = () => {
           SRIFOTON
         </h1>
       </div>
-      <section className="bg-white text-black p-[40px] w-full lg:w-3/4 mx-auto mb-20 rounded-xl">
+      <section className="bg-white text-black p-[40px] mx-auto w-4/5 lg:w-3/4 mb-20 rounded-xl">
         <div className="relative w-3/4 md:w-1/2 lg:w-[40%] mx-auto flex flex-col">
           <img src={dashTop} alt="dash-top" className="absolute top-0 left-0" />
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-japanese text-center my-3 bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent">

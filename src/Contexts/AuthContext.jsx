@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { set } from "react-hook-form";
 
 const AuthContext = React.createContext({
   register: (email, name, nim, password, confirmPassword) => {},
   login: (email, password) => {},
   logout: () => {},
   loadUser: () => {},
+  authRedirect: () => {},
   userData: {},
   apiResponseMessage: {},
   SetApiResponseMessage: (message) => {},
@@ -87,6 +87,14 @@ export const AuthProvider = (props) => {
     navigate("/");
   };
 
+  const authRedirect = () => {
+    const error = {
+      message: "Please login to your account"
+    }
+    SetApiResponseMessage(error)
+    navigate("/login");
+  };
+
   const loadUser = () => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -105,6 +113,7 @@ export const AuthProvider = (props) => {
         login,
         logout,
         loadUser,
+        authRedirect,
         userData,
         apiResponseMessage,
         SetApiResponseMessage
