@@ -14,12 +14,10 @@ const ForgotPass = () => {
   const token = queryParams.get("token");
 
   const baseUrl = "https://srifoton.hmifunsri.org/api/users/activate";
-
-
+  
   useEffect(() => {
     setIsLoading(true)
     axios.get(`${baseUrl}/Bearer ${token}`).then(() => setIsLoading(false)).catch(() => "");
-    
   }, [token]);
 
   return (

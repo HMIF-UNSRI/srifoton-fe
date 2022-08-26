@@ -3,8 +3,6 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import dashTop from "../../Assets/Objects/dash-white.svg";
 import dashBot from "../../Assets/Objects/dash-white.svg";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Scrollbar } from "swiper";
 import { competitions } from "../../StaticData/Data";
 import { sponsors } from "../../StaticData/Data";
 
@@ -111,31 +109,61 @@ const Home = () => {
             <img src={dashBot} alt="dash-bot" className="self-end" />
           </div>
         </div>
-        <div className="w-full px-3 lg:px-24 xl:px-80">
-          <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap border-4 rounded-xl px-12 py-12 border-[#ff6107]">
-            {/* <img src="/sponsors/sp3.png" alt="sp1" />
-            <img src="/sponsors/sp2.png" alt="sp1" />
-            <img src="/sponsors/sp1.png" alt="sp1" /> */}
+        <div className="w-full px-3 lg:px-24 xl:px-80 flex flex-col gap-5">
+
+          {/* Cuman Untuk Ambil Estetik aja yang kode berikut */}
+          <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap border-4 rounded-xl my-12 p-4 md:p-12 border-[#ff6107]">
+
           </div>
-          <Swiper
-            modules={[Scrollbar]}
-            spaceBetween={80}
-            slidesPerView={4.5}
-            scrollbar={{}}
-            loop={true}
-            grabCursor={true}
-            className="swiper-container h-[300px] flex flex-row justify-center items-center"
-          >
-            {sponsors.map((sponsor) => {
-              return (
-                <SwiperSlide>
-                  <div className="flex justify-center items-center h-full">
-                    <img src={sponsor.src} alt="" />
-                  </div>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+
+
+          {/*  */}
+
+          {sponsors.xl.length !== 0 && (
+            <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap border-4 rounded-xl p-4 md:p-12 border-[#ff6107]">
+              {
+                sponsors.xl.map((str) => (
+                  <img src={str} alt="" className="h-[125px] sm:h-[150px] w-auto" />
+                ))
+              }
+            </div>
+          )}
+          {sponsors.lg.length !== 0 && (
+            <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap">
+              {
+                sponsors.lg.map((str) => (
+                  <img src={str} alt="" className="h-[100px] w-auto" />
+                ))
+              }
+            </div>
+          )}
+          {sponsors.md.length !== 0 && (
+            <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap">
+              {
+                sponsors.md.map((str) => (
+                  <img src={str} alt="" className="h-[75px] w-auto" />
+                ))
+              }
+            </div>
+          )}
+          {sponsors.sm.length !== 0 && (
+            <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap">
+              {
+                sponsors.sm.map((str) => (
+                  <img src={str} alt="" className="h-[60px] w-auto" />
+                ))
+              }
+            </div>
+          )}
+          {sponsors.xs.length !== 0 && (
+            <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap">
+              {
+                sponsors.xs.map((str) => (
+                  <img src={str} alt="" className="h-[50px] w-auto" />
+                ))
+              }
+            </div>
+          )}
         </div>
         <div className="bg-[url('../public/background/maskg1.png')] px-12 mt-10 w-full h-fit-content py-2 text-white bg-cover bg-no-repeat md:bg-center">
           <div className="flex flex-col justify-center items-center">

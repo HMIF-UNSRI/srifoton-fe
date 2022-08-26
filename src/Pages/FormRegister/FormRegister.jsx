@@ -11,6 +11,7 @@ import axios from "axios";
 const FormRegister = () => {
   const [teamMember, setTeamMember] = useState(0);
   const [apiResponseMessage, SetApiResponseMessage] = useState(null);
+
   const [pop, setPop] = useState(null);
   const [kpm1, setKpm1] = useState(null);
   const [kpm2, setKpm2] = useState(null);
@@ -33,7 +34,6 @@ const FormRegister = () => {
   const onSubmitHandler = async (data) => {
     let responseData;
     try {
-
       let competition_name = data.competition;
       if (competition_name === "Competitive Programming") {
         competition_name = "CP";
@@ -51,46 +51,61 @@ const FormRegister = () => {
           competition: competition_name,
           team_name: data.team_name,
           id_payment: data.id_payment,
-          member_1: teamMember > 0 ? {
-            id_kpm: getValues("id_kpm-1"),
-            name: data["name1"],
-            email: data["email1"],
-            no_wa: data["wa1"],
-            nim: data["nim1"],
-            university: data["university1"],
-          } : null,
-          member_2: teamMember > 1 ? {
-            id_kpm: getValues("id_kpm-2"),
-            name: data["name2"],
-            email: data["email2"],
-            no_wa: data["wa2"],
-            nim: data["nim2"],
-            university: data["university2"],
-          } : null,
-          member_3: teamMember > 2 ? {
-            id_kpm: getValues("id_kpm-3"),
-            name: data["name3"],
-            email: data["email3"],
-            no_wa: data["wa3"],
-            nim: data["nim3"],
-            university: data["university3"],
-          } : null,
-          member_4: teamMember > 3 ? {
-            id_kpm: getValues("id_kpm-4"),
-            name: data["name4"],
-            email: data["email4"],
-            no_wa: data["wa4"],
-            nim: data["nim4"],
-            university: data["university4"],
-          } : null,
-          member_5: teamMember > 4 ? {
-            id_kpm: getValues("id_kpm-5"),
-            name: data["name5"],
-            email: data["email5"],
-            no_wa: data["wa5"],
-            nim: data["nim5"],
-            university: data["university5"],
-          } : null,
+          member_1:
+            teamMember > 0
+              ? {
+                  id_kpm: getValues("id_kpm-1"),
+                  name: data["name1"],
+                  email: data["email1"],
+                  no_wa: data["wa1"],
+                  nim: data["nim1"],
+                  university: data["university1"],
+                }
+              : null,
+          member_2:
+            teamMember > 1
+              ? {
+                  id_kpm: getValues("id_kpm-2"),
+                  name: data["name2"],
+                  email: data["email2"],
+                  no_wa: data["wa2"],
+                  nim: data["nim2"],
+                  university: data["university2"],
+                }
+              : null,
+          member_3:
+            teamMember > 2
+              ? {
+                  id_kpm: getValues("id_kpm-3"),
+                  name: data["name3"],
+                  email: data["email3"],
+                  no_wa: data["wa3"],
+                  nim: data["nim3"],
+                  university: data["university3"],
+                }
+              : null,
+          member_4:
+            teamMember > 3
+              ? {
+                  id_kpm: getValues("id_kpm-4"),
+                  name: data["name4"],
+                  email: data["email4"],
+                  no_wa: data["wa4"],
+                  nim: data["nim4"],
+                  university: data["university4"],
+                }
+              : null,
+          member_5:
+            teamMember > 4
+              ? {
+                  id_kpm: getValues("id_kpm-5"),
+                  name: data["name5"],
+                  email: data["email5"],
+                  no_wa: data["wa5"],
+                  nim: data["nim5"],
+                  university: data["university5"],
+                }
+              : null,
         },
         {
           headers: {
@@ -100,11 +115,11 @@ const FormRegister = () => {
       );
       responseData = response.data;
     } catch (error) {
-      window.scrollTo({top: 0, left : 0, behavior: 'smooth'})
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       SetApiResponseMessage(error.response.data);
       return error;
     }
-    SetApiResponseMessage(responseData)
+    SetApiResponseMessage(responseData);
     return {
       error: data.errors,
       message: data.message,
@@ -192,31 +207,30 @@ const FormRegister = () => {
             Team Data*
           </p>
           {apiResponseMessage && (
-          <>
-            {apiResponseMessage.errors && (
-              <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
-                {apiResponseMessage.message.split(":")[2]}
-              </p>
-            )}
-
-            {!apiResponseMessage.errors && (
-              <>
-              {apiResponseMessage.message && (
+            <>
+              {apiResponseMessage.errors && (
                 <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
-                  {apiResponseMessage.message}
+                  {apiResponseMessage.message.split(":")[2]}
                 </p>
               )}
 
-              {!apiResponseMessage.message && (
-                <p className="text-white bg-green-600 px-2 py-1 rounded-lg text-xs md:text-lg">
-                  Success. Please check your email
-                </p>
-              )}
+              {!apiResponseMessage.errors && (
+                <>
+                  {apiResponseMessage.message && (
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                      {apiResponseMessage.message}
+                    </p>
+                  )}
 
-              </>
-            )}
-          </>
-        )}
+                  {!apiResponseMessage.message && (
+                    <p className="text-white bg-green-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                      Success. Please check your email
+                    </p>
+                  )}
+                </>
+              )}
+            </>
+          )}
           <section className="bg-gray-100 text-black p-[20px] mb-20 rounded-xl">
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
               <label htmlFor="name" className="text-base md:text-xl ">
@@ -283,7 +297,7 @@ const FormRegister = () => {
                 <br></br>
                 <div className="flex flex-row justify-between lg:w-1/2">
                   <span className="text-xs md:text-sm text-slate-500">
-                    <b>Account Name</b> 
+                    <b>Account Name</b>
                   </span>
                   <span className="text-xs md:text-sm text-slate-500">
                     <b>Bank Name</b>
