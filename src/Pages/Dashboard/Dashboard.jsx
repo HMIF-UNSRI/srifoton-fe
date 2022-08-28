@@ -31,7 +31,7 @@ const Dashboard = () => {
         setIsLoading(false);
         const team = res.data;
         setIsVerified(team.is_verified);
-        setTeamName(team.team_name);
+        setTeamName(decodeURIComponent(team.team_name));
         setTeamCompetition(team.competition);
         if (isLoading === true) {
           setHasCompetition(true);

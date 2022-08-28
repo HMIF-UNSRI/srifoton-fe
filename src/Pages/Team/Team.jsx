@@ -32,7 +32,7 @@ const Team = () => {
       .then(({ data: res }) => {
         const team = res.data;
         setIsVerified(team.is_verified);
-        setTeamName(team.team_name);
+        setTeamName(decodeURIComponent(team.team_name));
         setTeamCompetition(team.competition);
         setMembers(team.members);
         setIsLoading(false);

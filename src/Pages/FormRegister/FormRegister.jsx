@@ -49,7 +49,7 @@ const FormRegister = () => {
         `${baseUrl}/teams`,
         {
           competition: competition_name,
-          team_name: data.team_name,
+          team_name: encodeURIComponent(data.team_name),
           id_payment: data.id_payment,
           member_1:
             teamMember > 0
