@@ -27,7 +27,7 @@ const ForgotPass = () => {
     }
 
     try {
-      await axios.patch(
+      await axios.post(
         baseUrl,
         {
           new_password: password,
@@ -92,7 +92,7 @@ const ForgotPass = () => {
                 },
                 pattern: {
                   value:
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,20}$/,
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&_-]{8,20}$/,
                   message:
                     "Password must contain at least one lowercase letter, one uppercase letter, and one number",
                 },
@@ -123,7 +123,7 @@ const ForgotPass = () => {
                 },
                 pattern: {
                   value:
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,20}$/,
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&_-]{8,20}$/,
                   message:
                     "Password must contain at least one lowercase letter, one uppercase letter, and one number",
                 },
