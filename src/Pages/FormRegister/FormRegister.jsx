@@ -49,7 +49,7 @@ const FormRegister = () => {
         `${baseUrl}/teams`,
         {
           competition: competition_name,
-          team_name: encodeURIComponent(data.team_name),
+          team_name: data.team_name,
           id_payment: data.id_payment,
           member_1:
             teamMember > 0
@@ -252,9 +252,9 @@ const FormRegister = () => {
                   },
                 })}
               />
-              {errors.email && errors.email.message && (
+              {errors.team_name && errors.team_name.message && (
                 <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
-                  {errors.email.message}
+                  {errors.team_name.message}
                 </p>
               )}
             </div>
@@ -412,7 +412,7 @@ const FormRegister = () => {
                     value={4}
                   />
                   <label htmlFor="team-5" className="text-xl">
-                    Four Member (E-Sport Only)
+                    Four Member (1 Ketua + 4 Anggota)
                   </label>
                 </div>
                 <div className="flex gap-2">
@@ -423,7 +423,7 @@ const FormRegister = () => {
                     value={5}
                   />
                   <label htmlFor="team-6" className="text-xl">
-                    Four Member + Substitute Member (E-Sport Only)
+                    Four Member + Substitute Member (1 Ketua + 4 Anggota + 1 Cadangan)
                   </label>
                 </div>
                 </>) : (
@@ -436,7 +436,7 @@ const FormRegister = () => {
                     value={0}
                   />
                   <label htmlFor="team-1" className="text-xl">
-                    Solo (Not For E-Sport)
+                    Solo (1 Ketua)
                   </label>
                 </div>
                 <div className="flex gap-2">
@@ -447,7 +447,7 @@ const FormRegister = () => {
                     value={1}
                   />
                   <label htmlFor="team-2" className="text-xl">
-                    One Member (Not For E-Sport)
+                    One Member (1 Ketua + 1 Anggota)
                   </label>
                 </div>
                 <div className="flex gap-2">
@@ -458,7 +458,7 @@ const FormRegister = () => {
                     value={2}
                   />
                   <label htmlFor="team-3" className="text-xl">
-                    Two Member (Not For E-Sport)
+                    Two Member (1 Ketua + 2 Anggota)
                   </label>
                 </div>
                   </>
