@@ -219,6 +219,7 @@ const Register = () => {
                 id="password"
                 name="password"
                 className="border border-slate-400 w-full px-3 md:px-4 py-1 md:py-2 text-xs md:text-xl rounded-lg"
+                placeholder="8-16 characters. Must contain one uppercase and one number."
                 {...register("password", {
                   required: {
                     value: true,
@@ -232,13 +233,14 @@ const Register = () => {
                   maxLength: {
                     value: 16,
                     message: "Password must be less than 16 characters",
-                  }
-                  // pattern: {
-                  //   value:
-                  //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,16}$/,
-                  //   message:
-                  //     "Password must contain at least one lowercase letter, one uppercase letter, and one number",
-                  // },
+                  },
+
+                  pattern: {
+                    value:
+                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&_-]{8,16}$/,
+                    message:
+                      "Password must contain at least one lowercase letter, one uppercase letter, and one number",
+                  },
                 })}
               />
               {errors.password && errors.password.message && (
