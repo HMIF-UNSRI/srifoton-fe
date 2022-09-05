@@ -18,14 +18,14 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  useEffect(()=>{
-    if(authCtx.apiResponseMessage){
+  useEffect(() => {
+    if (authCtx.apiResponseMessage) {
       const intervalID = setInterval(() => {
-        authCtx.SetApiResponseMessage(null)
+        authCtx.SetApiResponseMessage(null);
       }, 5000);
-      return () => clearInterval(intervalID)
+      return () => clearInterval(intervalID);
     }
-  }, [authCtx])
+  }, [authCtx]);
 
   const onSubmitHandler = (data) => {
     authCtx.login(data.email, data.password);
@@ -61,31 +61,30 @@ const Login = () => {
           className="flex flex-col gap-2 w-full md:gap-4 pt-8 justify-center items-center"
         >
           {authCtx.apiResponseMessage && (
-          <>
-            {authCtx.apiResponseMessage.errors && (
-              <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
-                {authCtx.apiResponseMessage.message.split(":")[2]}
-              </p>
-            )}
-
-            {!authCtx.apiResponseMessage.errors && (
-              <>
-              {authCtx.apiResponseMessage.message && (
+            <>
+              {authCtx.apiResponseMessage.errors && (
                 <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
-                  {authCtx.apiResponseMessage.message}
+                  {authCtx.apiResponseMessage.message.split(":")[2]}
                 </p>
               )}
 
-              {!authCtx.apiResponseMessage.message && (
-                <p className="text-white bg-green-600 px-2 py-1 rounded-lg text-xs md:text-lg">
-                  Success. Please check your email
-                </p>
-              )}
+              {!authCtx.apiResponseMessage.errors && (
+                <>
+                  {authCtx.apiResponseMessage.message && (
+                    <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                      {authCtx.apiResponseMessage.message}
+                    </p>
+                  )}
 
-              </>
-            )}
-          </>
-        )}
+                  {!authCtx.apiResponseMessage.message && (
+                    <p className="text-white bg-green-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                      Success. Please check your email
+                    </p>
+                  )}
+                </>
+              )}
+            </>
+          )}
           <div className="flex flex-col gap-2 md:gap-4 w-full lg:w-3/4 lg:px-0">
             <label htmlFor="name" className="text-base md:text-xl ">
               Email* :
@@ -137,7 +136,7 @@ const Login = () => {
                 },
                 pattern: {
                   value:
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,20}$/,
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,16}$/,
                   message:
                     "Password must contain at least one lowercase letter, one uppercase letter, and one number",
                 },
