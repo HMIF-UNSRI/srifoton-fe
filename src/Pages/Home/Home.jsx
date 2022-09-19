@@ -126,45 +126,45 @@ const Home = () => {
               sponsors.xl.map((str) => (
                 <div className="relative bg-white overflow-clip h-[190px] rounded-xl p-3">
                   <img src={str} alt="" className="h-[150px] w-auto" />
-                  <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">
+                  {/* <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">
                     XL
-                  </p>
+                  </p> */}
                 </div>
               ))}
             {sponsors.lg.length !== 0 &&
               sponsors.lg.map((str) => (
                 <div className="relative bg-white overflow-clip h-[165px] rounded-xl p-3">
                   <img src={str} alt="" className="h-[125px] w-auto" />
-                  <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">
+                  {/* <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">
                     LG
-                  </p>
+                  </p> */}
                 </div>
               ))}
             {sponsors.md.length !== 0 &&
               sponsors.md.map((str) => (
                 <div className="relative bg-white overflow-clip h-[140px] rounded-xl p-3">
                   <img src={str} alt="" className="h-[100px] w-auto" />
-                  <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">
+                  {/* <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">
                     MD
-                  </p>
+                  </p> */}
                 </div>
               ))}
             {sponsors.sm.length !== 0 &&
               sponsors.sm.map((str) => (
                 <div className="relative bg-white overflow-clip h-[120px] rounded-xl p-3">
                   <img src={str} alt="" className="h-[80px] w-auto" />
-                  <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">
+                  {/* <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">
                     SM
-                  </p>
+                  </p> */}
                 </div>
               ))}
             {sponsors.xs.length !== 0 &&
               sponsors.xs.map((str) => (
                 <div className="relative bg-white overflow-clip h-[100px] rounded-xl p-3">
                   <img src={str} alt="" className="h-[60px] w-auto" />
-                  <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">
+                  {/* <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">
                     XS
-                  </p>
+                  </p> */}
                 </div>
               ))}
           </div>
