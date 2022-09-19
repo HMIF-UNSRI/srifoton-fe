@@ -39,8 +39,7 @@ const Settings = () => {
         setValue("email", user.email);
         setIsLoading(false);
       })
-      .catch((err) => {
-      });
+      .catch((err) => {});
   }, [baseUrl, setValue]);
 
   const onSubmitHandler = (data) => {

@@ -21,7 +21,11 @@ const Home = () => {
             SRIFOTON
           </p>
           <p className="text-xl text-center px-2 w-full md:w-3/4 text-white">
-            Sriwijaya Informatics Exhibition atau yang biasa dikenali dengan Srifoton adalah forum kompetitif berskala nasional yang mewadahi mahasiswa untuk menyalurkan minat dan bakat mereka dalam dunia industri teknologi. Event ini memiliki dua acara yaitu Perlombaan dan Seminar
+            Sriwijaya Informatics Exhibition atau yang biasa dikenali dengan
+            Srifoton adalah forum kompetitif berskala nasional yang mewadahi
+            mahasiswa untuk menyalurkan minat dan bakat mereka dalam dunia
+            industri teknologi. Event ini memiliki dua acara yaitu Perlombaan
+            dan Seminar
           </p>
           <a
             className="font-bold transition-all duration-150 bg-red-primary mt-12 z-10 border-[#ff6107] shadow-lg shadow-[#ff610769] text-white border-2 border-transparent hover:bg-red-700 hover:border-red-primary-semibold block px-7 py-3 rounded-full"
@@ -48,10 +52,17 @@ const Home = () => {
         </div>
         <div className="grid md:grid-cols-2 gap-5 lg:px-52 xl:px-72">
           <p className="text-white text-lg md:text-xl lg:text-2xl">
-            Sriwijaya Informatics Exhibiion atau yang biasa dikenali dengan Srifoton adalah forum kompetitif berskala nasional yang mewadahi mahasiswa untuk menyalurkan minat dan bakat mereka dalam dunia industri teknologi. Event ini memiliki dua acara yaitu Perlombaan dan Seminar
+            Sriwijaya Informatics Exhibiion atau yang biasa dikenali dengan
+            Srifoton adalah forum kompetitif berskala nasional yang mewadahi
+            mahasiswa untuk menyalurkan minat dan bakat mereka dalam dunia
+            industri teknologi. Event ini memiliki dua acara yaitu Perlombaan
+            dan Seminar
           </p>
           <p className="text-white text-lg md:text-xl lg:text-2xl">
-            Ajang kompetitif yang disediakan adalah Competitive Programming, UI/UX Competition, Web Development, dan E-Sport Competition. Seminar yang diadakan membawa topik utama di bidang teknologi dan kesehatan mental.
+            Ajang kompetitif yang disediakan adalah Competitive Programming,
+            UI/UX Competition, Web Development, dan E-Sport Competition. Seminar
+            yang diadakan membawa topik utama di bidang teknologi dan kesehatan
+            mental.
           </p>
         </div>
       </div>
@@ -110,62 +121,55 @@ const Home = () => {
           </div>
         </div>
         <div className="w-full px-3 lg:px-24 xl:px-80 flex flex-col gap-5">
-
-          {/* Cuman Untuk Ambil Estetik aja yang kode berikut */}
-          <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap border-4 rounded-xl my-12 p-4 md:p-12 border-[#ff6107]">
-
-          </div>
-
-
-          {/*  */}
-
-          {sponsors.xl.length !== 0 && (
-            <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap border-4 rounded-xl p-4 md:p-12 border-[#ff6107]">
-              {
-                sponsors.xl.map((str) => (
-                  <img src={str} alt="" className="h-[125px] sm:h-[150px] w-auto" />
-                ))
-              }
-            </div>
-          )}
-          {sponsors.lg.length !== 0 && (
-            <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap">
-              {
-                sponsors.lg.map((str) => (
+          <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap border-4 rounded-xl p-4 md:p-12 border-[#ff6107]">
+            {sponsors.xl.length !== 0 &&
+              sponsors.xl.map((str) => (
+                <div className="relative bg-white overflow-clip h-[190px] rounded-xl p-3">
+                  <img src={str} alt="" className="h-[150px] w-auto" />
+                  <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">
+                    XL
+                  </p>
+                </div>
+              ))}
+            {sponsors.lg.length !== 0 &&
+              sponsors.lg.map((str) => (
+                <div className="relative bg-white overflow-clip h-[165px] rounded-xl p-3">
+                  <img src={str} alt="" className="h-[125px] w-auto" />
+                  <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">
+                    LG
+                  </p>
+                </div>
+              ))}
+            {sponsors.md.length !== 0 &&
+              sponsors.md.map((str) => (
+                <div className="relative bg-white overflow-clip h-[140px] rounded-xl p-3">
                   <img src={str} alt="" className="h-[100px] w-auto" />
-                ))
-              }
-            </div>
-          )}
-          {sponsors.md.length !== 0 && (
-            <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap">
-              {
-                sponsors.md.map((str) => (
-                  <img src={str} alt="" className="h-[75px] w-auto" />
-                ))
-              }
-            </div>
-          )}
-          {sponsors.sm.length !== 0 && (
-            <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap">
-              {
-                sponsors.sm.map((str) => (
+                  <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">
+                    MD
+                  </p>
+                </div>
+              ))}
+            {sponsors.sm.length !== 0 &&
+              sponsors.sm.map((str) => (
+                <div className="relative bg-white overflow-clip h-[120px] rounded-xl p-3">
+                  <img src={str} alt="" className="h-[80px] w-auto" />
+                  <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">
+                    SM
+                  </p>
+                </div>
+              ))}
+            {sponsors.xs.length !== 0 &&
+              sponsors.xs.map((str) => (
+                <div className="relative bg-white overflow-clip h-[100px] rounded-xl p-3">
                   <img src={str} alt="" className="h-[60px] w-auto" />
-                ))
-              }
-            </div>
-          )}
-          {sponsors.xs.length !== 0 && (
-            <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap">
-              {
-                sponsors.xs.map((str) => (
-                  <img src={str} alt="" className="h-[50px] w-auto" />
-                ))
-              }
-            </div>
-          )}
+                  <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">
+                    XS
+                  </p>
+                </div>
+              ))}
+          </div>
         </div>
-        <div className="bg-[url('../public/background/maskg1.png')] px-12 mt-10 w-full h-fit-content py-2 text-white bg-cover bg-no-repeat md:bg-center">
+        <div className="bg-[url('../public/background/maskg1.png')] px-12 mt-[120px] w-full h-fit-content py-2 text-white bg-cover bg-no-repeat md:bg-center">
           <div className="flex flex-col justify-center items-center">
             <div className="flex flex-col w-[80%] md:w-[50%] lg:w-[30%]">
               <img src={dashTop} alt="dash-top" className="self-start" />

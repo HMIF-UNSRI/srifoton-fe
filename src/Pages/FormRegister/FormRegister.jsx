@@ -147,8 +147,7 @@ const FormRegister = () => {
         setValue("id_payment", res.data.id);
         setPop(e.target.files[0].name);
       })
-      .catch((err) => {
-      });
+      .catch((err) => {});
   };
 
   const onChangeCompetitionHandler = (compNumber, e) => {
@@ -183,8 +182,7 @@ const FormRegister = () => {
             break;
         }
       })
-      .catch((err) => {
-      });
+      .catch((err) => {});
   };
 
   return (
@@ -202,7 +200,10 @@ const FormRegister = () => {
       </div>
 
       <section className="bg-white text-black w-[90%] lg:w-4/5 mx-auto mb-20 rounded-xl py-8">
-        <form onSubmit={handleSubmit(onSubmitHandler)} className="pt-3 w-full w-[90%] lg:w-4/5 mx-auto">
+        <form
+          onSubmit={handleSubmit(onSubmitHandler)}
+          className="pt-3 w-full w-[90%] lg:w-4/5 mx-auto"
+        >
           <p className="text-xs md:text-sm bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent mb-5">
             Team Data*
           </p>
@@ -403,64 +404,67 @@ const FormRegister = () => {
                 Team Member
               </label>
               <div className="flex flex-col gap-4" onChange={teamMemberCount}>
-                {getValues("competition") === "E-Sport" ? (<>
-                <div className="flex gap-2">
-                  <input
-                    type="radio"
-                    name="team-members"
-                    id="team-5"
-                    value={4}
-                  />
-                  <label htmlFor="team-5" className="text-xl">
-                    Four Member (1 Ketua + 4 Anggota)
-                  </label>
-                </div>
-                <div className="flex gap-2">
-                  <input
-                    type="radio"
-                    name="team-members"
-                    id="team-6"
-                    value={5}
-                  />
-                  <label htmlFor="team-6" className="text-xl">
-                    Four Member + Substitute Member (1 Ketua + 4 Anggota + 1 Cadangan)
-                  </label>
-                </div>
-                </>) : (
+                {getValues("competition") === "E-Sport" ? (
                   <>
-                <div className="flex gap-2">
-                  <input
-                    type="radio"
-                    name="team-members"
-                    id="team-1"
-                    value={0}
-                  />
-                  <label htmlFor="team-1" className="text-xl">
-                    Solo (1 Ketua)
-                  </label>
-                </div>
-                <div className="flex gap-2">
-                  <input
-                    type="radio"
-                    name="team-members"
-                    id="team-2"
-                    value={1}
-                  />
-                  <label htmlFor="team-2" className="text-xl">
-                    One Member (1 Ketua + 1 Anggota)
-                  </label>
-                </div>
-                <div className="flex gap-2">
-                  <input
-                    type="radio"
-                    name="team-members"
-                    id="team-3"
-                    value={2}
-                  />
-                  <label htmlFor="team-3" className="text-xl">
-                    Two Member (1 Ketua + 2 Anggota)
-                  </label>
-                </div>
+                    <div className="flex gap-2">
+                      <input
+                        type="radio"
+                        name="team-members"
+                        id="team-5"
+                        value={4}
+                      />
+                      <label htmlFor="team-5" className="text-xl">
+                        Four Member (1 Ketua + 4 Anggota)
+                      </label>
+                    </div>
+                    <div className="flex gap-2">
+                      <input
+                        type="radio"
+                        name="team-members"
+                        id="team-6"
+                        value={5}
+                      />
+                      <label htmlFor="team-6" className="text-xl">
+                        Four Member + Substitute Member (1 Ketua + 4 Anggota + 1
+                        Cadangan)
+                      </label>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="flex gap-2">
+                      <input
+                        type="radio"
+                        name="team-members"
+                        id="team-1"
+                        value={0}
+                      />
+                      <label htmlFor="team-1" className="text-xl">
+                        Solo (1 Ketua)
+                      </label>
+                    </div>
+                    <div className="flex gap-2">
+                      <input
+                        type="radio"
+                        name="team-members"
+                        id="team-2"
+                        value={1}
+                      />
+                      <label htmlFor="team-2" className="text-xl">
+                        One Member (1 Ketua + 1 Anggota)
+                      </label>
+                    </div>
+                    <div className="flex gap-2">
+                      <input
+                        type="radio"
+                        name="team-members"
+                        id="team-3"
+                        value={2}
+                      />
+                      <label htmlFor="team-3" className="text-xl">
+                        Two Member (1 Ketua + 2 Anggota)
+                      </label>
+                    </div>
                   </>
                 )}
               </div>

@@ -49,7 +49,7 @@ export const AuthProvider = (props) => {
       return error;
     }
     SetApiResponseMessage(data);
-    navigate("/login")
+    navigate("/login");
     return {
       error: data.errors,
       message: data.message,
@@ -67,13 +67,13 @@ export const AuthProvider = (props) => {
       });
       data = response.data;
     } catch (error) {
-      SetApiResponseMessage(error.response.data)
+      SetApiResponseMessage(error.response.data);
       return error;
     }
 
     localStorage.setItem("token", data.data.access_token);
     setUserData(jwtDecode(data.data.access_token));
-    navigate("/dashboard")
+    navigate("/dashboard");
     return {
       error: data.errors,
       message: data.message,
@@ -89,9 +89,9 @@ export const AuthProvider = (props) => {
 
   const authRedirect = () => {
     const error = {
-      message: "Please login to your account"
-    }
-    SetApiResponseMessage(error)
+      message: "Please login to your account",
+    };
+    SetApiResponseMessage(error);
     navigate("/login");
   };
 
@@ -102,7 +102,7 @@ export const AuthProvider = (props) => {
       if (decoded.exp < Date.now() / 1000) {
         return logout();
       }
-      setUserData(decoded)
+      setUserData(decoded);
     }
   };
 
@@ -116,7 +116,7 @@ export const AuthProvider = (props) => {
         authRedirect,
         userData,
         apiResponseMessage,
-        SetApiResponseMessage
+        SetApiResponseMessage,
       }}
     >
       {props.children}

@@ -24,16 +24,16 @@ const Register = () => {
     getValues,
     formState: { errors },
   } = useForm();
-  
+
   const authCtx = useContext(AuthContext);
-  useEffect(()=>{
-    if(authCtx.apiResponseMessage){
+  useEffect(() => {
+    if (authCtx.apiResponseMessage) {
       const intervalID = setInterval(() => {
-        authCtx.SetApiResponseMessage(null)
+        authCtx.SetApiResponseMessage(null);
       }, 5000);
-      return () => clearInterval(intervalID)
+      return () => clearInterval(intervalID);
     }
-  }, [authCtx])
+  }, [authCtx]);
   const baseUrl =
     (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api`) ||
     "https://srifoton.hmifunsri.org/api";
@@ -99,7 +99,7 @@ const Register = () => {
           />
         </div>
         <p className="text-sm md:text-base  text-center mt-4">
-          please fill this form 
+          please fill this form
         </p>
         {authCtx.apiResponseMessage && (
           <>
@@ -111,18 +111,17 @@ const Register = () => {
 
             {!authCtx.apiResponseMessage.errors && (
               <>
-              {authCtx.apiResponseMessage.message && (
-                <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
-                  {authCtx.apiResponseMessage.message}
-                </p>
-              )}
+                {authCtx.apiResponseMessage.message && (
+                  <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                    {authCtx.apiResponseMessage.message}
+                  </p>
+                )}
 
-              {!authCtx.apiResponseMessage.message && (
-                <p className="text-white bg-green-600 px-2 py-1 rounded-lg text-xs md:text-lg">
-                  Success. Please check your email
-                </p>
-              )}
-
+                {!authCtx.apiResponseMessage.message && (
+                  <p className="text-white bg-green-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                    Success. Please check your email
+                  </p>
+                )}
               </>
             )}
           </>
@@ -302,7 +301,7 @@ const Register = () => {
                   </div>
                 </div>
                 <div className="flex flex-row justify-between lg:w-1/2">
-                  <span className="text-xs md:text-sm text-red-500 font-bold" >
+                  <span className="text-xs md:text-sm text-red-500 font-bold">
                     jpg, jpeg, and png only
                   </span>
                   <span className="text-xs md:text-sm text-red-500 font-bold">

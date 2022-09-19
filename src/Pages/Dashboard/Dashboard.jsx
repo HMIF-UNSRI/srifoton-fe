@@ -14,9 +14,10 @@ const Dashboard = () => {
   const authCtx = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(false);
   const [teamName, setTeamName] = useState();
-  const [name, setName] = useState();
   const [teamCompetition, setTeamCompetition] = useState();
+  // eslint-disable-next-line
   const [isVerified, setIsVerified] = useState();
+  // eslint-disable-next-line
   const [hasCompetition, setHasCompetition] = useState(false);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const Dashboard = () => {
           setHasCompetition(true);
         }
       });
-  }, [baseUrl]);
+  }, [isLoading]);
 
   return (
     <div

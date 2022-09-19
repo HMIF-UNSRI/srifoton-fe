@@ -7,6 +7,7 @@ import dashWhite from "../../Assets/Objects/dash-white.svg";
 import axios from "axios";
 
 const ForgotPass = () => {
+  // eslint-disable-next-line
   const [isLoading, setIsLoading] = useState(false);
 
   //check for query params
@@ -14,10 +15,13 @@ const ForgotPass = () => {
   const token = queryParams.get("token");
 
   const baseUrl = "https://srifoton.hmifunsri.org/api/users/activate";
-  
+
   useEffect(() => {
-    setIsLoading(true)
-    axios.get(`${baseUrl}/Bearer ${token}`).then(() => setIsLoading(false)).catch(() => "");
+    setIsLoading(true);
+    axios
+      .get(`${baseUrl}/Bearer ${token}`)
+      .then(() => setIsLoading(false))
+      .catch(() => "");
   }, [token]);
 
   return (
@@ -33,14 +37,14 @@ const ForgotPass = () => {
           className="absolute bottom-0 right-0"
         />
       </div>
-        <section className="bg-white text-black p-[40px] w-3/4 md:1/2 mx-auto mb-20 gap-4 flex flex-col rounded-xl">
-          <h2 className="font-bold text-center text-lg lg:text-xl">
-            Your Email has Been Successfully Activated
-          </h2>
-          <p className="font-bold text-center text-base lg:text-lg">
-            Redirecting...
-          </p>
-        </section>
+      <section className="bg-white text-black p-[40px] w-3/4 md:1/2 mx-auto mb-20 gap-4 flex flex-col rounded-xl">
+        <h2 className="font-bold text-center text-lg lg:text-xl">
+          Your Email has Been Successfully Activated
+        </h2>
+        <p className="font-bold text-center text-base lg:text-lg">
+          Redirecting...
+        </p>
+      </section>
     </AmperaBackground>
   );
 };
