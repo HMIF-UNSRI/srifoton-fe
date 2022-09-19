@@ -131,14 +131,8 @@ const Login = () => {
                 },
 
                 maxLength: {
-                  value: 20,
-                  message: "Password must be less than 20 characters",
-                },
-                pattern: {
-                  value:
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,16}$/,
-                  message:
-                    "Password must contain at least one lowercase letter, one uppercase letter, and one number",
+                  value: 16,
+                  message: "Password must be less than 16 characters",
                 },
               })}
             />

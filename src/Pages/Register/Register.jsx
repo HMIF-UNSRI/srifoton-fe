@@ -234,13 +234,6 @@ const Register = () => {
                     value: 16,
                     message: "Password must be less than 16 characters",
                   },
-
-                  pattern: {
-                    value:
-                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&_-]{8,16}$/,
-                    message:
-                      "Password must contain at least one lowercase letter, one uppercase letter, and one number",
-                  },
                 })}
               />
               {errors.password && errors.password.message && (

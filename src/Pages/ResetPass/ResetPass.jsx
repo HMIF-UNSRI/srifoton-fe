@@ -87,14 +87,8 @@ const ForgotPass = () => {
                 },
 
                 maxLength: {
-                  value: 20,
-                  message: "Password must be less than 20 characters",
-                },
-                pattern: {
-                  value:
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&_-]{8,20}$/,
-                  message:
-                    "Password must contain at least one lowercase letter, one uppercase letter, and one number",
+                  value: 16,
+                  message: "Password must be less than 16 characters",
                 },
               })}
             />
@@ -118,12 +112,12 @@ const ForgotPass = () => {
                 },
 
                 maxLength: {
-                  value: 20,
-                  message: "Password must be less than 20 characters",
+                  value: 16,
+                  message: "Password must be less than 16 characters",
                 },
                 pattern: {
                   value:
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&_-]{8,20}$/,
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&_-]{8,16}$/,
                   message:
                     "Password must contain at least one lowercase letter, one uppercase letter, and one number",
                 },
