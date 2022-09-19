@@ -72,16 +72,16 @@ const DribbleIcon = () => {
 };
 
 const OnCompetitionClick = () => {
-  window.scrollTo({top: 0, left : 0, behavior: 'smooth'})
-}
+  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+};
 
 const OnAboutClick = () => {
-  window.scrollTo({top: 900, left : 0, behavior: 'smooth'})
-}
+  window.scrollTo({ top: 900, left: 0, behavior: "smooth" });
+};
 
 const OnSponsorClick = () => {
-  window.scrollTo({top: 3200, left : 0, behavior: 'smooth'})
-}
+  window.scrollTo({ top: 3200, left: 0, behavior: "smooth" });
+};
 
 const Footer = () => {
   return (

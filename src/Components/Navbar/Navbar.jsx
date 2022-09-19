@@ -58,20 +58,20 @@ const Navbar = () => {
               Kompetisi
             </Link>
             {authCtx.userData && (
-            <Link
-              className="text-gray-300 hover:text-white hover:underline transition-all duration-150"
-              to="/team"
-            >
-              Tim
-            </Link>
+              <Link
+                className="text-gray-300 hover:text-white hover:underline transition-all duration-150"
+                to="/team"
+              >
+                Tim
+              </Link>
             )}
             {authCtx.userData && (
-            <Link
-              className="text-gray-300 hover:text-white hover:underline transition-all duration-150"
-              to="/settings"
-            >
-              Pengaturan
-            </Link>
+              <Link
+                className="text-gray-300 hover:text-white hover:underline transition-all duration-150"
+                to="/settings"
+              >
+                Pengaturan
+              </Link>
             )}
           </div>
           <div className="hidden sm:flex flex-row gap-5 items-center">

@@ -36,7 +36,8 @@ const Team = () => {
         setTeamCompetition(team.competition);
         setMembers(team.members);
         setIsLoading(false);
-      }).catch(() => {
+      })
+      .catch(() => {
         SetIsHaveTeam(false);
       });
   }, [baseUrl]);
@@ -111,7 +112,18 @@ const Team = () => {
             members.map((member, index) => (
               <section className="text-black p-[40px] w-full mx-auto rounded-xl">
                 <p className="focus:outline-red-primary border-red-secondary bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent mb-4 text-xl">
-                  {`${index === 0 ? "First" : index === 1 ? "Second" : index === 2 ? "Third" : index === 3 ? "Fourth" : "Substitute"}`} Member data
+                  {`${
+                    index === 0
+                      ? "First"
+                      : index === 1
+                      ? "Second"
+                      : index === 2
+                      ? "Third"
+                      : index === 3
+                      ? "Fourth"
+                      : "Substitute"
+                  }`}{" "}
+                  Member data
                 </p>
                 <div className="bg-gray-100 text-black p-[20px] rounded-xl">
                   <div className="flex flex-col gap-2 md:gap-4 mb-10">
@@ -192,7 +204,9 @@ const Team = () => {
         </>
       ) : (
         <>
-          <p className="bg-white text-center mx-auto w-1/2">You Don't Have A Team</p>
+          <p className="bg-white text-center mx-auto w-1/2">
+            You Don't Have A Team
+          </p>
         </>
       )}
     </Background>
