@@ -7,6 +7,7 @@ import dashWhite from "../../Assets/Objects/dash-white.svg";
 import axios from "axios";
 
 const ForgotPass = () => {
+  // eslint-disable-next-line
   const [isLoading, setIsLoading] = useState(false);
 
   //check for query params
