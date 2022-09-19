@@ -110,62 +110,51 @@ const Home = () => {
           </div>
         </div>
         <div className="w-full px-3 lg:px-24 xl:px-80 flex flex-col gap-5">
-
-          {/* Cuman Untuk Ambil Estetik aja yang kode berikut */}
-          <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap border-4 rounded-xl my-12 p-4 md:p-12 border-[#ff6107]">
-
-          </div>
-
-
-          {/*  */}
-
-          {sponsors.xl.length !== 0 && (
-            <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap border-4 rounded-xl p-4 md:p-12 border-[#ff6107]">
-              {
-                sponsors.xl.map((str) => (
-                  <img src={str} alt="" className="h-[125px] sm:h-[150px] w-auto" />
-                ))
-              }
-            </div>
-          )}
-          {sponsors.lg.length !== 0 && (
-            <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap">
-              {
-                sponsors.lg.map((str) => (
+          <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap border-4 rounded-xl p-4 md:p-12 border-[#ff6107]">
+            {sponsors.xl.length !== 0 && (
+              sponsors.xl.map((str) => (
+                <div  className="relative bg-white overflow-clip h-[190px] rounded-xl p-3">
+                  <img src={str} alt="" className="h-[150px] w-auto" />
+                  <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">XL</p>
+                </div>
+              ))
+            )}
+            {sponsors.lg.length !== 0 && (
+              sponsors.lg.map((str) => (
+                <div  className="relative bg-white overflow-clip h-[165px] rounded-xl p-3">
+                  <img src={str} alt="" className="h-[125px] w-auto" />
+                  <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">LG</p>
+                </div>
+              ))
+            )}
+            {sponsors.md.length !== 0 && (
+              sponsors.md.map((str) => (
+                <div className="relative bg-white overflow-clip h-[140px] rounded-xl p-3">
                   <img src={str} alt="" className="h-[100px] w-auto" />
-                ))
-              }
-            </div>
-          )}
-          {sponsors.md.length !== 0 && (
-            <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap">
-              {
-                sponsors.md.map((str) => (
-                  <img src={str} alt="" className="h-[75px] w-auto" />
-                ))
-              }
-            </div>
-          )}
-          {sponsors.sm.length !== 0 && (
-            <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap">
-              {
-                sponsors.sm.map((str) => (
+                  <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">MD</p>
+                </div>
+              ))
+            )}
+            {sponsors.sm.length !== 0 && (
+              sponsors.sm.map((str) => (
+                <div  className="relative bg-white overflow-clip h-[120px] rounded-xl p-3">
+                  <img src={str} alt="" className="h-[80px] w-auto" />
+                  <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">SM</p>
+                </div>
+              ))
+            )}
+            {sponsors.xs.length !== 0 && (
+              sponsors.xs.map((str) => (
+                <div  className="relative bg-white overflow-clip h-[100px] rounded-xl p-3">
                   <img src={str} alt="" className="h-[60px] w-auto" />
-                ))
-              }
-            </div>
-          )}
-          {sponsors.xs.length !== 0 && (
-            <div className="w-full flex flex-row gap-5 justify-center items-center flex-wrap">
-              {
-                sponsors.xs.map((str) => (
-                  <img src={str} alt="" className="h-[50px] w-auto" />
-                ))
-              }
-            </div>
-          )}
+                  <p className="absolute bottom-2 right-2 rounded-full w-fit bg-red-primary text-white font-redrose font-bold px-4 py-1 text-xs">XS</p>
+                </div>
+              ))
+            )}
+          </div>
+          
         </div>
-        <div className="bg-[url('../public/background/maskg1.png')] px-12 mt-10 w-full h-fit-content py-2 text-white bg-cover bg-no-repeat md:bg-center">
+        <div className="bg-[url('../public/background/maskg1.png')] px-12 mt-[120px] w-full h-fit-content py-2 text-white bg-cover bg-no-repeat md:bg-center">
           <div className="flex flex-col justify-center items-center">
             <div className="flex flex-col w-[80%] md:w-[50%] lg:w-[30%]">
               <img src={dashTop} alt="dash-top" className="self-start" />
