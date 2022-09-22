@@ -79,7 +79,7 @@ const Home = () => {
         <div className="grid lg:grid-cols-2 w-full gap-12 px-12 lg:px-60 xl:px-80 pb-10">
           {competitions.map((competition) => {
             return (
-              <div className="group flex flex-col justify-center items-center gap-4">
+              <div className="group flex flex-col justify-start flex-grow items-center gap-4">
                 <div className="flex justify-start items-end w-full h-[400px] gap-6">
                   <div className="bg-[linear-gradient(0.41deg,_#1B1919_-8.48%,_#1B1919_185.48%)] group-hover:bg-[linear-gradient(0.41deg,_#1B1919_-8.48%,_#C40018_185.48%)] w-full h-full rounded-xl flex justify-center items-center">
                     <img
@@ -99,7 +99,7 @@ const Home = () => {
                   </div>
                   <div>
                     <a
-                      className="font-bold transition-all duration-150 bg-red-primary w-fit z-10 border-[#ff6107] shadow-lg shadow-[#ff610769] text-white border-2 border-transparent hover:bg-red-700 hover:border-red-primary-semibold block px-7 py-3 rounded-full"
+                      className="font-bold self-end transition-all duration-150 bg-red-primary w-fit z-10 border-[#ff6107] shadow-lg shadow-[#ff610769] text-white border-2 border-transparent hover:bg-red-700 hover:border-red-primary-semibold block px-7 py-3 rounded-full"
                       // href={authCtx.userData ? `/competition/${competition.link}` : "/login"}
                       href={`/competition/${competition.link}`}
                     >
