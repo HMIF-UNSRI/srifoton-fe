@@ -8,7 +8,8 @@ import AuthContext from "../../Contexts/AuthContext";
 
 const baseUrl =
   (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api`) ||
-  "https://srifoton.hmifunsri.org/api";
+  // "https://srifoton.hmifunsri.org/api";
+  "http://localhost:8000/api"
 
 const Dashboard = () => {
   const authCtx = useContext(AuthContext);
@@ -95,6 +96,43 @@ const Dashboard = () => {
                   <Link className="button-primary py-3 px-8" to="/team">
                     Lihat Detail Pembayaran
                   </Link>
+                  <hr></hr>
+                  <p className="text-center text-white">Upload Section</p>
+
+                  {isVerified ? (
+                    <>
+                    {teamCompetition === "UI/UX Design" ? (
+                      <a
+                        className="button-primary py-3 px-8"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href= "https://forms.gle/LTE9U7u54cFQixUn7"
+                      >
+                        Upload Submission
+                      </a>
+                      ) : (
+                        ""
+                      )}
+
+                      {teamCompetition === "Web Development" ? (
+                      <a
+                        className="button-primary py-3 px-8"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href= "https://forms.gle/GUeaUqNy2LJ9YvJg8"
+                      >
+                        Upload Submission
+                      </a>
+                      ) : (
+                        ""
+                      )}
+                      </>
+                  ) : (
+                    <p className="text-center font-bold text-[#dd0000]">upload section is disabled due to your team status is unverified. Please wait until admin verified your team</p>
+                  )}
+                  
+
+
                 </div>
               )}
             </div>

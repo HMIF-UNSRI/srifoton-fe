@@ -9,6 +9,7 @@ const AuthContext = React.createContext({
   logout: () => {},
   loadUser: () => {},
   authRedirect: () => {},
+  EmailActivationSuccess: () => {},
   userData: {},
   apiResponseMessage: {},
   SetApiResponseMessage: (message) => {},
@@ -95,6 +96,14 @@ export const AuthProvider = (props) => {
     navigate("/login");
   };
 
+  const EmailActivationSuccess = () =>{
+    const success = {
+      data: "Success",
+    };
+    SetApiResponseMessage(success);
+    navigate("/team")
+  }
+
   const loadUser = () => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -114,6 +123,7 @@ export const AuthProvider = (props) => {
         logout,
         loadUser,
         authRedirect,
+        EmailActivationSuccess,
         userData,
         apiResponseMessage,
         SetApiResponseMessage,
