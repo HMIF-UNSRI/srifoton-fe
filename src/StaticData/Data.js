@@ -26,7 +26,7 @@ export const competitions = [
     timeline: [
       {
         name: "Pendaftaran",
-        date: "15 Agustus - 26 September 2022",
+        date: "20 Agustus - 30 September 2022",
       },
       {
         name: "Penyisihan",
@@ -68,11 +68,11 @@ export const competitions = [
     timeline: [
       {
         name: "Pendaftaran",
-        date: "15 Agustus - 26 September 2022",
+        date: "20 Agustus - 30 September 2022",
       },
       {
-        name: "Penyisihan",
-        date: "25 Agustus 2022 - 27 September 2022",
+        name: "Pengumpulan Karya",
+        date: "25 Agustus 2022 - 30 September 2022",
       },
       {
         name: "Pengumuman",
@@ -102,11 +102,11 @@ export const competitions = [
     timeline: [
       {
         name: "Pendaftaran Peserta",
-        date: "15 Agustus - 26 September 2022",
+        date: "20 Agustus - 30 September 2022",
       },
       {
         name: "Pengumpulan Karya",
-        date: "25 Agustus 2022 - 27 September 2022",
+        date: "25 Agustus 2022 - 30 September 2022",
       },
       {
         name: "Pengumuman Finalis Peserta",
@@ -144,7 +144,7 @@ export const competitions = [
     timeline: [
       {
         name: "Pendaftaran",
-        date: "15 Agustus - 26 September 2022",
+        date: "20 Agustus - 30 September 2022",
       },
       {
         name: "Penyisihan",
