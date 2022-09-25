@@ -10,23 +10,18 @@ import axios from "axios";
 
 const ForgotPass = () => {
   // eslint-disable-next-line
-  const [isLoading, setIsLoading] = useState(false);
   const authCtx = useContext(AuthContext);
 
   //check for query params
   const queryParams = new URLSearchParams(window.location.search);
   const token = queryParams.get("token");
 
-  // const baseUrl = "https://srifoton.hmifunsri.org/api/users/activate";
-  const baseUrl = "http://localhost:8000/api/users/activate";
-
+  const baseUrl = "https://srifoton.hmifunsri.org/api/users/activate";
 
   useEffect(() => {
-    setIsLoading(true);
     axios
       .get(`${baseUrl}/Bearer ${token}`)
       .then(() => {
-          setIsLoading(false);
           authCtx.EmailActivationSuccess();
         })
       .catch(() => "");

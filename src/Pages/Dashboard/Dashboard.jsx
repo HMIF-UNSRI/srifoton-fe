@@ -8,12 +8,11 @@ import AuthContext from "../../Contexts/AuthContext";
 
 const baseUrl =
   (process.env.REACT_API_URL && `${process.env.REACT_API_URL}/api`) ||
-  // "https://srifoton.hmifunsri.org/api";
-  "http://localhost:8000/api"
+  "https://srifoton.hmifunsri.org/api";
 
 const Dashboard = () => {
   const authCtx = useContext(AuthContext);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [teamName, setTeamName] = useState();
   const [teamCompetition, setTeamCompetition] = useState();
   // eslint-disable-next-line
@@ -22,7 +21,6 @@ const Dashboard = () => {
   const [hasCompetition, setHasCompetition] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
     axios
       .get(`${baseUrl}/teams`, {
         headers: {
@@ -96,8 +94,15 @@ const Dashboard = () => {
                   <Link className="button-primary py-3 px-8" to="/team">
                     Lihat Detail Pembayaran
                   </Link>
-                  <hr></hr>
-                  <p className="text-center text-white">Upload Section</p>
+
+                  {teamCompetition === "UI/UX Design" || teamCompetition === "Web Development" ? (
+                    <div>
+                    <hr className="py-2"></hr>
+                    <p className="text-center text-white py-1">Upload Section</p>
+                    </div>
+                  ):(
+                    ""
+                  )}
 
                   {isVerified ? (
                     <>
@@ -128,7 +133,15 @@ const Dashboard = () => {
                       )}
                       </>
                   ) : (
-                    <p className="text-center font-bold text-[#dd0000]">upload section is disabled due to your team status is unverified. Please wait until admin verified your team</p>
+                    <>
+                      {teamCompetition === "UI/UX Design" || teamCompetition === "Web Development" ? (
+                        <p className="text-center font-bold text-[#dd0000]">upload section is disabled due to your team status is unverified. Please wait until admin verified your team</p>
+                      ):(
+                        ""
+                      )}
+                      
+                    </>
+                    
                   )}
                   
 
