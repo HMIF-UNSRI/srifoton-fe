@@ -358,46 +358,43 @@ const FormRegister = () => {
                 Competition :
               </label>
               <div className="flex flex-col gap-4" onChange={teamMemberCount}>
-                {[
-                  "Competitive Programming",
-                  "Web Development",
-                  "UI/UX Design",
-                  "E-Sport",
-                ].map((value, index) => (
-                  <div className="flex gap-2 items-center ">
-                    <div
-                      className={`w-4 h-4 rounded-full ring-1 ring-red-primary flex justify-center items-center outline-1 outline-blue-400 ${
-                        getValues("competition") === value &&
-                        `border-4 border-white bg-red-primary transition-all duration-500 ease-in-out`
-                      }`}
-                      onClick={onChangeCompetitionHandler.bind(null, index)}
-                      id={`comp-${index}-buffer`}
-                    ></div>
-                    <input
-                      type="radio"
-                      id={`comp-${index}`}
-                      value={value}
-                      {...register("competition", {
-                        required: {
-                          value: true,
-                          message: "Competition is required",
-                        },
-                      })}
-                      hidden
-                    />
-                    {errors.competition && errors.competition.message && (
-                      <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
-                        {errors.competition.message}
-                      </p>
-                    )}
-                    <label
-                      htmlFor={`comp-${index}`}
-                      className="text-xl cursor-pointer"
-                    >
-                      {value}
-                    </label>
-                  </div>
-                ))}
+                {["Competitive Programming", "Web Development", "E-Sport"].map(
+                  (value, index) => (
+                    <div className="flex gap-2 items-center ">
+                      <div
+                        className={`w-4 h-4 rounded-full ring-1 ring-red-primary flex justify-center items-center outline-1 outline-blue-400 ${
+                          getValues("competition") === value &&
+                          `border-4 border-white bg-red-primary transition-all duration-500 ease-in-out`
+                        }`}
+                        onClick={onChangeCompetitionHandler.bind(null, index)}
+                        id={`comp-${index}-buffer`}
+                      ></div>
+                      <input
+                        type="radio"
+                        id={`comp-${index}`}
+                        value={value}
+                        {...register("competition", {
+                          required: {
+                            value: true,
+                            message: "Competition is required",
+                          },
+                        })}
+                        hidden
+                      />
+                      {errors.competition && errors.competition.message && (
+                        <p className="text-white bg-red-600 px-2 py-1 rounded-lg text-xs md:text-lg">
+                          {errors.competition.message}
+                        </p>
+                      )}
+                      <label
+                        htmlFor={`comp-${index}`}
+                        className="text-xl cursor-pointer"
+                      >
+                        {value}
+                      </label>
+                    </div>
+                  )
+                )}
               </div>
             </div>
             <div className="flex flex-col gap-2 md:gap-4 mb-10">
