@@ -164,7 +164,7 @@ export const competitions = [
 
 export const sponsors = {
   xl: [],
-  lg: ["/sponsors/lg/Dicoding.png"],
+  lg: ["/sponsors/lg/Dicoding.png", "/sponsors/lg/Telkom.png"],
   md: ["/sponsors/md/Wika.png"],
   sm: ["/sponsors/sm/IdCH.png"],
   xs: ["/sponsors/xs/Binar.png"],
