@@ -4,7 +4,7 @@ import Footer from "../../Components/Footer/Footer";
 import dashTop from "../../Assets/Objects/dash-white.svg";
 import dashBot from "../../Assets/Objects/dash-white.svg";
 import { competitions } from "../../StaticData/Data";
-import { sponsors } from "../../StaticData/Data";
+import { sponsors, gallery } from "../../StaticData/Data";
 
 const Home = () => {
   return (
@@ -168,6 +168,34 @@ const Home = () => {
                 </div>
               ))}
           </div>
+        </div>
+        <div className="flex flex-col justify-center items-center">
+          <div className="flex flex-col w-[80%] md:w-[50%] lg:w-[70%] mt-12 pt-5 pb-2 md:pt-24 md:pb-12">
+            <img src={dashTop} alt="dash-top" className="self-start" />
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-japanese text-center my-3 bg-gradient-to-r from-red-primary to-red-secondary bg-clip-text text-transparent">
+              KARYA PESERTA TEMA "WEB HMIF"
+            </h2>
+            <img src={dashBot} alt="dash-bot" className="self-end" />
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-2 justify-center items-center text-white ">
+            {gallery.map((data) => {
+              return (
+                <div className="flex flex-col justify-center items-center mx-20 my-8 lg:my-10">
+                  <img
+                    src={data.image}
+                    alt={data.asal}
+                    className="h-[300px] w-[350px]"
+                  />
+                  <div className="flex flex-col w-[350px] h-[150px] gap-2">
+                    <p className="font-bold text-xl">Asal Team</p>
+                    <h3 className="font-bold text-2xl">{data.asal}</h3>
+                    <p className="font-bold">{data.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div className="grid lg:grid-cols-2 w-full gap-12 px-12 lg:px-60 xl:px-80 pb-10"></div>
         </div>
         <div className="bg-[url('../public/background/maskg1.png')] px-12 mt-[120px] w-full h-fit-content py-2 text-white bg-cover bg-no-repeat md:bg-center">
           <div className="flex flex-col justify-center items-center">

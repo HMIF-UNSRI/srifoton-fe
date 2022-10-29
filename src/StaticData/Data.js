@@ -163,9 +163,32 @@ export const competitions = [
 ];
 
 export const sponsors = {
-  xl: [],
-  lg: ["/sponsors/lg/Dicoding.png", "/sponsors/lg/Telkom.png"],
+  xl: ["/sponsors/xl/Telkom.png"],
+  lg: ["/sponsors/lg/Dicoding.png"],
   md: ["/sponsors/md/Wika.png"],
   sm: ["/sponsors/sm/IdCH.png"],
   xs: ["/sponsors/xs/Binar.png"],
 };
+
+export const gallery = [
+  {
+    asal: "Institut Teknologi Bandung",
+    desc: "Eulerianism Oleh Odi Prayadi",
+    image: "/karya-web-hmif/eulerianism.png",
+  },
+  {
+    asal: "Politeknik Lembaga Pendidikan Pengembangan Profesi Indonesia Cimahi",
+    desc: "LICI Squad Oleh Bintang Ramadhana dan Ilham Suparman",
+    image: "/karya-web-hmif/lici-squad.png",
+  },
+  {
+    asal: "Universitas Sriwijaya",
+    desc: "Tim Dadakan oleh Jihan Jasmine Jahro, Widya Fitriani dan Annisa Luthfi Fadillah",
+    image: "/karya-web-hmif/tim-dadakan.png",
+  },
+  {
+    asal: "Universitas Sriwijaya",
+    desc: "wematch Oleh Dini Andriani, Euis Annisa Rachman dan Miftahul Jannah",
+    image: "/karya-web-hmif/wematch.png",
+  },
+];
