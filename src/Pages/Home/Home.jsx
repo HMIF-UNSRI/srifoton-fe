@@ -180,7 +180,7 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-2 justify-center items-center text-white ">
             {gallery.map((data) => {
               return (
-                <div className="flex flex-col justify-center items-center mx-20 my-8 lg:my-10">
+                <div className="flex flex-col justify-center items-center gap-4 mx-20 my-8 lg:my-10">
                   <img
                     src={data.image}
                     alt={data.asal}
